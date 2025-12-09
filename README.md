@@ -67,7 +67,7 @@ This is the circuit we will be using for the Sampler and the Estimator using QAS
 		Result result = results.get(0);
 		Data data = result.getData();
 		C c= data.getC();
-    List<String> samples = c.getSamples();
+        List<String> samples = c.getSamples();
 ```
 
 - Retrieve Estimator results
