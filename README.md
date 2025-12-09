@@ -14,7 +14,7 @@ We will be using a static instance of the ObjectMapper. We will also create a in
 
   QTool qt = new QTool();
 ```
-### Job List
+### Job list
 - Retriee the list of jobs which have been submited.
 ```java
 		QTool qt = new QTool();
@@ -61,7 +61,7 @@ This is the circuit we will be using for the Sampler and the Estimator using QAS
 			System.out.println(id+": "+status);
 		} while (EnumSet.of(JobStateStatus.Queued, JobStateStatus.Running).contains(status));
 ```
-### Job Results
+### Job results
 - Retrieve Sampler results
 ```java
 		JobResults jr = qt.getJobResults(id);
