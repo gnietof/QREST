@@ -14,7 +14,6 @@ import com.gnf.qrest.builders.BackendsRequest;
 import com.gnf.qrest.builders.EstimatorPUB;
 import com.gnf.qrest.builders.SamplerPUB;
 import com.gnf.qrest.model.Backend;
-import com.gnf.qrest.model2.Complex;
 import com.gnf.qrest.model2.PrimitiveResults;
 import com.gnf.qrest.model2.PrimitiveResults.Result;
 import com.gnf.qrest.model2.PrimitiveResults.Result.EstimatorData;
@@ -57,7 +56,8 @@ public class QTest {
 //		qt.testSamplerParamsComplete();
 //		qt.testResultsSampler();
 //		qt.testResultsEstimator();
-		qt.testEstimatorParamsComplete();
+		qt.testBroadEstimator();
+//		qt.testEstimatorParamsComplete();
 //		qt.testStatus();
 //		qt.testSamplerComplete();
 //		qt.testEstimatorComplete();
@@ -131,14 +131,15 @@ public class QTest {
 
 	public void testResultsEstimator() {
 		System.out.println("Estimator");
-		PrimitiveResults results2 = service.jobResults("d53lee1smlfc739f0220");
+//		PrimitiveResults results2 = service.jobResults("d53lee1smlfc739f0220"); // Single
+		PrimitiveResults results2 = service.jobResults("d53lqu7p3tbc73amjt00"); // Multiple
 		if (results2!=null) {
 			Result result2 = results2.getResults().get(0);
 			EstimatorData data = (EstimatorData) result2.getData();
-//			for (Double evs : data.getEvs()) {
-//				System.out.println(evs);
-//			};
-			System.out.println(data.getEvs());
+			for (Double evs : data.getEvs()) {
+				System.out.println(evs);
+			};
+//			System.out.println(data.getEvs());
 		}
 
 //		// Estimator (Multiple)
@@ -160,6 +161,27 @@ public class QTest {
 		EstimatorPUB pub = EstimatorPUB.builder().
 				circuit(qasm).
 				observables(observables.getPaulis()).build();
+		Job job = estimator.run(pub);
+		if (job!=null) {
+			job.cancel();
+		}
+		
+	}
+
+	private void testBroadEstimator() {
+		Backend backend = service.backend(BACKEND);
+		Estimator estimator = new Estimator(backend);
+		String qasm = "OPENQASM 3.0;include \"stdgates.inc\";rz(pi/2) $0;sx $0;rz(pi/2) $0;rz(pi/2) $1;sx $1;rz(pi/2) $1;cz $0, $1;rz(pi/2) $1;sx $1;rz(pi/2) $1;";
+//		List<String> observables = List.of("XX");
+//		SparsePauliOp observables = SparsePauliOp.fromList(List.of(new Pauli("XZ", new Complex(0.5,0.0)),new Pauli("ZX", new Complex(0.5,0.0))));
+//		SparsePauliOp observables = SparsePauliOp.fromList(List.of(new Pauli("XZ", new Complex(1.0,0.0)),new Pauli("ZX", new Complex(2.0,0.0))));
+//		List<Pauli> observables = List.of(new Pauli("XZ", new Complex(1.0,0.0)),new Pauli("ZX", new Complex(2.0,0.0)));
+//		List<Pauli> observables = List.of(new Pauli("XZ", 0.5),new Pauli("ZX", 2.0));
+		SparsePauliOp observables1 = SparsePauliOp.fromSparseList(List.of(new Pauli("XZ", new int[] {0,1},1),new Pauli("ZX", new int[] {0,1},2)),2);
+		SparsePauliOp observables2 = SparsePauliOp.fromSparseList(List.of(new Pauli("XZ", new int[] {0,1},1),new Pauli("ZX", new int[] {0,1},2)),2);
+		EstimatorPUB pub = EstimatorPUB.builder().
+				circuit(qasm).
+				observables(observables1.getPaulis()).build();
 		Job job = estimator.run(pub);
 		if (job!=null) {
 			job.cancel();
@@ -213,7 +235,7 @@ public class QTest {
 			PrimitiveResults results = job.results();
 			Result result = results.getResults().get(0);
 			EstimatorData data = (EstimatorData)result.getData();
-			Double evs = data.getEvs();
+			List<Double> evs = data.getEvs();
 			System.out.println(evs);
 		} else if (state.equals("Failed")) {
 			Job job2 = service.job(job.getId());

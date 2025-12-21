@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -56,45 +57,48 @@ public class PrimitiveResults {
 		}
 		
 		public static class EstimatorData implements ResultData {
-//			List<Double> evs;
-//			List<Double> stds;
-			Double evs;
-			Double stds;
+			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+			List<Double> evs;
+			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+			List<Double> stds;
+//			Double evs;
+//			Double stds;
 
+			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 			@JsonProperty("ensemble_standard_error")
-//			List<Double> ensembleStandardError;
-			Double ensembleStandardError;
+			List<Double> ensembleStandardError;
+//			Double ensembleStandardError;
 			
 			public EstimatorData() {
 			}
 
-//			public List<Double> getEvs() {
-			public Double getEvs() {
+			public List<Double> getEvs() {
+//			public Double getEvs() {
 				return evs;
 			}
 
-//			public void setEvs(List<Double> evs) {
-			public void setEvs(Double evs) {
+			public void setEvs(List<Double> evs) {
+//			public void setEvs(Double evs) {
 				this.evs = evs;
 			}
 
-//			public List<Double> getStds() {
-			public Double getStds() {
+			public List<Double> getStds() {
+//			public Double getStds() {
 				return stds;
 			}
 
-//			public void setStds(List<Double> stds) {
-			public void setStds(Double stds) {
+			public void setStds(List<Double> stds) {
+//			public void setStds(Double stds) {
 				this.stds = stds;
 			}
 
-//			public List<Double> getEnsembleStandardError() {
-			public Double getEnsembleStandardError() {
+			public List<Double> getEnsembleStandardError() {
+//			public Double getEnsembleStandardError() {
 				return ensembleStandardError;
 			}
 
-//			public void setEnsembleStandardError(List<Double> ensembleStandardError) {
-			public void setEnsembleStandardError(Double ensembleStandardError) {
+			public void setEnsembleStandardError(List<Double> ensembleStandardError) {
+//			public void setEnsembleStandardError(Double ensembleStandardError) {
 				this.ensembleStandardError = ensembleStandardError;
 			}
 			
