@@ -1,4 +1,4 @@
-package com.gnf.qrest.model;
+package com.gnf.qrest.model2;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -7,9 +7,9 @@ public class Options {
 	private int defaultShots=16;
 	private Execution execution;
 	
-public Execution getExecution() {
+	public Execution getExecution() {
 		return execution;
-	}
+	} 
 
 	public void setExecution(Execution execution) {
 		this.execution = execution;

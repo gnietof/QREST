@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class JobDetails {
 	private String id;
 	private String backend;
-	private JobState state;
 	private Program program;
+	
 	@JsonProperty("user_id")
 	private String userId;
+	
 	private String created;
 	private int cost;
 	private String status;
@@ -27,14 +28,6 @@ public class JobDetails {
 
 	public void setBackend(String backend) {
 		this.backend = backend;
-	}
-
-	public JobState getState() {
-		return state;
-	}
-
-	public void setState(JobState state) {
-		this.state = state;
 	}
 
 	public Program getProgram() {

@@ -12,6 +12,9 @@ public class JobRunRequest {
 	private Params params;
 	private String backend;
 	
+	@JsonProperty("max_execution_time")
+	private Integer maxExecutionTime=2;
+	
 	public JobRunRequest(String backend,String qasm, List<String> observables) {
 		this(backend,qasm,observables,new HashMap());
 	}
@@ -65,6 +68,14 @@ public class JobRunRequest {
 
 	public void setProgramId(String programId) {
 		this.programId = programId;
+	}
+
+	public Integer getMaxExecutionTime() {
+		return maxExecutionTime;
+	}
+
+	public void setMaxExecutionTime(Integer maxExecutionTime) {
+		this.maxExecutionTime = maxExecutionTime;
 	}
 
 	

@@ -3,18 +3,18 @@ package com.gnf.qrest.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JobState {
-    private JobStateStatus status;
+    private JobStatus status;
     private String reason;
     @JsonProperty("reason_code")
     private Integer reasonCode;
     @JsonProperty("reason_solution")
     private String reasonSolution;
 
-	public JobStateStatus getStatus() {
+	public JobStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(JobStateStatus status) {
+	public void setStatus(JobStatus status) {
 		this.status = status;
 	}
 

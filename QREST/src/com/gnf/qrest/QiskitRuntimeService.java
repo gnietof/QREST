@@ -1,0 +1,293 @@
+package com.gnf.qrest;
+
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import javax.net.ssl.HttpsURLConnection;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gnf.qrest.builders.BackendsRequest;
+import com.gnf.qrest.model.Backend;
+import com.gnf.qrest.model.Backends;
+import com.gnf.qrest.model.Token;
+import com.gnf.qrest.model2.PrimitiveRequest;
+import com.gnf.qrest.model2.PrimitiveResponse;
+import com.gnf.qrest.model2.PrimitiveResults;
+import com.gnf.qrest.model2.Workloads;
+import com.gnf.qrest.qiskit.Job;
+import com.gnf.qrest.qiskit.Jobs;
+import com.gnf.qrest.qiskit.Session;
+
+
+public class QiskitRuntimeService {
+	
+	private static final ObjectMapper om = new ObjectMapper()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
+			.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+	private static final String API = "https://quantum.cloud.ibm.com/api/v1";
+	private Token token;
+	private static QiskitRuntimeService instance = new QiskitRuntimeService();
+	
+	public static QiskitRuntimeService getInstance() {
+		return instance;
+	}
+	
+	public Workloads workloads() {
+
+		Workloads res = callREST("/workloads", "GET", null, null, Workloads.class);
+		return res;
+		
+	}
+	
+	public Backend backend(String id) {
+		List<Backend> res = backends(new BackendsRequest.Builder().name(id).build());
+		if (res!=null && res.size()>0) {
+			return res.get(0);
+		}
+		return null;
+	}
+
+//	public Backend backend(String id) {
+//		Backend res = callREST("/backends/"+id+"/status", "GET", null, null, Backend.class);
+//		
+//		return res;
+//	}
+
+	public List<Backend> backends(BackendsRequest request) {
+		
+		Backends res = callREST("/backends", "GET", null, null, Backends.class);
+		
+		List<Backend> devs = res.getDevices();
+		
+//		if (request.name()!=null) {
+			try {
+				devs = devs.stream().
+					filter(d -> request.name()==null || d.getName().equals(request.name())).
+					filter(d -> request.minNumQubits()==null || d.getQubits()>=request.minNumQubits()).
+//				filter(d -> request.name().map(n -> d.getName().equals(u)).orElse(true)).
+//				filter(d -> d.getQubits()>=request.minNumQubits()).
+					collect(Collectors.toList());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+//		}
+		
+		return devs;
+	}
+
+	public Job createJob(PrimitiveRequest req) {
+		
+		try {
+			Job res = callREST("/jobs", "POST", null, om.writeValueAsString(req), Job.class);
+		
+//			String reqs = """
+//				{
+//				  "params" : {
+//				    "pubs" : [ [ "OPENQASM 3.0;include \'stdgates.inc\';rz(pi/2) $0;sx $0;rz(pi/2) $0;rz(pi/2) $1;sx $1;rz(pi/2) $1;cz $0, $1;rz(pi/2) $1;sx $1;rz(pi/2) $1;",
+//     			     { "XZ": 1.0, "ZX": 2.0 },  
+//                     { }, 0.015625 ] ],
+//				    "options" : {
+//				      "default_shots" : 16
+//				    },
+//				    "version" : 2,
+//				    "support_qiskit" : false
+//				  },
+//				  "backend" : "ibm_torino",
+//				  "program_id" : "estimator"
+//				}
+//			""";
+//		Job res = callREST("/jobs", "POST", null, reqs, Job.class);
+			return res;
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public Job job(String id) {
+		Job res = job(id,false);
+		return res;
+	}
+
+	public Job job(String id,boolean excludeParams) {
+		Job res = callREST("/jobs/"+id, "GET", "exclude_params="+excludeParams, null, Job.class);
+		return res;
+	}
+
+	public Jobs jobs() {
+		Jobs res = callREST("/jobs", "GET", null, null, Jobs.class);
+		return res;
+	}
+
+//	public Session sessions(String id) {
+//		Session res = callREST("/sessions/"+id, "GET", null, null, Session.class);
+//		return res;
+//	}
+
+	public Session session(String id) {
+		Session res = callREST("/sessions/"+id, "GET", null, null, Session.class);
+		return res;
+	}
+
+	public Jobs sessionJobs(String id) {
+		Jobs res = callREST("/jobs", "GET", "session_id="+id, null, Jobs.class);
+		return res;
+	}
+
+	public PrimitiveResults jobResults(String id) {
+		PrimitiveResults res = callREST("/jobs/"+id+"/results", "GET", null, null, PrimitiveResults.class);
+		return res;
+	}
+	
+	public void cancelJob(String id) {
+		PrimitiveResponse res = callREST("/jobs/"+id+"/cancel", "POST", null, "", PrimitiveResponse.class);
+	}
+	
+//	public void jobStatus(String id) {
+//		PrimitiveResponse res = callREST("/jobs/"+id, "GET", null, null, PrimitiveResponse.class);
+//	}
+
+	public String waitForFinalState(String id) {
+		String status = null;
+		
+		while (true) {
+			Job job = job(id,false);
+			status = job.getStatus();
+			boolean isFinal = !(status.equals("Queued") || status.equals("Running"));
+			if (isFinal) {
+				break;
+			}
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println(id+": "+status);
+		}
+		
+		return status;
+	}
+
+	private String getToken() {
+		String t =null;
+		long d = new Date().getTime();
+		if (token==null || d>(token.getExpiration()*1000)) {
+			doToken();
+		}
+		if (token!=null) {
+			t = token.getAccessToken();
+		}
+		return t;
+	}
+
+	private void doToken() {
+		try {
+			URL url = new URL("https://iam.cloud.ibm.com/oidc/token");
+			HttpsURLConnection uc = (HttpsURLConnection) url.openConnection();
+			uc.setRequestMethod("POST");
+			uc.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+			uc.setRequestProperty("Accept","application/json");
+
+			String apikey = System.getenv("IAMKEY");
+			String data = "apikey="+apikey+"&grant_type=urn:ibm:params:oauth:grant-type:apikey";
+
+			uc.setDoOutput(true);
+			OutputStream os = uc.getOutputStream();
+			os.write(data.getBytes());
+
+			int rc = uc.getResponseCode();
+			if (rc==HttpURLConnection.HTTP_OK) {
+				InputStream is = uc.getInputStream();
+				String s = new String(is.readAllBytes(), StandardCharsets.UTF_8);
+				token = om.readValue(s, Token.class);
+			} else {
+				InputStream es = uc.getErrorStream();
+				String s = new String(es.readAllBytes(), StandardCharsets.UTF_8);
+				System.out.println(s);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public <T> T callREST(String href,String method,String params, String data, Class<T> c) {
+		return callREST(href, method, params, data, c,false);
+	}
+	
+	public <T> T callREST(String href,String method,String params, String data, Class<T> c,boolean debug) {
+
+		T o = null; 
+		
+		try {
+			String u = API+href+(params!=null? "?"+params:"");
+			if (debug) {
+				System.out.println("URL: "+u);
+			}
+			URL url = new URL(u);
+			HttpsURLConnection uc = (HttpsURLConnection) url.openConnection();
+			uc.setRequestMethod(method);
+			uc.setRequestProperty("Content-Type","application/json");
+			uc.setRequestProperty("Accept","application/json");
+			uc.setRequestProperty("Service-CRN",System.getenv("CRN"));
+			uc.setRequestProperty("Authorization","Bearer "+getToken());
+			uc.setRequestProperty("IBM-API-Version","2025-05-01");
+			
+			if (data!=null) {
+				uc.setDoOutput(true);
+				OutputStream os = uc.getOutputStream();
+				os.write(data.getBytes());
+			}
+			
+			int rc = uc.getResponseCode();
+			if (debug) {
+				System.out.println("RC: "+rc);
+			}
+			switch (rc) {
+				case HttpURLConnection.HTTP_OK:
+				case HttpURLConnection.HTTP_CREATED:
+				case HttpURLConnection.HTTP_NO_CONTENT:
+					
+					if (debug) {
+						Map<String, List<String>> headers = uc.getHeaderFields();
+						for (String key: headers.keySet()) {
+							System.out.println(key+": "+headers.get(key));
+						}
+					}
+					
+					InputStream is = uc.getInputStream();
+					String s1 = new String(is.readAllBytes(), StandardCharsets.UTF_8);
+//					if (debug) {
+						System.out.println("Output: "+s1);
+//					}
+					if (!s1.isEmpty()) {
+						JavaType jt = om.getTypeFactory().constructType(c);				
+						o = om.readValue(s1, jt);
+					}
+					break;
+				default:
+					InputStream es = uc.getErrorStream();
+					String s2 = new String(es.readAllBytes(), StandardCharsets.UTF_8);
+					System.out.println(s2);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return o;
+	}
+
+	
+}
