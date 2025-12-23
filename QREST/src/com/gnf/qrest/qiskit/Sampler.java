@@ -1,5 +1,7 @@
 package com.gnf.qrest.qiskit;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -8,7 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gnf.qrest.QiskitRuntimeService;
 import com.gnf.qrest.builders.SamplerPUB;
 import com.gnf.qrest.model.Backend;
-import com.gnf.qrest.model2.PrimitiveRequest;
+import com.gnf.qrest.model.PrimitiveRequest;
 
 public class Sampler extends Primitive<SamplerPUB> {
 	private static final ObjectMapper om = new ObjectMapper()
@@ -22,9 +24,14 @@ public class Sampler extends Primitive<SamplerPUB> {
 
 	@Override
 	public Job run(SamplerPUB pub) {
+		return run(List.of(pub));
+	}
+	
+	@Override
+	public Job run(List<SamplerPUB> pubs) {
 		QiskitRuntimeService service = QiskitRuntimeService.getInstance();
 
-		SamplerRequest req = new SamplerRequest(getBackend().getName(),pub);
+		SamplerRequest req = new SamplerRequest(getBackend().getName(),pubs);
 		
 		try {
 			String pretty = om.writerWithDefaultPrettyPrinter().writeValueAsString(req);
@@ -40,8 +47,8 @@ public class Sampler extends Primitive<SamplerPUB> {
 	
 	public static class SamplerRequest extends PrimitiveRequest {
 
-		public SamplerRequest(String backend,SamplerPUB pub) {
-			super(backend,pub,"sampler");
+		public SamplerRequest(String backend,List<SamplerPUB> pubs) {
+			super(backend,pubs,"sampler");
 		}
 		
 	}

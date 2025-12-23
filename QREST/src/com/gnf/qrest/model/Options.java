@@ -7,9 +7,9 @@ public class Options {
 	private int defaultShots=16;
 	private Execution execution;
 	
-public Execution getExecution() {
+	public Execution getExecution() {
 		return execution;
-	}
+	} 
 
 	public void setExecution(Execution execution) {
 		this.execution = execution;

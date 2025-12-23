@@ -1,10 +1,9 @@
-package com.gnf.qrest.model2;
+package com.gnf.qrest.model;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -14,7 +13,8 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.gnf.qrest.model2.PrimitiveResults.Result.SamplerData.SamplerRegisters;
+import com.gnf.qrest.deserializers.FlatDeserializer;
+import com.gnf.qrest.model.PrimitiveResults.Result.SamplerData.SamplerRegisters;
 
 public class PrimitiveResults {
 
@@ -57,47 +57,50 @@ public class PrimitiveResults {
 		}
 		
 		public static class EstimatorData implements ResultData {
-			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-			List<Double> evs;
-			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-			List<Double> stds;
+//			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+			@JsonDeserialize(using = FlatDeserializer.class)
+			List<List<Double>> evs;
+//			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+			@JsonDeserialize(using = FlatDeserializer.class)
+			List<List<Double>> stds;
 //			Double evs;
 //			Double stds;
 
-			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+//			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+			@JsonDeserialize(using = FlatDeserializer.class)
 			@JsonProperty("ensemble_standard_error")
-			List<Double> ensembleStandardError;
+			List<List<Double>> ensembleStandardError;
 //			Double ensembleStandardError;
 			
 			public EstimatorData() {
 			}
 
-			public List<Double> getEvs() {
+			public List<List<Double>> getEvs() {
 //			public Double getEvs() {
 				return evs;
 			}
 
-			public void setEvs(List<Double> evs) {
+			public void setEvs(List<List<Double>> evs) {
 //			public void setEvs(Double evs) {
 				this.evs = evs;
 			}
 
-			public List<Double> getStds() {
+			public List<List<Double>> getStds() {
 //			public Double getStds() {
 				return stds;
 			}
 
-			public void setStds(List<Double> stds) {
+			public void setStds(List<List<Double>> stds) {
 //			public void setStds(Double stds) {
 				this.stds = stds;
 			}
 
-			public List<Double> getEnsembleStandardError() {
+			public List<List<Double>> getEnsembleStandardError() {
 //			public Double getEnsembleStandardError() {
 				return ensembleStandardError;
 			}
 
-			public void setEnsembleStandardError(List<Double> ensembleStandardError) {
+			public void setEnsembleStandardError(List<List<Double>> ensembleStandardError) {
 //			public void setEnsembleStandardError(Double ensembleStandardError) {
 				this.ensembleStandardError = ensembleStandardError;
 			}

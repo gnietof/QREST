@@ -18,14 +18,18 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gnf.qrest.authentication.Token;
 import com.gnf.qrest.builders.BackendsRequest;
 import com.gnf.qrest.model.Backend;
+import com.gnf.qrest.model.BackendConfig;
+import com.gnf.qrest.model.BackendProps;
+import com.gnf.qrest.model.BackendStatus;
 import com.gnf.qrest.model.Backends;
-import com.gnf.qrest.model.Token;
-import com.gnf.qrest.model2.PrimitiveRequest;
-import com.gnf.qrest.model2.PrimitiveResponse;
-import com.gnf.qrest.model2.PrimitiveResults;
-import com.gnf.qrest.model2.Workloads;
+import com.gnf.qrest.model.PrimitiveRequest;
+import com.gnf.qrest.model.PrimitiveResponse;
+import com.gnf.qrest.model.PrimitiveResults;
+import com.gnf.qrest.model.Tags;
+import com.gnf.qrest.model.Workloads;
 import com.gnf.qrest.qiskit.Job;
 import com.gnf.qrest.qiskit.Jobs;
 import com.gnf.qrest.qiskit.Session;
@@ -60,11 +64,20 @@ public class QiskitRuntimeService {
 		return null;
 	}
 
-//	public Backend backend(String id) {
-//		Backend res = callREST("/backends/"+id+"/status", "GET", null, null, Backend.class);
-//		
-//		return res;
-//	}
+	public BackendStatus backendStatus(String name) {
+		BackendStatus res = callREST("/backends/"+name+"/status", "GET", null, null, BackendStatus.class);
+		return res;
+	}
+
+	public BackendProps backendProps(String name) {
+		BackendProps res = callREST("/backends/"+name+"/properties", "GET", null, null, BackendProps.class);
+		return res;
+	}
+
+	public BackendConfig backendConfig(String name) {
+		BackendConfig res = callREST("/backends/"+name+"/configuration", "GET", null, null, BackendConfig.class);
+		return res;
+	}
 
 	public List<Backend> backends(BackendsRequest request) {
 		
@@ -92,24 +105,6 @@ public class QiskitRuntimeService {
 		
 		try {
 			Job res = callREST("/jobs", "POST", null, om.writeValueAsString(req), Job.class);
-		
-//			String reqs = """
-//				{
-//				  "params" : {
-//				    "pubs" : [ [ "OPENQASM 3.0;include \'stdgates.inc\';rz(pi/2) $0;sx $0;rz(pi/2) $0;rz(pi/2) $1;sx $1;rz(pi/2) $1;cz $0, $1;rz(pi/2) $1;sx $1;rz(pi/2) $1;",
-//     			     { "XZ": 1.0, "ZX": 2.0 },  
-//                     { }, 0.015625 ] ],
-//				    "options" : {
-//				      "default_shots" : 16
-//				    },
-//				    "version" : 2,
-//				    "support_qiskit" : false
-//				  },
-//				  "backend" : "ibm_torino",
-//				  "program_id" : "estimator"
-//				}
-//			""";
-//		Job res = callREST("/jobs", "POST", null, reqs, Job.class);
 			return res;
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
@@ -132,10 +127,19 @@ public class QiskitRuntimeService {
 		return res;
 	}
 
-//	public Session sessions(String id) {
-//		Session res = callREST("/sessions/"+id, "GET", null, null, Session.class);
-//		return res;
-//	}
+	public void tags(String id, Tags tags) {
+		try {
+			callREST("/jobs/"+id+"/tags","PUT", null,om.writeValueAsString(tags),null);
+//			callREST("/jobs/"+id+"/tags","PUT", null,"[\"Genaro\",\"2025\"]",null);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Tags searchTags(String tag) {
+		Tags tags = callREST("/tags","GET", tag!=null? "search="+tag:null,null,Tags.class);
+		return tags;
+	}
 
 	public Session session(String id) {
 		Session res = callREST("/sessions/"+id, "GET", null, null, Session.class);
@@ -147,6 +151,10 @@ public class QiskitRuntimeService {
 		return res;
 	}
 
+	public void jobDetails(String id) {
+		PrimitiveResults res = callREST("/jobs/"+id, "GET", null, null, PrimitiveResults.class);
+	}
+	
 	public PrimitiveResults jobResults(String id) {
 		PrimitiveResults res = callREST("/jobs/"+id+"/results", "GET", null, null, PrimitiveResults.class);
 		return res;
@@ -166,6 +174,7 @@ public class QiskitRuntimeService {
 		while (true) {
 			Job job = job(id,false);
 			status = job.getStatus();
+			System.out.println(id+": "+status);
 			boolean isFinal = !(status.equals("Queued") || status.equals("Running"));
 			if (isFinal) {
 				break;
@@ -175,7 +184,6 @@ public class QiskitRuntimeService {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			System.out.println(id+": "+status);
 		}
 		
 		return status;
@@ -269,18 +277,26 @@ public class QiskitRuntimeService {
 					
 					InputStream is = uc.getInputStream();
 					String s1 = new String(is.readAllBytes(), StandardCharsets.UTF_8);
+//					FileOutputStream fos = new FileOutputStream("/home/genaro/callREST.out");
+//					fos.write(s1.getBytes());
+//					fos.close();
+					
 //					if (debug) {
 						System.out.println("Output: "+s1);
 //					}
 					if (!s1.isEmpty()) {
-						JavaType jt = om.getTypeFactory().constructType(c);				
-						o = om.readValue(s1, jt);
+						if (c!=null) {
+							JavaType jt = om.getTypeFactory().constructType(c);				
+							o = om.readValue(s1, jt);
+						}
 					}
 					break;
 				default:
 					InputStream es = uc.getErrorStream();
-					String s2 = new String(es.readAllBytes(), StandardCharsets.UTF_8);
-					System.out.println(s2);
+					if (es!=null) {
+						String s2 = new String(es.readAllBytes(), StandardCharsets.UTF_8);
+						System.out.println(s2);
+					}
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();

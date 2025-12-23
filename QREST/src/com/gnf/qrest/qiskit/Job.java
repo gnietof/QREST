@@ -1,12 +1,13 @@
 package com.gnf.qrest.qiskit;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gnf.qrest.QiskitRuntimeService;
-import com.gnf.qrest.model2.PrimitiveResults;
-import com.gnf.qrest.model2.Program;
-import com.gnf.qrest.model2.Usage;
+import com.gnf.qrest.model.PrimitiveResults;
+import com.gnf.qrest.model.Program;
+import com.gnf.qrest.model.Usage;
 
 public class Job {
 
@@ -118,6 +119,9 @@ public class Job {
 	}
 
 	public List<String> getTags() {
+		if (tags==null) {
+			tags = new ArrayList<String>();
+		}
 		return tags;
 	}
 
@@ -159,7 +163,7 @@ public class Job {
 	
 	@Override
 	public String toString() {
-		String s = String.format("%s: %s [%s] (%s-%s)",getId(),getCreated(),getBackend(),getProgram().getId(),getStatus());
+		String s = String.format("%s: %s [%s] (%s-%s) %s",getId(),getCreated(),getBackend(),getProgram().getId(),getStatus(),getTags().toString());
 		return s;
 	}
 

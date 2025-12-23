@@ -4,10 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.gnf.qrest.serializers.PauliSerializer;
-
-@JsonSerialize(using = PauliSerializer.class)
+//@JsonSerialize(using = PauliSerializer.class)
 public class Pauli {
 	
 	String label;
@@ -27,7 +24,6 @@ public class Pauli {
 	}
 
 	public Pauli(String label, int[] indices, double coeff) {
-		System.out.println("\n\n"+label+" : "+Arrays.toString(indices));
 		int num = check(indices);
 		int num2 = label.length();
 		if (num>num2) {
@@ -37,13 +33,9 @@ public class Pauli {
 		Arrays.fill(pp, 'I');
 		for (int i=0;i<indices.length;i++) {
 			int pos = num2-indices[i]-1;
-//			pp[pos]=label.charAt(indices[i]);
 			pp[pos]=label.charAt(i);
-//			pp[indices[i]]=label.charAt(i);
-			System.out.println(i+"->"+pos+":"+indices[i]+"="+label.charAt(indices[i])+"->"+new String(pp));
 		}
 		this.label = new String(pp);
-		System.out.println(this.label);
 		this.coeff = coeff;
 	}
 

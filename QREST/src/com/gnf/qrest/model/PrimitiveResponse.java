@@ -1,4 +1,4 @@
-package com.gnf.qrest.model2;
+package com.gnf.qrest.model;
 
 public class PrimitiveResponse {
     private String id;

@@ -3,16 +3,17 @@ package com.gnf.qrest.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.gnf.qrest.builders.PUB;
+
 public class Params {
-//	private List<List<Object>> pubs;
-	private List<Object> pubs;
+	private List<? extends PUB> pubs;
 	private Options options;
 	private int version = 2;
 	
-	public Params() {
-		
-	}
-
+	@JsonProperty("support_qiskit")
+	private boolean supportQiskit = false;
+	
 	public Options getOptions() {
 		if (options == null) {
 			options = new Options();
@@ -32,25 +33,27 @@ public class Params {
 		this.version = version;
 	}
 
-//	public List<List<Object>> getPubs() {
-	public List<Object> getPubs() {
+	public List<? extends PUB> getPubs() {
 		if (pubs==null) {
-			pubs = new ArrayList<Object>();
+			pubs = new ArrayList<PUB>();
 		}
 		return pubs;
 	}
 
-//	public void setPubs(List<List<Object>> pubs) {
-	public void setPubs(List<Object> pubs) {
+	public void setPubs(List<? extends PUB> pubs) {
 		this.pubs = pubs;
 	}
 
-//	public void addPub(List<Object> pub) {
-//		getPubs().add(pub);
+//	public void addPub(PUB pub) {
+//		getPubs().add(pub.buildAsList());
 //	}
 
-	public void addPub(PUB pub) {
-		getPubs().add(pub.toList());
+	public boolean isSupportQiskit() {
+		return supportQiskit;
+	}
+
+	public void setSupportQiskit(boolean supportQiskit) {
+		this.supportQiskit = supportQiskit;
 	}
 	
 }

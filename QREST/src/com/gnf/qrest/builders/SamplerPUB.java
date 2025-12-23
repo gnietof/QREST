@@ -1,9 +1,7 @@
 package com.gnf.qrest.builders;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public record SamplerPUB (
 
@@ -16,10 +14,10 @@ public record SamplerPUB (
         return new Builder();
     }
 
-	@Override
-	public List<Object> buildAsList() {
-		return List.of(circuit,parameters,shots);
-	}
+//	@Override
+//	public List<Object> buildAsList() {
+//		return List.of(circuit,parameters,shots);
+//	}
 
 	public static class Builder {
 		private String circuit;

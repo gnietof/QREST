@@ -1,4 +1,6 @@
-package com.gnf.qrest.model2;
+package com.gnf.qrest.model;
+
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gnf.qrest.builders.PUB;
@@ -12,11 +14,12 @@ public abstract class PrimitiveRequest {
 //	@JsonProperty("max_execution_time")
 //	private Integer maxExecutionTime=2;
 
-	public PrimitiveRequest(String backend,PUB pub,String programId) {
+	public PrimitiveRequest(String backend,List<? extends PUB> pubs,String programId) {
 		this.backend = backend;
 		this.programId = programId;
 		this.params = new Params();
-		params.addPub(pub);
+//		params.addPub(pubs);
+		params.setPubs(pubs);
 		
 	}
 	

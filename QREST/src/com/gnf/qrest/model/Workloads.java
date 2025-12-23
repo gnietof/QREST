@@ -1,4 +1,4 @@
-package com.gnf.qrest.model2;
+package com.gnf.qrest.model;
 
 import java.util.List;
 

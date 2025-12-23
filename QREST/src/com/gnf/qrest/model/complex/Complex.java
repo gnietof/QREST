@@ -1,4 +1,4 @@
-package com.gnf.qrest.model2;
+package com.gnf.qrest.model.complex;
 
 //@JsonSerialize(using = ComplexSerializer.class)
 public class Complex {

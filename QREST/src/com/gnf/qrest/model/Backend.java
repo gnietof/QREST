@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Backend {
 	private String name;
 	private String state;
-//	private String status;
 	private String message;
 
 	@JsonProperty("is_simulator")
@@ -34,14 +33,6 @@ public class Backend {
 	public void setState(String state) {
 		this.state = state;
 	}
-
-//	public String getStatus() {
-//		return status;
-//	}
-//
-//	public void setStatus(String status) {
-//		this.status = status;
-//	}
 
 	public String getMessage() {
 		return message;

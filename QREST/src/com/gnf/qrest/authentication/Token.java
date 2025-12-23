@@ -1,4 +1,4 @@
-package com.gnf.qrest.model;
+package com.gnf.qrest.authentication;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

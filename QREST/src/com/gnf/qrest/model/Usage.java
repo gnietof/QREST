@@ -1,14 +1,27 @@
 package com.gnf.qrest.model;
 
-public class Usage {
-    private Double seconds;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-	public Double getSeconds() {
+public class Usage {
+
+	@JsonProperty("quantum_seconds")
+	private int quantumSeconds;
+	private int seconds;
+	
+	public int getQuantumSeconds() {
+		return quantumSeconds;
+	}
+	
+	public void setQuantumSeconds(int quantumSeconds) {
+		this.quantumSeconds = quantumSeconds;
+	}
+	
+	public int getSeconds() {
 		return seconds;
 	}
-
-	public void setSeconds(Double seconds) {
+	
+	public void setSeconds(int seconds) {
 		this.seconds = seconds;
 	}
-    
+	
 }

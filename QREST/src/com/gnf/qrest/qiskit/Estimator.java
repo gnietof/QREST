@@ -1,5 +1,7 @@
 package com.gnf.qrest.qiskit;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -8,8 +10,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gnf.qrest.QiskitRuntimeService;
 import com.gnf.qrest.builders.EstimatorPUB;
 import com.gnf.qrest.model.Backend;
-import com.gnf.qrest.model2.PrimitiveRequest;
-import com.gnf.qrest.model2.PrimitiveResponse;
+import com.gnf.qrest.model.PrimitiveRequest;
+import com.gnf.qrest.model.PrimitiveResponse;
 
 public class Estimator extends Primitive<EstimatorPUB> {
 	private static final ObjectMapper om = new ObjectMapper()
@@ -23,9 +25,14 @@ public class Estimator extends Primitive<EstimatorPUB> {
 
 	@Override 
 	public Job run(EstimatorPUB pub) {
+		return run(List.of(pub));
+	}
+	
+	@Override 
+	public Job run(List<EstimatorPUB> pubs) {
 		QiskitRuntimeService service = QiskitRuntimeService.getInstance();
 
-		EstimatorRequest req = new EstimatorRequest(getBackend().getName(),pub);
+		EstimatorRequest req = new EstimatorRequest(getBackend().getName(),pubs);
 		
 		try {
 			String pretty = om.writerWithDefaultPrettyPrinter().writeValueAsString(req);
@@ -42,8 +49,8 @@ public class Estimator extends Primitive<EstimatorPUB> {
 	
 	public static class EstimatorRequest extends PrimitiveRequest {
 
-		public EstimatorRequest(String backend,EstimatorPUB pub) {
-			super(backend,pub,"estimator");
+		public EstimatorRequest(String backend,List<EstimatorPUB> pubs) {
+			super(backend,pubs,"estimator");
 		}
 		
 	}

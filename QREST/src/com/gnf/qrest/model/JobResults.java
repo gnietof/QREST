@@ -1,6 +1,7 @@
 package com.gnf.qrest.model;
 
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -10,7 +11,7 @@ public class JobResults {
 	private Metadata metadata;
 	
 	public static class Result {
-		private Data data;
+		private Map<String,Data> data;
 		private Metadata metadadata;
 		
 		public static class Data {
@@ -70,12 +71,16 @@ public class JobResults {
 
 		public static class Metadata {
 			private int shots;
+			
 			@JsonProperty("target_precision")
 			private double targetPrecision;
+			
 			@JsonProperty("num_ranzomizations")
 			private int numRanzomizations;
+			
 			@JsonProperty("circuit_metadata")
 			private CircuitMetadata circuitMetadata;
+			
 			private Resilience resilience;
 			
 			public static class CircuitMetadata {
@@ -127,20 +132,20 @@ public class JobResults {
 			}
 		}
 
-		public Data getData() {
-			return data;
-		}
-
-		public void setData(Data data) {
-			this.data = data;
-		}
-
 		public Metadata getMetadadata() {
 			return metadadata;
 		}
 
 		public void setMetadadata(Metadata metadadata) {
 			this.metadadata = metadadata;
+		}
+
+		public Map<String, Data> getData() {
+			return data;
+		}
+
+		public void setData(Map<String, Data> data) {
+			this.data = data;
 		}
 
 	}

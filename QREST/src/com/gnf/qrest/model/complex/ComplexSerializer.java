@@ -1,23 +1,24 @@
-package com.gnf.qrest.serializers;
+package com.gnf.qrest.model.complex;
 
 import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import com.gnf.qrest.qiskit.Pauli;
 
-public class PauliSerializer extends JsonSerializer<Pauli> {
+public class ComplexSerializer extends JsonSerializer<Complex> {
 
     @Override
     public void serialize(
-            Pauli value,
+            Complex value,
             JsonGenerator gen,
             SerializerProvider serializers) throws IOException {
 
-    	gen.writeStartObject();
-    	gen.writeNumberField(value.getLabel(),value.getCoeff());
-    	gen.writeEndObject();
+//        gen.writeStartArray();
+//        gen.writeNumber(value.getReal());
+//        gen.writeNumber(value.getImag());
+//        gen.writeEndArray();
+    	gen.writeNumber(value.getReal());
     }
 }
 
