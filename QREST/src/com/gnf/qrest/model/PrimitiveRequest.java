@@ -11,18 +11,13 @@ public abstract class PrimitiveRequest {
 	private Params params;
 	private String backend;
 	
-//	@JsonProperty("max_execution_time")
-//	private Integer maxExecutionTime=2;
-
 	public PrimitiveRequest(String backend,List<? extends PUB> pubs,String programId) {
 		this.backend = backend;
 		this.programId = programId;
 		this.params = new Params();
-//		params.addPub(pubs);
 		params.setPubs(pubs);
 		
 	}
-	
 
 	public String getProgramId() {
 		return programId;
@@ -48,15 +43,4 @@ public abstract class PrimitiveRequest {
 		this.backend = backend;
 	}
 
-
-//	public Integer getMaxExecutionTime() {
-//		return maxExecutionTime;
-//	}
-//
-//
-//	public void setMaxExecutionTime(Integer maxExecutionTime) {
-//		this.maxExecutionTime = maxExecutionTime;
-//	}
-
-	
 }
