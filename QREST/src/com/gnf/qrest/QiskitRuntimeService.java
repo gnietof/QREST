@@ -19,12 +19,12 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gnf.qrest.authentication.Token;
-import com.gnf.qrest.builders.BackendsRequest;
 import com.gnf.qrest.model.Backend;
 import com.gnf.qrest.model.BackendConfig;
 import com.gnf.qrest.model.BackendProps;
 import com.gnf.qrest.model.BackendStatus;
 import com.gnf.qrest.model.Backends;
+import com.gnf.qrest.model.BackendsRequest;
 import com.gnf.qrest.model.PrimitiveRequest;
 import com.gnf.qrest.model.PrimitiveResponse;
 import com.gnf.qrest.model.PrimitiveResults;
@@ -85,18 +85,14 @@ public class QiskitRuntimeService {
 		
 		List<Backend> devs = res.getDevices();
 		
-//		if (request.name()!=null) {
-			try {
-				devs = devs.stream().
-					filter(d -> request.name()==null || d.getName().equals(request.name())).
-					filter(d -> request.minNumQubits()==null || d.getQubits()>=request.minNumQubits()).
-//				filter(d -> request.name().map(n -> d.getName().equals(u)).orElse(true)).
-//				filter(d -> d.getQubits()>=request.minNumQubits()).
-					collect(Collectors.toList());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-//		}
+		try {
+			devs = devs.stream().
+				filter(d -> request.getName()==null || d.getName().equals(request.getName())).
+				filter(d -> request.getMinNumQubits()==null || d.getQubits()>=request.getMinNumQubits()).
+				collect(Collectors.toList());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return devs;
 	}

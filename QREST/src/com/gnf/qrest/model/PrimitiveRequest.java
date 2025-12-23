@@ -3,7 +3,6 @@ package com.gnf.qrest.model;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.gnf.qrest.builders.PUB;
 
 public abstract class PrimitiveRequest {
 	@JsonProperty("program_id")

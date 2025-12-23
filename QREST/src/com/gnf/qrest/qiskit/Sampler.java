@@ -8,9 +8,9 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gnf.qrest.QiskitRuntimeService;
-import com.gnf.qrest.builders.SamplerPUB;
 import com.gnf.qrest.model.Backend;
 import com.gnf.qrest.model.PrimitiveRequest;
+import com.gnf.qrest.model.SamplerPUB;
 
 public class Sampler extends Primitive<SamplerPUB> {
 	private static final ObjectMapper om = new ObjectMapper()

@@ -1,10 +1,11 @@
 package com.gnf.qrest.serializers;
 
 import java.io.IOException;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import com.gnf.qrest.builders.EstimatorPUB;
+import com.gnf.qrest.model.EstimatorPUB;
 
 public class EstimatorPUBSerializer extends JsonSerializer<EstimatorPUB> {
 	
@@ -17,10 +18,10 @@ public class EstimatorPUBSerializer extends JsonSerializer<EstimatorPUB> {
             SerializerProvider serializers) throws IOException {
 
         gen.writeStartArray();
-        gen.writeObject(value.circuit());
-    	pauliListSerializer.serialize(value.observables(), gen, serializers);
-        gen.writeObject(value.parameters());
-        gen.writeObject(value.precision());
+        gen.writeObject(value.getCircuit());
+    	pauliListSerializer.serialize(value.getObservables(), gen, serializers);
+        gen.writeObject(value.getParameters());
+        gen.writeObject(value.getPrecision());
         gen.writeEndArray();
     }
 	

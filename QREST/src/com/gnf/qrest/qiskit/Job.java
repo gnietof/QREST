@@ -75,24 +75,24 @@ public class Job {
 		service.cancelJob(id);
 	}
 
-	public String status() {
-		QiskitRuntimeService service = QiskitRuntimeService.getInstance();
-		
-		Job job = service.job(id,false);
-		return job.getStatus();
-	}
+//	public String status() {
+//		QiskitRuntimeService service = QiskitRuntimeService.getInstance();
+//		
+//		Job job = service.job(id,false);
+//		return job.getStatus();
+//	}
 
-	public String waitForFinalState() {
-		QiskitRuntimeService service = QiskitRuntimeService.getInstance();
-		String state = service.waitForFinalState(id);
-		return state;
-	}
+//	public String waitForFinalState() {
+//		QiskitRuntimeService service = QiskitRuntimeService.getInstance();
+//		String state = service.waitForFinalState(id);
+//		return state;
+//	}
 
-	public PrimitiveResults results() {
-		QiskitRuntimeService service = QiskitRuntimeService.getInstance();
-		
-		return service.jobResults(id);
-	}
+//	public PrimitiveResults results() {
+//		QiskitRuntimeService service = QiskitRuntimeService.getInstance();
+//		
+//		return service.jobResults(id);
+//	}
 
 	public String getBackend() {
 		return backend;

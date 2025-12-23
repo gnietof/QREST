@@ -2,8 +2,8 @@ package com.gnf.qrest.qiskit;
 
 import java.util.List;
 
-import com.gnf.qrest.builders.PUB;
 import com.gnf.qrest.model.Backend;
+import com.gnf.qrest.model.PUB;
 
 public abstract class Primitive<P extends PUB>{
 	private Backend backend;
