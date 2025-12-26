@@ -128,8 +128,8 @@ On the other hand, using parameters is not supported in QASM2.
 			job = job(id,false);
 			String status = job.getStatus();
 			System.out.println(String.format("%s: %s",id,status));
-			boolean isFinal = !(status.equals("Queued") || status.equals("Running"));
-			if (isFinal) {
+			boolean isFinal = status.equals("Queued") || status.equals("Running");
+			if (!isFinal) {
 				break;
 			}
 			try {
