@@ -36,14 +36,15 @@ We will be using a static instance of the ObjectMapper. We will also create a in
 These are the circuits we will be using for the Sampler and the Estimator using QASM2 and QASM3 syntaxes (with or without a parameter).  
 <img width="241" height="174" alt="image" src="https://github.com/user-attachments/assets/9bb9f823-fd42-42ec-9455-defe77054396" />
 <img width="241" height="174" alt="image" src="https://github.com/user-attachments/assets/6bd1d688-17a5-414b-8cbf-37211947e433" />
-
+The circuit in QASM (no parameters):
 ```java		
 	String qasm = "OPENQASM 3.0;include \"stdgates.inc\";bit[2] c;rz(pi/2) $0;sx $0;rz(pi/2) $0;rz(pi/2) $1;sx $1;rz(pi/2) $1;cz $0, $1;rz(pi/2) $1;sx $1;rz(pi/2) $1;c[0] = measure $0;c[1] = measure $1;";
 	String qasm = "OPENQASM 2.0;include \"qelib1.inc\";qreg q[133];creg c[2];rz(pi/2) q[0];sx q[0];rz(pi/2) q[0];rz(pi/2) q[1];sx q[1];rz(pi/2) q[1];cz q[0],q[1];rz(pi/2) q[1];sx q[1];rz(pi/2) q[1];measure q[0] -> c[0];measure q[1] -> c[1];";
 ```
-
+The circuit in QASM (with parameters). QASM2 does not support them.
 ```java		
 OPENQASM 3.0;\ninclude "stdgates.inc";\ninput float[64] theta;\nbit[2] c;\nrz(-pi/2) $65;\nrz(pi + theta) $65;\nsx $65;\nrz(5*pi/2) $65;\nrz(pi/2) $66;\nsx $66;\nrz(pi) $66;\ncz $65, $66;\nsx $66;\nrz(pi/2) $66;\nbarrier $65, $66;\nc[0] = measure $65;\nc[1] = measure $66;\n
+```
 
 ⚠️**Note**: Although QASM2 and QASM3 might be used, there is a problem with the way QASM3 is generated from a Qiskit QuantumCircuit and the layouts used for the observables related with the number of qubits.
 On the other hand, using parameters is not supported in QASM2.
