@@ -74,9 +74,9 @@ On the other hand, using parameters is not supported in QASM2.
 	String qasm = "OPENQASM 3.0;include \'stdgates.inc\';input float[64] theta;bit[2] c;rz(pi/2) $12;sx $12;rz(pi) $12;rz(-pi/2) $18;rz(pi + theta) $18;sx $18;rz(5*pi/2) $18;cz $18, $12;sx $12;rz(pi/2) $12;barrier $18, $12;c[0] = measure $18;c[1] = measure $12;";
 	List<List<Double>> parms = List.of(List.of(3.14),List.of(1.57));
 	SamplerPUB pub = new SamplerPUB.Builder().
-		circuit(qasm).
-		parameters(parms).
-		shots(16).build();
+			circuit(qasm).
+			parameters(parms).
+			shots(16).build();
 
 	Job job = sampler.run(pub);
 	service.job(job.getId()).getStatus();
