@@ -36,12 +36,14 @@ We will be using a static instance of the ObjectMapper. We will also create a in
 These are the circuits we will be using for the Sampler and the Estimator using QASM2 and QASM3 syntaxes (with or without a parameter).  
 <img width="241" height="174" alt="image" src="https://github.com/user-attachments/assets/9bb9f823-fd42-42ec-9455-defe77054396" />
 <img width="241" height="174" alt="image" src="https://github.com/user-attachments/assets/6bd1d688-17a5-414b-8cbf-37211947e433" />
+
 The circuit in QASM (no parameters):
 ```java		
 	String qasm = "OPENQASM 3.0;include \"stdgates.inc\";bit[2] c;rz(pi/2) $0;sx $0;rz(pi/2) $0;rz(pi/2) $1;sx $1;rz(pi/2) $1;cz $0, $1;rz(pi/2) $1;sx $1;rz(pi/2) $1;c[0] = measure $0;c[1] = measure $1;";
 	String qasm = "OPENQASM 2.0;include \"qelib1.inc\";qreg q[133];creg c[2];rz(pi/2) q[0];sx q[0];rz(pi/2) q[0];rz(pi/2) q[1];sx q[1];rz(pi/2) q[1];cz q[0],q[1];rz(pi/2) q[1];sx q[1];rz(pi/2) q[1];measure q[0] -> c[0];measure q[1] -> c[1];";
 ```
-The circuit in QASM (with parameters). QASM2 does not support them.
+
+The circuit in QASM (with parameters; QASM2 does not support them).
 ```java		
 	String qasm = "OPENQASM 3.0;include "stdgates.inc";input float[64] theta;bit[2] c;rz(-pi/2) $65;rz(pi + theta) $65;sx $65;rz(5*pi/2) $65;rz(pi/2) $66;sx $66;rz(pi) $66;cz $65, $66;sx $66;rz(pi/2) $66;barrier $65, $66;c[0] = measure $65;c[1] = measure $66;"
 ```
@@ -167,19 +169,6 @@ On the other hand, using parameters is not supported in QASM2.
 						System.out.println(key+": "+count);
 					}
 				}
-				System.out.println("\n\tAll");
-				Map<String, Long> counts1 = register.getCounts();
-				for (String key: counts1.keySet()) {
-					Long count = counts1.get(key);
-					System.out.println(key+": "+count);
-				}
-				System.out.println("\n");
-				Map<Integer, Long> counts2 = register.getIntCounts();
-				for (Integer key: counts2.keySet()) {
-					Long count = counts2.get(key);
-					System.out.println(key+": "+count);
-				}
-				
 			}
 		}
 ```
