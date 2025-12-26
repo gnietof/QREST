@@ -5,11 +5,11 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gnf.qrest.QiskitRuntimeService;
-import com.gnf.qrest.model.PrimitiveResults;
 import com.gnf.qrest.model.Program;
+import com.gnf.qrest.model.QResponse;
 import com.gnf.qrest.model.Usage;
 
-public class Job {
+public class Job extends QResponse {
 
 	private String id;
 	private String backend;
@@ -59,6 +59,7 @@ public class Job {
 		public void setReasonCode(int reasonCode) {
 			this.reasonCode = reasonCode;
 		}
+	
 	}
 
 	public String getId() {
@@ -174,5 +175,5 @@ public class Job {
 	public void setState(State state) {
 		this.state = state;
 	}
-	
+
 }

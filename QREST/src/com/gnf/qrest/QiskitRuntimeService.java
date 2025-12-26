@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.gnf.qrest.authentication.Token;
 import com.gnf.qrest.model.Backend;
 import com.gnf.qrest.model.BackendConfig;
@@ -26,8 +27,8 @@ import com.gnf.qrest.model.BackendStatus;
 import com.gnf.qrest.model.Backends;
 import com.gnf.qrest.model.BackendsRequest;
 import com.gnf.qrest.model.PrimitiveRequest;
-import com.gnf.qrest.model.PrimitiveResponse;
 import com.gnf.qrest.model.PrimitiveResults;
+import com.gnf.qrest.model.QResponse;
 import com.gnf.qrest.model.Tags;
 import com.gnf.qrest.model.Workloads;
 import com.gnf.qrest.qiskit.Job;
@@ -37,10 +38,11 @@ import com.gnf.qrest.qiskit.Session;
 
 public class QiskitRuntimeService {
 	
-	private static final ObjectMapper om = new ObjectMapper()
+	private static final ObjectMapper om = JsonMapper.builder()
 			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
 			.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
-			.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+			.serializationInclusion(JsonInclude.Include.NON_NULL)
+			.build();
 	private static final String API = "https://quantum.cloud.ibm.com/api/v1";
 	private Token token;
 	private static QiskitRuntimeService instance = new QiskitRuntimeService();
@@ -123,13 +125,14 @@ public class QiskitRuntimeService {
 		return res;
 	}
 
-	public void tags(String id, Tags tags) {
+	public QResponse tags(String id, Tags tags) {
 		try {
-			callREST("/jobs/"+id+"/tags","PUT", null,om.writeValueAsString(tags),null);
-//			callREST("/jobs/"+id+"/tags","PUT", null,"[\"Genaro\",\"2025\"]",null);
+			QResponse res = callREST("/jobs/"+id+"/tags","PUT", null,om.writeValueAsString(tags),QResponse.class);
+			return res;
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public Tags searchTags(String tag) {
@@ -147,8 +150,9 @@ public class QiskitRuntimeService {
 		return res;
 	}
 
-	public void jobDetails(String id) {
-		PrimitiveResults res = callREST("/jobs/"+id, "GET", null, null, PrimitiveResults.class);
+	public Job jobDetails(String id) {
+		Job res = callREST("/jobs/"+id, "GET", null, null, Job.class);
+		return res;
 	}
 	
 	public PrimitiveResults jobResults(String id) {
@@ -156,20 +160,21 @@ public class QiskitRuntimeService {
 		return res;
 	}
 	
-	public void cancelJob(String id) {
-		PrimitiveResponse res = callREST("/jobs/"+id+"/cancel", "POST", null, "", PrimitiveResponse.class);
+	public QResponse cancelJob(String id) {
+		QResponse res = callREST("/jobs/"+id+"/cancel", "POST", null, "", QResponse.class);
+		return res;
 	}
 	
 //	public void jobStatus(String id) {
 //		PrimitiveResponse res = callREST("/jobs/"+id, "GET", null, null, PrimitiveResponse.class);
 //	}
 
-	public String waitForFinalState(String id) {
-		String status = null;
+	public Job waitForFinalState(String id) {
+		Job job = null;
 		
 		while (true) {
-			Job job = job(id,false);
-			status = job.getStatus();
+			job = job(id,false);
+			String status = job.getStatus();
 			System.out.println(id+": "+status);
 			boolean isFinal = !(status.equals("Queued") || status.equals("Running"));
 			if (isFinal) {
@@ -182,7 +187,7 @@ public class QiskitRuntimeService {
 			}
 		}
 		
-		return status;
+		return job;
 	}
 
 	private String getToken() {
@@ -227,11 +232,11 @@ public class QiskitRuntimeService {
 		}
 	}
 
-	public <T> T callREST(String href,String method,String params, String data, Class<T> c) {
+	private <T> T callREST(String href,String method,String params, String data, Class<T> c) {
 		return callREST(href, method, params, data, c,false);
 	}
 	
-	public <T> T callREST(String href,String method,String params, String data, Class<T> c,boolean debug) {
+	private <T> T callREST(String href,String method,String params, String data, Class<T> c,boolean debug) {
 
 		T o = null; 
 		
@@ -292,6 +297,12 @@ public class QiskitRuntimeService {
 					if (es!=null) {
 						String s2 = new String(es.readAllBytes(), StandardCharsets.UTF_8);
 						System.out.println(s2);
+						if (!s2.isEmpty()) {
+							if (c!=null) {
+								JavaType jt = om.getTypeFactory().constructType(c);				
+								o = om.readValue(s2, jt);
+							}
+						}
 					}
 			}
 		} catch (Exception ex) {

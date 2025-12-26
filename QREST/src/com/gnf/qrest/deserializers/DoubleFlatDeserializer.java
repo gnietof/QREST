@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 
-public class FlatDeserializer extends JsonDeserializer<List<List<Double>>>{
+public class DoubleFlatDeserializer extends JsonDeserializer<List<List<Double>>>{
 
 	@Override
 	public List<List<Double>> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {

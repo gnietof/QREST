@@ -6,20 +6,21 @@ import java.util.List;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import com.gnf.qrest.model.Paulis;
 import com.gnf.qrest.qiskit.Pauli;
 
-public class PauliListSerializer extends JsonSerializer<List<List<Pauli>>> {
+public class PauliListSerializer extends JsonSerializer<List<Paulis>> {
 
     @Override
     public void serialize(
-    		List<List<Pauli>> value,
+    		List<Paulis> value,
             JsonGenerator gen,
             SerializerProvider serializers) throws IOException {
 
         gen.writeStartArray();
-        for (List<Pauli> pauli: value) {
+        for (Paulis pauli: value) {
             gen.writeStartObject();
-        	for (Pauli p : pauli) {
+        	for (Pauli p : pauli.asList()) {
         		gen.writeNumberField(p.getLabel(), p.getCoeff());
         	}
             gen.writeEndObject();

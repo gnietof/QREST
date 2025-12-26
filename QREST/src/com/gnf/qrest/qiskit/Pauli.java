@@ -11,6 +11,9 @@ public class Pauli {
 //	Complex coeff;
 	double coeff;
 	
+	public Pauli() {
+	}
+	
 	public Pauli(String label) {
 		this.label = label;
 //		this.coeff = new Complex(1.0, 0.0);

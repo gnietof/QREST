@@ -13,6 +13,10 @@ public class Tags {
 		this.tags = tags;
 	}
 
+	public Tags(String... tags) {
+		this.tags = List.of(tags);
+	}
+
 	public List<String> getTags() {
 		return tags;
 	}

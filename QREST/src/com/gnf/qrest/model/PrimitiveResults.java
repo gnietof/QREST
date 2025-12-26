@@ -13,10 +13,11 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.gnf.qrest.deserializers.FlatDeserializer;
+import com.gnf.qrest.deserializers.DoubleFlatDeserializer;
+import com.gnf.qrest.deserializers.StringFlatDeserializer;
 import com.gnf.qrest.model.PrimitiveResults.Result.SamplerData.SamplerRegisters;
 
-public class PrimitiveResults {
+public class PrimitiveResults extends QResponse {
 
 	private List<Result> results;
 	private Metadata metadata;
@@ -58,16 +59,16 @@ public class PrimitiveResults {
 		
 		public static class EstimatorData implements ResultData {
 //			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-			@JsonDeserialize(using = FlatDeserializer.class)
+			@JsonDeserialize(using = DoubleFlatDeserializer.class)
 			List<List<Double>> evs;
 //			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-			@JsonDeserialize(using = FlatDeserializer.class)
+			@JsonDeserialize(using = DoubleFlatDeserializer.class)
 			List<List<Double>> stds;
 //			Double evs;
 //			Double stds;
 
 //			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-			@JsonDeserialize(using = FlatDeserializer.class)
+			@JsonDeserialize(using = DoubleFlatDeserializer.class)
 			@JsonProperty("ensemble_standard_error")
 			List<List<Double>> ensembleStandardError;
 //			Double ensembleStandardError;
@@ -116,6 +117,7 @@ public class PrimitiveResults {
 			
 			public static class SamplerRegisters {
 //				private List<String> samples;
+				@JsonDeserialize(using = StringFlatDeserializer.class)
 				private List<List<String>> samples;
 				
 				@JsonProperty("num_bits")
@@ -319,8 +321,6 @@ public class PrimitiveResults {
 					this.pecMitigation = pecMitigation;
 				}				
 				
-				
-				
 			}
 
 			public int getShots() {
@@ -345,14 +345,6 @@ public class PrimitiveResults {
 
 			public void setTargetPrecision(double targetPrecision) {
 				this.targetPrecision = targetPrecision;
-			}
-
-			public int getNumRanzomizations() {
-				return numRandomizations;
-			}
-
-			public void setNumRanzomizations(int numRandomizations) {
-				this.numRandomizations = numRandomizations;
 			}
 
 			public CircuitMetadata getCircuitMetadata() {

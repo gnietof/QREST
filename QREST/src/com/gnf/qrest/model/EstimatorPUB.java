@@ -3,12 +3,12 @@ package com.gnf.qrest.model;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.gnf.qrest.qiskit.Pauli;
+import com.gnf.qrest.qiskit.SparsePauliOp;
 import com.gnf.qrest.serializers.EstimatorPUBSerializer;
 
 @JsonSerialize(using = EstimatorPUBSerializer.class)
 public class EstimatorPUB extends PUB { 
-	private List<List<Pauli>> observables;
+	private List<Paulis> observables;
 	private double precision;
 	
 	public EstimatorPUB(Builder builder) {
@@ -18,7 +18,7 @@ public class EstimatorPUB extends PUB {
 	}
 	
 	public static class Builder extends PUB.Builder<Builder> {
-		private List<List<Pauli>> observables;
+		private List<Paulis> observables;
 		private double precision = 0.015625;
 		
 		public Builder precision(double precision) {
@@ -26,13 +26,23 @@ public class EstimatorPUB extends PUB {
 			return this;
 		}
 		
-		public Builder observables(List<List<Pauli>> observables) {
+		public Builder observables(List<Paulis> observables) {
 			this.observables = observables;
 			return this;
 		}
 		
-		public Builder observable(List<Pauli> observable) {
+		public Builder observable(Paulis observable) {
 			this.observables = List.of(observable);
+			return this;
+		}
+		
+//		public Builder observables(List<SparsePauliOp> observables) {
+//			this.observables = observables.stream().map(SparsePauliOp::getPaulis).collect(Collectors.toList());
+//			return this;
+//		}
+		
+		public Builder observable(SparsePauliOp observable) {
+			this.observables = List.of(observable.getPaulis());
 			return this;
 		}
 		
@@ -48,11 +58,11 @@ public class EstimatorPUB extends PUB {
 		
 	}
 
-	public List<List<Pauli>> getObservables() {
+	public List<Paulis> getObservables() {
 		return observables;
 	}
 
-	public void setObservables(List<List<Pauli>> observables) {
+	public void setObservables(List<Paulis> observables) {
 		this.observables = observables;
 	}
 
@@ -81,7 +91,7 @@ public class EstimatorPUB extends PUB {
 ////		private List<String> observables;
 //		
 ////		@JsonSerialize(contentUsing = PauliListSerializer.class)
-//		private List<List<Pauli>> observables;
+//		private List<Paulis> observables;
 //		
 ////		private SparsePauliOp observables;
 //		private List<List<Double>> parameters = Collections.emptyList();
@@ -97,12 +107,12 @@ public class EstimatorPUB extends PUB {
 ////			return this;
 ////		}
 //
-//		public Builder observable(List<Pauli> observable) {
+//		public Builder observable(Paulis observable) {
 //			this.observables = List.of(observable);
 //			return this;
 //		}
 //		
-//		public Builder observables(List<List<Pauli>> observables) {
+//		public Builder observables(List<Paulis> observables) {
 //			this.observables = observables;
 //			return this;
 //		}

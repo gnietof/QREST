@@ -1,5 +1,9 @@
 package com.gnf.qrest.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.gnf.qrest.serializers.SamplerPUBSerializer;
+
+@JsonSerialize(using = SamplerPUBSerializer.class)
 public class SamplerPUB extends PUB {
 
 	private int shots;
