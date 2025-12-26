@@ -109,10 +109,12 @@ On the other hand, using parameters is not supported in QASM2.
 	SparsePauliOp observables2 = SparsePauliOp.fromSparseList(new Paulis(new Pauli("XZ", new int[] {0,1},1),new Pauli("ZX", new int[] {0,1},2)),2);
 	EstimatorPUB pub1 = new EstimatorPUB.Builder().
 			circuit(qasm).
-			observables(List.of(observables1.getPaulis())).build();
+			observables(List.of(observables1.getPaulis())).
+			build();
 	EstimatorPUB pub2 = new EstimatorPUB.Builder().
 			circuit(qasm).
-			observables(List.of(observables2.getPaulis())).build();
+			observables(List.of(observables2.getPaulis())).
+			build();
 
 	Job job = estimator.run(List.of(pub1,pub2));
 	if (job!=null) {
