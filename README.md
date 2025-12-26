@@ -92,9 +92,9 @@ On the other hand, using parameters is not supported in QASM2.
 	String qasm = "OPENQASM 3.0;include \"stdgates.inc\";rz(pi/2) $0;sx $0;rz(pi/2) $0;rz(pi/2) $1;sx $1;rz(pi/2) $1;cz $0, $1;rz(pi/2) $1;sx $1;rz(pi/2) $1;";
 	SparsePauliOp observables = SparsePauliOp.fromSparseList(new Paulis(new Pauli("XZ", new int[] {0,1},1),new Pauli("ZX", new int[] {0,1},2)),2);
 	EstimatorPUB pub = new EstimatorPUB.Builder().
-		circuit(qasm).
-		observable(observables).
-		build();
+			circuit(qasm).
+			observable(observables).
+			build();
 
 	Job job = estimator.run(pub);
 	service.tags(job.getId(), new Tags(List.of("Estimator")));
