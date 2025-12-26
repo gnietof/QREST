@@ -76,7 +76,8 @@ On the other hand, using parameters is not supported in QASM2.
 	SamplerPUB pub = new SamplerPUB.Builder().
 			circuit(qasm).
 			parameters(parms).
-			shots(16).build();
+			shots(16).
+			build();
 
 	Job job = sampler.run(pub);
 	service.job(job.getId()).getStatus();
