@@ -43,7 +43,7 @@ The circuit in QASM (no parameters):
 ```
 The circuit in QASM (with parameters). QASM2 does not support them.
 ```java		
-OPENQASM 3.0;\ninclude "stdgates.inc";\ninput float[64] theta;\nbit[2] c;\nrz(-pi/2) $65;\nrz(pi + theta) $65;\nsx $65;\nrz(5*pi/2) $65;\nrz(pi/2) $66;\nsx $66;\nrz(pi) $66;\ncz $65, $66;\nsx $66;\nrz(pi/2) $66;\nbarrier $65, $66;\nc[0] = measure $65;\nc[1] = measure $66;\n
+	String qasm = "OPENQASM 3.0;include "stdgates.inc";input float[64] theta;bit[2] c;rz(-pi/2) $65;rz(pi + theta) $65;sx $65;rz(5*pi/2) $65;rz(pi/2) $66;sx $66;rz(pi) $66;cz $65, $66;sx $66;rz(pi/2) $66;barrier $65, $66;c[0] = measure $65;c[1] = measure $66;"
 ```
 
 ⚠️**Note**: Although QASM2 and QASM3 might be used, there is a problem with the way QASM3 is generated from a Qiskit QuantumCircuit and the layouts used for the observables related with the number of qubits.
