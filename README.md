@@ -3,7 +3,7 @@
 Java implementation of a REST client for IBM Quantum.
 
 ## Examples
-We will be using a static instance of the ObjectMapper. We will also create a instance of the QTool class which includes all the methods for interfacing with IBM Quantum backends.
+We will be using a static instance of the ObjectMapper. We will also create a instance of the QTest class which includes all the methods for interfacing with IBM Quantum backends.
 	
 ```java
 	private static final ObjectMapper om = new ObjectMapper()
@@ -12,12 +12,12 @@ We will be using a static instance of the ObjectMapper. We will also create a in
 			.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 	private static final String API = "https://quantum.cloud.ibm.com/api/v1";
 
-  QTool qt = new QTool();
+  QTest qt = new QTest();
 ```
 ### Job list
 - Retriee the list of jobs which have been submited.
 ```java
-		QTool qt = new QTool();
+		QTest qt = new QTest();
 
 		JobsResponse jjrr = qt.listJobs();
 		for (JobResponse jr: jjrr.getJobs()) {
