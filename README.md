@@ -100,23 +100,23 @@ On the other hand, using parameters is not supported in QASM2.
 ```
 - Run an Estimator primitive with two observables but no parameters or precission.
 ```java
-		Backend backend = service.backend(BACKEND);
+	Backend backend = service.backend(BACKEND);
 
-		Estimator estimator = new Estimator(backend);
-		String qasm = "OPENQASM 3.0;include \"stdgates.inc\";rz(pi/2) $0;sx $0;rz(pi/2) $0;rz(pi/2) $1;sx $1;rz(pi/2) $1;cz $0, $1;rz(pi/2) $1;sx $1;rz(pi/2) $1;";
-		SparsePauliOp observables1 = SparsePauliOp.fromSparseList(new Paulis(new Pauli("YZ", new int[] {0,1},2),new Pauli("ZY", new int[] {0,1},1)),2);
-		SparsePauliOp observables2 = SparsePauliOp.fromSparseList(new Paulis(new Pauli("XZ", new int[] {0,1},1),new Pauli("ZX", new int[] {0,1},2)),2);
-		EstimatorPUB pub1 = new EstimatorPUB.Builder().
-				circuit(qasm).
-				observables(List.of(observables1.getPaulis())).build();
-		EstimatorPUB pub2 = new EstimatorPUB.Builder().
-				circuit(qasm).
-				observables(List.of(observables2.getPaulis())).build();
+	Estimator estimator = new Estimator(backend);
+	String qasm = "OPENQASM 3.0;include \"stdgates.inc\";rz(pi/2) $0;sx $0;rz(pi/2) $0;rz(pi/2) $1;sx $1;rz(pi/2) $1;cz $0, $1;rz(pi/2) $1;sx $1;rz(pi/2) $1;";
+	SparsePauliOp observables1 = SparsePauliOp.fromSparseList(new Paulis(new Pauli("YZ", new int[] {0,1},2),new Pauli("ZY", new int[] {0,1},1)),2);
+	SparsePauliOp observables2 = SparsePauliOp.fromSparseList(new Paulis(new Pauli("XZ", new int[] {0,1},1),new Pauli("ZX", new int[] {0,1},2)),2);
+	EstimatorPUB pub1 = new EstimatorPUB.Builder().
+			circuit(qasm).
+			observables(List.of(observables1.getPaulis())).build();
+	EstimatorPUB pub2 = new EstimatorPUB.Builder().
+			circuit(qasm).
+			observables(List.of(observables2.getPaulis())).build();
 
-		Job job = estimator.run(List.of(pub1,pub2));
-		if (job!=null) {
-			service.tags(job.getId(), new Tags("Broad","Estimator"));
-		}
+	Job job = estimator.run(List.of(pub1,pub2));
+	if (job!=null) {
+		service.tags(job.getId(), new Tags("Broad","Estimator"));
+	}
 ```
 ### Job status
 -  Check the status of a job and wait for completion. This code is already provided in a method in `QiskitRuntimeService`.
@@ -128,8 +128,8 @@ On the other hand, using parameters is not supported in QASM2.
 			job = job(id,false);
 			String status = job.getStatus();
 			System.out.println(String.format("%s: %s",id,status));
-			boolean isFinal = status.equals("Queued") || status.equals("Running");
-			if (!isFinal) {
+			boolean isPending = status.equals("Queued") || status.equals("Running");
+			if (!isPending) {
 				break;
 			}
 			try {
@@ -146,132 +146,106 @@ On the other hand, using parameters is not supported in QASM2.
 #### Samplers
 - Retrieve Sampler results.
 ```java
-		PrimitiveResults results = service.jobResults(job.getId());
+	PrimitiveResults results = service.jobResults(job.getId());
 
-		for (Result result: results.getResults()) {
-			SamplerData data = (SamplerData) result.getData();
-			Map<String, SamplerRegisters> registers = data.getRegisters();
-			for (String key1 : registers.keySet()) {
-				System.out.println(String.format("\n\n** %s",key1));
-				SamplerRegisters register = registers.get(key1);
-				for (int i=0;i<register.size();i++) {
-					System.out.println(String.format("\t%d",i));
-					BitString ss = register.getBitString(i);
-					System.out.println(ss);
-					Map<String, Long> counts1 = register.getCounts(i);
-					for (String key: counts1.keySet()) {
-						Long count = counts1.get(key);
-						System.out.println(key+": "+count);
-					}
-					Map<Integer, Long> counts2 = register.getIntCounts(i);
-					for (Integer key: counts2.keySet()) {
-						Long count = counts2.get(key);
-						System.out.println(key+": "+count);
-					}
+	for (Result result: results.getResults()) {
+		SamplerData data = (SamplerData) result.getData();
+		Map<String, SamplerRegisters> registers = data.getRegisters();
+		for (String key1 : registers.keySet()) {
+			System.out.println(String.format("\n\n** %s",key1));
+			SamplerRegisters register = registers.get(key1);
+			for (int i=0;i<register.size();i++) {
+				System.out.println(String.format("\t%d",i));
+				BitString ss = register.getBitString(i);
+				System.out.println(ss);
+				Map<String, Long> counts1 = register.getCounts(i);
+				for (String key: counts1.keySet()) {
+					Long count = counts1.get(key);
+					System.out.println(key+": "+count);
+				}
+				Map<Integer, Long> counts2 = register.getIntCounts(i);
+				for (Integer key: counts2.keySet()) {
+					Long count = counts2.get(key);
+					System.out.println(key+": "+count);
 				}
 			}
 		}
+	}
 ```
 - It is also possible to retrieve the count of each of the results using either the strings or the decimal values as keys.
 ```java
-		PrimitiveResults results = service.jobResults(job.getId());
+	PrimitiveResults results = service.jobResults(job.getId());
 
-		for (Result result: results.getResults()) {
-			SamplerData data = (SamplerData) result.getData();
-			Map<String, SamplerRegisters> registers = data.getRegisters();
-			for (String key1 : registers.keySet()) {
-				System.out.println(String.format("\n\n** %s",key1));
-				SamplerRegisters register = registers.get(key1);
-				for (int i=0;i<register.size();i++) {
-					Map<String, Long> counts1 = register.getCounts(i);
-					for (String key: counts1.keySet()) {
-						Long count = counts1.get(key);
-						System.out.println(key+": "+count);
-					}
-					Map<Integer, Long> counts2 = register.getIntCounts(i);
-					for (Integer key: counts2.keySet()) {
-						Long count = counts2.get(key);
-						System.out.println(key+": "+count);
-					}
+	for (Result result: results.getResults()) {
+		SamplerData data = (SamplerData) result.getData();
+		Map<String, SamplerRegisters> registers = data.getRegisters();
+		for (String key1 : registers.keySet()) {
+			System.out.println(String.format("\n\n** %s",key1));
+			SamplerRegisters register = registers.get(key1);
+			for (int i=0;i<register.size();i++) {
+				Map<String, Long> counts1 = register.getCounts(i);
+				for (String key: counts1.keySet()) {
+					Long count = counts1.get(key);
+					System.out.println(key+": "+count);
+				}
+				Map<Integer, Long> counts2 = register.getIntCounts(i);
+				for (Integer key: counts2.keySet()) {
+					Long count = counts2.get(key);
+					System.out.println(key+": "+count);
 				}
 			}
 		}
+	}
 ```
 - The bitstreams can also be retrieved as a single list including all the samples.
 ```java
-		PrimitiveResults results = service.jobResults(job.getId());
+	PrimitiveResults results = service.jobResults(job.getId());
 
-		for (Result result: results.getResults()) {
-			SamplerData data = (SamplerData) result.getData();
-			Map<String, SamplerRegisters> registers = data.getRegisters();
-			for (String key1 : registers.keySet()) {
-				System.out.println(String.format("\n\n** %s",key1));
-				SamplerRegisters register = registers.get(key1);
-				BitString ss = register.getBitString();
-				System.out.println(ss);
-				Map<String, Long> counts1 = register.getCounts();
-				for (String key: counts1.keySet()) {
-					Long count = counts1.get(key);
-					System.out.println(key+": "+count);
-				}
-				System.out.println("\n");
-				Map<Integer, Long> counts2 = register.getIntCounts();
-				for (Integer key: counts2.keySet()) {
-					Long count = counts2.get(key);
-					System.out.println(key+": "+count);
-				}
-				
+	for (Result result: results.getResults()) {
+		SamplerData data = (SamplerData) result.getData();
+		Map<String, SamplerRegisters> registers = data.getRegisters();
+		for (String key1 : registers.keySet()) {
+			System.out.println(String.format("\n\n** %s",key1));
+			SamplerRegisters register = registers.get(key1);
+			BitString ss = register.getBitString();
+			System.out.println(ss);
+			Map<String, Long> counts1 = register.getCounts();
+			for (String key: counts1.keySet()) {
+				Long count = counts1.get(key);
+				System.out.println(key+": "+count);
 			}
+			System.out.println("\n");
+			Map<Integer, Long> counts2 = register.getIntCounts();
+			for (Integer key: counts2.keySet()) {
+				Long count = counts2.get(key);
+				System.out.println(key+": "+count);
+			}
+			
 		}
+	}
 ```
 #### Estimators
-- Retrieve Sampler results.
-```java
-		PrimitiveResults results = service.jobResults(job.getId());
-
-		for (Result result: results.getResults()) {
-			SamplerData data = (SamplerData) result.getData();
-			Map<String, SamplerRegisters> registers = data.getRegisters();
-			for (String key1 : registers.keySet()) {
-				System.out.println(String.format("\n\n** %s",key1));
-				SamplerRegisters register = registers.get(key1);
-				for (int i=0;i<register.size();i++) {
-					System.out.println(String.format("\t%d",i));
-					BitString ss = register.getBitString(i);
-					System.out.println(ss);
-					Map<String, Long> counts1 = register.getCounts(i);
-					for (String key: counts1.keySet()) {
-						Long count = counts1.get(key);
-						System.out.println(key+": "+count);
-					}
-					Map<Integer, Long> counts2 = register.getIntCounts(i);
-					for (Integer key: counts2.keySet()) {
-						Long count = counts2.get(key);
-						System.out.println(key+": "+count);
-					}
-				}
-				System.out.println("\n\tAll");
-				Map<String, Long> counts1 = register.getCounts();
-				for (String key: counts1.keySet()) {
-					Long count = counts1.get(key);
-					System.out.println(key+": "+count);
-				}
-				System.out.println("\n");
-				Map<Integer, Long> counts2 = register.getIntCounts();
-				for (Integer key: counts2.keySet()) {
-					Long count = counts2.get(key);
-					System.out.println(key+": "+count);
-				}
-				
-			}
-		}
-```
 - Retrieve Estimator results
 ```java
-		JobResults jr = qt.getJobResults(id);
-		List<Result> results = jr.getResults();
-		Result result = results.get(0);
-		Data data = result.getData();
-		Double evs = data.getEvs().get(0);
+	JobResults jr = qt.getJobResults(id);
+	List<Result> results = jr.getResults();
+	Result result = results.get(0);
+	Data data = result.getData();
+	Double evs = data.getEvs().get(0);
+	if (results!=null) {
+		List<Result> results2 = results.getResults();
+		for (int i=0;i<results2.size();i++) {
+			System.out.println("\tResults "+i+":");
+			Result result = results2.get(i);
+			EstimatorData data = (EstimatorData) result.getData();
+			List<List<Double>> eevvss = data.getEvs();
+			for (int j=0;j<eevvss.size();j++) {
+				List<Double> evs = eevvss.get(j);
+				for (Double d : evs) {
+					System.out.println(d);
+				}
+			}
+		}
+	}
 ```		
 
