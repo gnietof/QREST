@@ -11,6 +11,10 @@ import com.gnf.qrest.model.Usage;
 
 public class Job extends QResponse {
 
+	private static List<String> FINAL_STATES = List.of("Cancelled","Failed","Completed");
+	private static List<String> DONE_STATES = List.of("Completed");
+	private static List<String> ERROR_STATES = List.of("Failed");
+	
 	private String id;
 	private String backend;
 	
@@ -75,25 +79,6 @@ public class Job extends QResponse {
 		
 		service.cancelJob(id);
 	}
-
-//	public String status() {
-//		QiskitRuntimeService service = QiskitRuntimeService.getInstance();
-//		
-//		Job job = service.job(id,false);
-//		return job.getStatus();
-//	}
-
-//	public String waitForFinalState() {
-//		QiskitRuntimeService service = QiskitRuntimeService.getInstance();
-//		String state = service.waitForFinalState(id);
-//		return state;
-//	}
-
-//	public PrimitiveResults results() {
-//		QiskitRuntimeService service = QiskitRuntimeService.getInstance();
-//		
-//		return service.jobResults(id);
-//	}
 
 	public String getBackend() {
 		return backend;
@@ -162,18 +147,38 @@ public class Job extends QResponse {
 		this.usage = usage;
 	}
 	
-	@Override
-	public String toString() {
-		String s = String.format("%s: %s [%s] (%s-%s) %s",getId(),getCreated(),getBackend(),getProgram().getId(),getStatus(),getTags().toString());
-		return s;
-	}
-
 	public State getState() {
 		return state;
 	}
 
 	public void setState(State state) {
 		this.state = state;
+	}
+
+	public boolean isDone() {
+		boolean isDone = DONE_STATES.contains(status);
+		return isDone;
+	}
+	
+	public boolean isRunning() {
+		boolean isRunning = !isInFinalState();
+		return isRunning;
+	}
+
+	public boolean isError() {
+		boolean isError = ERROR_STATES.contains(status);
+		return isError;
+	}
+
+	public boolean isInFinalState() {
+		boolean isFinal = FINAL_STATES.contains(status);
+		return isFinal;
+	}
+
+	@Override
+	public String toString() {
+		String s = String.format("%s: %s [%s] (%s-%s) %s",getId(),getCreated(),getBackend(),getProgram().getId(),getStatus(),getTags().toString());
+		return s;
 	}
 
 }

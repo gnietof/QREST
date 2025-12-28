@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -51,4 +52,8 @@ public final class Paulis implements Iterable<Pauli> {
 	public Iterator<Pauli> iterator() {
         return paulis.iterator();
     }
+    
+    public Stream<Pauli> stream() {
+        return paulis.stream();
+    }    
 }

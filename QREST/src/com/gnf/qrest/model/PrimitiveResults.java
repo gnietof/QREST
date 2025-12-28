@@ -3,6 +3,8 @@ package com.gnf.qrest.model;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JacksonException;
@@ -13,8 +15,8 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.gnf.qrest.deserializers.BitStringFlatDeserializer;
 import com.gnf.qrest.deserializers.DoubleFlatDeserializer;
-import com.gnf.qrest.deserializers.StringFlatDeserializer;
 import com.gnf.qrest.model.PrimitiveResults.Result.SamplerData.SamplerRegisters;
 
 public class PrimitiveResults extends QResponse {
@@ -58,51 +60,39 @@ public class PrimitiveResults extends QResponse {
 		}
 		
 		public static class EstimatorData implements ResultData {
-//			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 			@JsonDeserialize(using = DoubleFlatDeserializer.class)
 			List<List<Double>> evs;
-//			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 			@JsonDeserialize(using = DoubleFlatDeserializer.class)
 			List<List<Double>> stds;
-//			Double evs;
-//			Double stds;
 
-//			@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 			@JsonDeserialize(using = DoubleFlatDeserializer.class)
 			@JsonProperty("ensemble_standard_error")
 			List<List<Double>> ensembleStandardError;
-//			Double ensembleStandardError;
 			
 			public EstimatorData() {
 			}
 
 			public List<List<Double>> getEvs() {
-//			public Double getEvs() {
 				return evs;
 			}
 
 			public void setEvs(List<List<Double>> evs) {
-//			public void setEvs(Double evs) {
 				this.evs = evs;
 			}
 
 			public List<List<Double>> getStds() {
-//			public Double getStds() {
 				return stds;
 			}
 
 			public void setStds(List<List<Double>> stds) {
-//			public void setStds(Double stds) {
 				this.stds = stds;
 			}
 
 			public List<List<Double>> getEnsembleStandardError() {
-//			public Double getEnsembleStandardError() {
 				return ensembleStandardError;
 			}
 
 			public void setEnsembleStandardError(List<List<Double>> ensembleStandardError) {
-//			public void setEnsembleStandardError(Double ensembleStandardError) {
 				this.ensembleStandardError = ensembleStandardError;
 			}
 			
@@ -116,20 +106,33 @@ public class PrimitiveResults extends QResponse {
 			}
 			
 			public static class SamplerRegisters {
-//				private List<String> samples;
-				@JsonDeserialize(using = StringFlatDeserializer.class)
-				private List<List<String>> samples;
+				@JsonDeserialize(using = BitStringFlatDeserializer.class)
+//				@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+				private List<BitString> samples;
 				
 				@JsonProperty("num_bits")
 				private int numBits;
 	
-//				public List<String> getSamples() {
-				public List<List<String>> getSamples() {
+				public BitString getBitString() {
+					return getBitString(-1);
+				}
+				
+				public BitString getBitString(int index) {
+					BitString bb=null;
+					
+					if (index<0) {
+						bb = new BitString(samples.stream().flatMap(b -> b.stream()).collect(Collectors.toList()));
+					} else {
+						bb = samples.get(index);
+					}
+					return bb;
+				}
+	
+				public List<BitString> getSamples() {
 					return samples;
 				}
 	
-//				public void setSamples(List<String> samples) {
-				public void setSamples(List<List<String>> samples) {
+				public void setSamples(List<BitString> samples) {
 					this.samples = samples;
 				}
 	
@@ -141,6 +144,29 @@ public class PrimitiveResults extends QResponse {
 					this.numBits = numBits;
 				}
 				
+				public Map<String, Long>  getCounts() {
+					return getCounts(-1);
+				}
+				
+				public int size() {
+					return samples.size();
+				}
+				
+				public Map<String, Long>  getCounts(int index) {
+					BitString bb = getBitString(index);
+					Map<String, Long> counts = bb.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+					return counts;
+				}
+				
+				public Map<Integer, Long>  getIntCounts() {
+					return getIntCounts(-1);
+				}
+
+				public Map<Integer, Long>  getIntCounts(int index) {
+					BitString bb = getBitString(index);
+					Map<Integer, Long> counts = bb.stream().collect(Collectors.groupingBy(b -> Integer.decode(b),Collectors.counting()));
+					return counts;
+				}
 			}
 
 			public Map<String, SamplerRegisters> getRegisters() {

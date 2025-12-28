@@ -2,6 +2,7 @@ package com.gnf.qrest.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+//public class BackendStatus extends QResponse {
 public class BackendStatus {
 
 	public boolean state;

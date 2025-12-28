@@ -165,19 +165,13 @@ public class QiskitRuntimeService {
 		return res;
 	}
 	
-//	public void jobStatus(String id) {
-//		PrimitiveResponse res = callREST("/jobs/"+id, "GET", null, null, PrimitiveResponse.class);
-//	}
-
 	public Job waitForFinalState(String id) {
 		Job job = null;
 		
 		while (true) {
-			job = job(id,false);
-			String status = job.getStatus();
-			System.out.println(id+": "+status);
-			boolean isFinal = !(status.equals("Queued") || status.equals("Running"));
-			if (isFinal) {
+			job = job(id,true);
+			System.out.println(id+": "+job.getStatus());
+			if (job.isInFinalState()) {
 				break;
 			}
 			try {
@@ -242,8 +236,9 @@ public class QiskitRuntimeService {
 		
 		try {
 			String u = API+href+(params!=null? "?"+params:"");
+			System.out.println("\nRequest: "+u);
 			if (debug) {
-				System.out.println("URL: "+u);
+				System.out.println("URL: ["+method+"] "+u);
 			}
 			URL url = new URL(u);
 			HttpsURLConnection uc = (HttpsURLConnection) url.openConnection();

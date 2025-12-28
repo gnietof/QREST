@@ -5,9 +5,10 @@ import java.io.FileOutputStream;
 import java.time.Instant;
 import java.time.YearMonth;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -21,6 +22,7 @@ import com.gnf.qrest.model.BackendProps;
 import com.gnf.qrest.model.BackendProps.Gate;
 import com.gnf.qrest.model.BackendStatus;
 import com.gnf.qrest.model.BackendsRequest;
+import com.gnf.qrest.model.BitString;
 import com.gnf.qrest.model.EstimatorPUB;
 import com.gnf.qrest.model.Paulis;
 import com.gnf.qrest.model.PrimitiveResults;
@@ -29,6 +31,7 @@ import com.gnf.qrest.model.PrimitiveResults.Result.EstimatorData;
 import com.gnf.qrest.model.PrimitiveResults.Result.SamplerData;
 import com.gnf.qrest.model.PrimitiveResults.Result.SamplerData.SamplerRegisters;
 import com.gnf.qrest.model.QResponse;
+import com.gnf.qrest.model.QResponse.QError;
 import com.gnf.qrest.model.SamplerPUB;
 import com.gnf.qrest.model.Tags;
 import com.gnf.qrest.model.Workload;
@@ -40,6 +43,8 @@ import com.gnf.qrest.qiskit.Pauli;
 import com.gnf.qrest.qiskit.Sampler;
 import com.gnf.qrest.qiskit.Session;
 import com.gnf.qrest.qiskit.SparsePauliOp;
+import com.gnf.qrest.simulator.EstimatorResponse;
+import com.gnf.qrest.simulator.SamplerResponse;
 import com.gnf.qrest.transpilation.LayoutResponse;
 import com.gnf.qrest.transpilation.TranspilationService;
 
@@ -60,15 +65,16 @@ public class QTest {
 	public static void main(String[] args) {
 		QTest qt = new QTest();
 
+//		qt.testSamplerSimulate();
+		qt.testEstimatorSimulate();
 //		qt.testTranspileCircuit();
 //		qt.testLayoutCircuit();
 //		qt.testDrawCircuit();
 //		qt.testLayoutEstimatorCircuit();
-		
 //		qt.testCancel();
 //		qt.testWorkloads();
 //		qt.testBackends();
-		qt.testJobs();
+//		qt.testJobs();
 //		qt.testSession();
 //		qt.testSessionJobs();
 //		qt.testEstimator();
@@ -135,9 +141,8 @@ public class QTest {
 		}
 
 //		job = service.waitForFinalState(job.getId());
-//		String state = job.getStatus();
 //		
-//		if (!List.of("Cancelled","Failed").contains(state)) {
+//		if (job.isDone()) {
 //			PrimitiveResults results = service.jobResults(job.getId());
 //			dumpEvs(results);
 //		} else if (state.equals("Failed")) {
@@ -152,7 +157,7 @@ public class QTest {
 //		String circuit = "qc = QuantumCircuit(2)\nqc.h(0)\nqc.cx(0,1)";
 		String circuit = null;
 		try {
-			FileInputStream fis = new FileInputStream("/home/genaro/divN.py");
+			FileInputStream fis = new FileInputStream("/home/genaro/divN_365.py");
 			circuit = new String(fis.readAllBytes());
 			fis.close();
 		} catch (Exception e) {
@@ -165,39 +170,59 @@ public class QTest {
 
 			Backend backend = service.backend(BACKEND);
 			Sampler sampler = new Sampler(backend);
-			int shots = calculateShots(0.9f,365);
-			SamplerPUB pub = new SamplerPUB.Builder().
-				circuit(qasm).
-				shots(shots).
-				build();
-			Job job = sampler.run(pub);
+			List<Float> probs = List.of(0.5f,0.75f,0.8f,0.9f);
+			List<SamplerPUB> pubs = new ArrayList<SamplerPUB>();
+			for (Float prob: probs) {
+				int shots = calculateShots(prob,365);
+				SamplerPUB pub = new SamplerPUB.Builder().
+					circuit(qasm).
+					shots(shots).
+					build();
+				pubs.add(pub);
+			}
+			Job job = sampler.run(pubs);
+			
+			service.tags(job.getId(), new Tags("divN","divN365","divN365x4"));
 			
 			job = service.waitForFinalState(job.getId());
 			
-			if (!List.of("Cancelled", "Failed").contains(job.getStatus())) {
-				Result results = service.jobResults(job.getId()).getResults().get(0);
-				SamplerData data = (SamplerData) results.getData();
-				Map<String, SamplerRegisters> registers = data.getRegisters();
-				for (String register : registers.keySet()) {
-					List<List<String>> samples = registers.get(register).getSamples();
-					for (int i = 0; i < samples.size(); i++) {
-						List<String> ss = samples.get(i);
-						System.out.println("\n\n\t" + register + "[" + i + "]");
-						for (String s : ss) {
-							System.out.println("\t" + s);
-						}
-						System.out.println("\n");
-						Map<String, Long> counts = ss.stream()
-								.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-						for (String key : counts.keySet()) {
-							Long count = counts.get(key);
-							System.out.println(key + ": " + count);
+//			if (job.isDone()) {
+//				Result results = service.jobResults(job.getId()).getResults().get(0);
+//				SamplerData data = (SamplerData) results.getData();
+//				Map<String, SamplerRegisters> registers = data.getRegisters();
+//				for (String register : registers.keySet()) {
+//					List<BitString> samples = registers.get(register).getSamples();
+//					for (int i = 0; i < samples.size(); i++) {
+//						BitString ss = samples.get(i);
+//						System.out.println("\n\n\t" + register + "[" + i + "]");
+//						for (String s : ss) {
+//							System.out.println("\t" + s);
+//						}
+//						System.out.println("\n");
+//						Map<String, Long> counts = ss.stream()
+//								.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+//						for (String key : counts.keySet()) {
+//							Long count = counts.get(key);
+//							System.out.println(key + ": " + count);
+//						}
+//					}
+//				}
+//			} 
+			if (job.isDone()) {
+				PrimitiveResults results = service.jobResults(job.getId());
+				if (results!=null) {
+					List<QError> errors = results.getErrors();
+					if (errors==null) {
+						dumpCounts(results);
+					} else {
+						for (QError error: errors) {
+							System.out.println(error.getMessage());
 						}
 					}
 				}
-			} 
-		}		
+			}		
 		
+		}		
 
 	}
 	
@@ -293,29 +318,20 @@ public class QTest {
 		System.out.println("Sampler");
 //		PrimitiveResults results = service.jobResults("d564l5np3tbc73aoue60"); //1x1
 //		PrimitiveResults results = service.jobResults("d566ep7p3tbc73ap03l0"); //2x1
-		PrimitiveResults results = service.jobResults("d566nuhsmlfc739hde30"); //2x3
+//		PrimitiveResults results = service.jobResults("d566nuhsmlfc739hde30"); //2x3
+//		PrimitiveResults results = service.jobResults("d57dllbht8fs73a2nkt0"); //divN365
+		PrimitiveResults results = service.jobResults("d57eft8nsj9s73b4mcbg"); //divN365x3
 		if (results!=null) {
-			Result result = results.getResults().get(0);
-			SamplerData data = (SamplerData) result.getData();
-			Map<String, SamplerRegisters> registers = data.getRegisters();
-			for (String register : registers.keySet()) {
-				List<List<String>> samples = registers.get(register).getSamples();
-				for (int i=0;i<samples.size();i++) {
-					List<String> ss = samples.get(i);
-					System.out.println("\n\n\t"+register+"["+i+"]");
-					for (String s: ss) {
-						System.out.println("\t"+s);
-					}
-					System.out.println("\n");
-					Map<String, Long> counts = ss.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
-					for (String key: counts.keySet()) {
-						Long count = counts.get(key);
-						System.out.println(key+": "+count);
-					}
+			List<QError> errors = results.getErrors();
+			if (errors==null) {
+				dumpCounts(results);
+			} else {
+				for (QError error: errors) {
+					System.out.println(error.getMessage());
 				}
 			}
 		}
-	}		
+	}
 
 	public void testResultsEstimator() {
 		System.out.println("Estimator");
@@ -337,23 +353,61 @@ public class QTest {
 	}
 
 	private void dumpEvs(PrimitiveResults results) {
-		if (results!=null) {
-			List<Result> results2 = results.getResults();
-			for (int i=0;i<results2.size();i++) {
-				System.out.println("\tResults "+i+":");
-				Result result = results2.get(i);
-				EstimatorData data = (EstimatorData) result.getData();
-				List<List<Double>> eevvss = data.getEvs();
-				for (int j=0;j<eevvss.size();j++) {
-					List<Double> evs = eevvss.get(j);
-					for (Double d : evs) {
-						System.out.println(d);
-					}
+		List<Result> results2 = results.getResults();
+		for (int i=0;i<results2.size();i++) {
+			System.out.println("\tResults "+i+":");
+			Result result = results2.get(i);
+			EstimatorData data = (EstimatorData) result.getData();
+			List<List<Double>> eevvss = data.getEvs();
+			for (int j=0;j<eevvss.size();j++) {
+				List<Double> evs = eevvss.get(j);
+				for (Double d : evs) {
+					System.out.println(d);
 				}
 			}
-//			System.out.println(data.getEvs());
 		}
 	}
+	
+	private void dumpCounts(PrimitiveResults results) {
+		for (Result result: results.getResults()) {
+			SamplerData data = (SamplerData) result.getData();
+			Map<String, SamplerRegisters> registers = data.getRegisters();
+			for (String key1 : registers.keySet()) {
+				System.out.println(String.format("\n\n** %s",key1));
+				SamplerRegisters register = registers.get(key1);
+				for (int i=0;i<register.size();i++) {
+					System.out.println(String.format("\t%d",i));
+					BitString ss = register.getBitString(i);
+					System.out.println(ss);
+					Map<String, Long> counts1 = register.getCounts(i);
+					for (String key: counts1.keySet()) {
+						Long count = counts1.get(key);
+						System.out.println(key+": "+count);
+					}
+					Map<Integer, Long> counts2 = register.getIntCounts(i);
+					for (Integer key: counts2.keySet()) {
+						Long count = counts2.get(key);
+						System.out.println(key+": "+count);
+					}
+				}
+				System.out.println("\n\tAll");
+				BitString ss = register.getBitString();
+				System.out.println(ss);
+				Map<String, Long> counts1 = register.getCounts();
+				for (String key: counts1.keySet()) {
+					Long count = counts1.get(key);
+					System.out.println(key+": "+count);
+				}
+				System.out.println("\n");
+				Map<Integer, Long> counts2 = register.getIntCounts();
+				for (Integer key: counts2.keySet()) {
+					Long count = counts2.get(key);
+					System.out.println(key+": "+count);
+				}
+				
+			}
+		}
+	}		
 	
 	private void testEstimator() {
 		Backend backend = service.backend(BACKEND);
@@ -362,7 +416,8 @@ public class QTest {
 		SparsePauliOp observables = SparsePauliOp.fromSparseList(new Paulis(new Pauli("XZ", new int[] {0,1},1),new Pauli("ZX", new int[] {0,1},2)),2);
 		EstimatorPUB pub = new EstimatorPUB.Builder().
 				circuit(qasm).
-				observable(observables.getPaulis()).build();
+				observable(observables).
+				build();
 		Job job = estimator.run(pub);
 
 		service.tags(job.getId(), new Tags(List.of("Estimator")));
@@ -442,12 +497,11 @@ public class QTest {
 		Job job = estimator.run(pub);
 		
 		job = service.waitForFinalState(job.getId());
-		String state = job.getStatus();
 		
-		if (!List.of("Cancelled","Failed").contains(state)) {
+		if (job.isDone()) {
 			PrimitiveResults results = service.jobResults(job.getId());
 			dumpEvs(results);
-		} else if (state.equals("Failed")) {
+		} else if (job.isError()) {
 			System.out.println("Failed: "+job.getState().getReason());
 		}
 	}
@@ -465,15 +519,65 @@ public class QTest {
 		Job job = estimator.run(pub);
 		
 		job = service.waitForFinalState(job.getId());
-		String state = job.getStatus();
 		
-		if (!List.of("Cancelled","Failed").contains(state)) {
+		if (job.isDone()) {
 			PrimitiveResults results = service.jobResults(job.getId());
 			dumpEvs(results);
-		} else if (state.equals("Failed")) {
-			Job job2 = service.job(job.getId());
-			System.out.println("Failed: "+job2.getState().getReason());
+		} else if (job.isError()) {
+			System.out.println("Failed: "+job.getState().getReason());
 		}
+	}
+
+	private void testSamplerSimulate() {
+//		String circuit = "qc = QuantumCircuit(2)\nqc.h(0)\nqc.cx(0,1)\nqc.measure_all()";
+		String circuit = null;
+		try {
+			FileInputStream fis = new FileInputStream("/home/genaro/divN_365.py");
+			circuit = new String(fis.readAllBytes());
+			fis.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if (circuit!=null) {
+			SamplerResponse res = transpilation.sampler(circuit,1024);
+			
+			if (res!=null) {
+				SamplerResponse.Result result = res.getResult();
+				List<Map<Integer, Double>> dists = result.getQuasiDists();
+				for (Map<Integer, Double> dist : dists) {
+					Map<Integer, Double> dist2 = dist.entrySet().stream().sorted(Map.Entry.comparingByKey())
+							.collect(Collectors.toMap(
+									Map.Entry::getKey,
+									Map.Entry::getValue,
+									(oldVal, newVal) -> oldVal,
+									LinkedHashMap::new));
+					for (Integer key : dist2.keySet()) {
+						System.out.println(key + ": " + dist.get(key));
+					}
+				} 
+			} else {
+				System.out.println("Simulation failed!");
+			}
+		}		
+	}
+
+	private void testEstimatorSimulate() {
+		String circuit = "qc = QuantumCircuit(2)\nqc.h(0)\nqc.cx(0,1)";
+		String observable = "XY";
+		
+		if (circuit!=null) {
+			EstimatorResponse res = transpilation.estimator(circuit,observable);
+			
+			if (res!=null) {
+				List<Double> result = res.getResult();
+				for (Double evs: result) {
+					System.out.println(evs);
+				}
+			} else {
+				System.out.println("Simulation failed!");
+			}
+		}		
 	}
 
 	private void testSampler() {
@@ -550,23 +654,34 @@ public class QTest {
 		
 		job = service.waitForFinalState(job.getId());
 		
-		if (!List.of("Cancelled", "Failed").contains(job.getStatus())) {
-			Result results = service.jobResults(job.getId()).getResults().get(0);
-			SamplerData data = (SamplerData) results.getData();
-			Map<String, SamplerRegisters> registers = data.getRegisters();
-			for (String register : registers.keySet()) {
-				List<List<String>> samples = registers.get(register).getSamples();
-				for (int i=0;i<samples.size();i++) {
-					List<String> ss = samples.get(i);
-					System.out.println("\n\n\t"+register+"["+i+"]");
-					for (String s: ss) {
-						System.out.println("\t"+s);
-					}
-					System.out.println("\n");
-					Map<String, Long> counts = ss.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
-					for (String key: counts.keySet()) {
-						Long count = counts.get(key);
-						System.out.println(key+": "+count);
+		if (job.isDone()) {
+//			Result results = service.jobResults(job.getId()).getResults().get(0);
+//			SamplerData data = (SamplerData) results.getData();
+//			Map<String, SamplerRegisters> registers = data.getRegisters();
+//			for (String register : registers.keySet()) {
+//				List<BitString> samples = registers.get(register).getSamples();
+//				for (int i=0;i<samples.size();i++) {
+//					BitString ss = samples.get(i);
+//					System.out.println("\n\n\t"+register+"["+i+"]");
+//					for (String s: ss) {
+//						System.out.println("\t"+s);
+//					}
+//					System.out.println("\n");
+//					Map<String, Long> counts = ss.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+//					for (String key: counts.keySet()) {
+//						Long count = counts.get(key);
+//						System.out.println(key+": "+count);
+//					}
+//				}
+//			}
+			PrimitiveResults results = service.jobResults(job.getId());
+			if (results!=null) {
+				List<QError> errors = results.getErrors();
+				if (errors==null) {
+					dumpCounts(results);
+				} else {
+					for (QError error: errors) {
+						System.out.println(error.getMessage());
 					}
 				}
 			}
@@ -586,23 +701,15 @@ public class QTest {
 		
 		job = service.waitForFinalState(job.getId());
 		
-		if (!List.of("Cancelled", "Failed").contains(job.getStatus())) {
-			Result results = service.jobResults(job.getId()).getResults().get(0);
-			SamplerData data = (SamplerData) results.getData();
-			Map<String, SamplerRegisters> registers = data.getRegisters();
-			for (String register : registers.keySet()) {
-				List<List<String>> samples = registers.get(register).getSamples();
-				for (int i=0;i<samples.size();i++) {
-					List<String> ss = samples.get(i);
-					System.out.println("\n\n\t"+register+"["+i+"]");
-					for (String s: ss) {
-						System.out.println("\t"+s);
-					}
-					System.out.println("\n");
-					Map<String, Long> counts = ss.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
-					for (String key: counts.keySet()) {
-						Long count = counts.get(key);
-						System.out.println(key+": "+count);
+		if (job.isDone()) {
+			PrimitiveResults results = service.jobResults(job.getId());
+			if (results!=null) {
+				List<QError> errors = results.getErrors();
+				if (errors==null) {
+					dumpCounts(results);
+				} else {
+					for (QError error: errors) {
+						System.out.println(error.getMessage());
 					}
 				}
 			}
@@ -610,9 +717,8 @@ public class QTest {
 	}
 
 	public void testJobs() {
-//		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd'THH:mm:ss");
-
-		Job job= service.jobDetails("d5439c3ht8fs739vgu0g");
+		
+		Job job= service.jobDetails("d56hea8nsj9s73b3q13g");
 		System.out.println(job);
 		
 		QResponse response = service.tags("d5439c3ht8fs739vgu0g",new Tags("test"));
@@ -637,8 +743,8 @@ public class QTest {
 		jobsDump(jobs);
 
 		Map<YearMonth,Integer> totals = jobs.getJobs().stream().
-			collect(Collectors.groupingBy(j -> YearMonth.from(Instant.parse(j.getCreated()).atZone(ZoneOffset.UTC).toLocalDate()),
-				Collectors.summingInt(j -> j.getUsage().getQuantumSeconds())));
+			collect(Collectors.groupingBy(job -> YearMonth.from(Instant.parse(job.getCreated()).atZone(ZoneOffset.UTC).toLocalDate()),
+				Collectors.summingInt(job -> job.getUsage().getQuantumSeconds())));
 		
 		for (YearMonth ym : totals.keySet()) {
 			System.out.println(ym+": "+totals.get(ym));

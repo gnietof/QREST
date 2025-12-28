@@ -19,6 +19,10 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.gnf.qrest.model.Paulis;
+import com.gnf.qrest.simulator.EstimatorRequest;
+import com.gnf.qrest.simulator.EstimatorResponse;
+import com.gnf.qrest.simulator.SamplerRequest;
+import com.gnf.qrest.simulator.SamplerResponse;
 import com.gnf.qrest.tools.SSLTool;
 
 public class TranspilationService {
@@ -47,6 +51,42 @@ public class TranspilationService {
 			TranspileResponse res = callREST("/transpile", "POST", null, om.writeValueAsString(req), TranspileResponse.class);
 			if (res!=null) {
 				return res.getQASM();
+			}
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public SamplerResponse sampler(String circuit,int shots) {
+		
+		SamplerRequest req = new SamplerRequest();
+		req.setCircuit(circuit);
+		req.setShots(shots);
+		
+		try {
+			SamplerResponse res = callREST("/sampler", "POST", null, om.writeValueAsString(req), SamplerResponse.class);
+			if (res!=null) {
+				return res;
+			}
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public EstimatorResponse estimator(String circuit, String observable) {
+		
+		EstimatorRequest req = new EstimatorRequest();
+		req.setCircuit(circuit);
+		req.setObservable(observable);
+		
+		try {
+			EstimatorResponse res = callREST("/estimator", "POST", null, om.writeValueAsString(req), EstimatorResponse.class);
+			if (res!=null) {
+				return res;
 			}
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();

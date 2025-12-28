@@ -10,6 +10,7 @@ public class LayoutRequest {
 	private String circuit;
 	private String backend;
 	private List<Paulis> observables;
+	private boolean trimObservables = false;
 	
 	@JsonProperty("optimization_level")
 	private int optimizationLevel=1;
@@ -44,6 +45,14 @@ public class LayoutRequest {
 
 	public void setObservables(List<Paulis> observables) {
 		this.observables = observables;
+	}
+
+	public boolean isTrimObservables() {
+		return trimObservables;
+	}
+
+	public void setTrimObservables(boolean trimObservables) {
+		this.trimObservables = trimObservables;
 	}
 		
 }
