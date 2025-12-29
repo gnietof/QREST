@@ -2,6 +2,17 @@
 
 Java implementation of a REST client for IBM Quantum.
 
+👷**Note**. The circuits package includes a set of classes for defining a QuantumCircuit. It is a **work in progress** and not intented to provide an alternative to Qiskit by any means.
+The idea is being able to define QuantumCircuits in Java so that the generated Python code can later be transpiled into QASM.
+
+QREST consists of two parts (excluding the above mentioned circuits): 
+- QiskitRuntimeService. A set of classes which allow the execution of Quantum circuits from Java using the REST API provided by IBM.
+- TranspilationService. Because I am not allowed to use the transpilation service in the Cloud, I created a small piece of code which provides a 'local transpilation service'. This service provides also a small set of additional functions which currently are:
+	- Transpilation. Provided a QuantumCircuit created as the result of the execution of a piece of Python code, returns the QASM3 code which can then be executed using the REST API.
+ 	- Layout. Same as above but in this case, the provided observables are also returned with the layouts in the transpiled circuit applied.
+    - Simulation (estimator and sampler). In this case the Python code is executed in the AerSimulator and the results provided back to the caller.
+    - Draw. Finally, this service accepts a Python code generating a QuantumCircuit and returns an image showing the Matplotlib version of the circuit. A parameter allows to indicate if the original or the transpiled circuits have to be drawn.
+
 ## Examples
 We will be using a static instance of the ObjectMapper. We will also create a instance of the `QiskitRuntimeService` class which includes all the methods for interfacing with IBM Quantum backends.
 	
@@ -128,11 +139,9 @@ On the other hand, using parameters is not supported in QASM2.
 		Job job = null;
 		
 		while (true) {
-			job = job(id,false);
-			String status = job.getStatus();
-			System.out.println(String.format("%s: %s",id,status));
-			boolean isPending = status.equals("Queued") || status.equals("Running");
-			if (!isPending) {
+			job = job(id,true);
+			System.out.println(id+": "+job.getStatus());
+			if (job.isInFinalState()) {
 				break;
 			}
 			try {
@@ -141,7 +150,7 @@ On the other hand, using parameters is not supported in QASM2.
 				e.printStackTrace();
 			}
 		}
-		
+
 		return job;
 	}
 ```
