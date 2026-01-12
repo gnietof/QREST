@@ -239,16 +239,12 @@ On the other hand, using parameters is not supported in QASM2.
 #### Estimators
 - Retrieve Estimator results
 ```java
-	JobResults jr = qt.getJobResults(id);
-	List<Result> results = jr.getResults();
-	Result result = results.get(0);
-	Data data = result.getData();
-	Double evs = data.getEvs().get(0);
+	PrimitiveResults pr = service.jobResults(id);
+	List<Result> results = pr.getResults();
 	if (results!=null) {
-		List<Result> results2 = results.getResults();
-		for (int i=0;i<results2.size();i++) {
+		for (int i=0;i<results.size();i++) {
 			System.out.println("\tResults "+i+":");
-			Result result = results2.get(i);
+			Result result = results.get(i);
 			EstimatorData data = (EstimatorData) result.getData();
 			List<List<Double>> eevvss = data.getEvs();
 			for (int j=0;j<eevvss.size();j++) {
@@ -258,6 +254,6 @@ On the other hand, using parameters is not supported in QASM2.
 				}
 			}
 		}
-	}
+	}		
 ```		
 
