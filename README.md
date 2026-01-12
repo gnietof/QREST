@@ -95,7 +95,7 @@ On the other hand, using parameters is not supported in QASM2.
 ```
 
 #### Estimators
-- Run an Estimator primitive with one observable but no parameters or precission.
+- Run an Estimator primitive with one observable but no parameters or precision.
 ```java
 	Backend backend = service.backend(BACKEND);
 
@@ -110,7 +110,7 @@ On the other hand, using parameters is not supported in QASM2.
 	Job job = estimator.run(pub);
 	service.tags(job.getId(), new Tags(List.of("Estimator")));
 ```
-- Run an Estimator primitive with two observables but no parameters or precission.
+- Run an Estimator primitive with two observables but no parameters or precision.
 ```java
 	Backend backend = service.backend(BACKEND);
 
@@ -246,11 +246,18 @@ On the other hand, using parameters is not supported in QASM2.
 			System.out.println("\tResults "+i+":");
 			Result result = results.get(i);
 			EstimatorData data = (EstimatorData) result.getData();
-			List<List<Double>> eevvss = data.getEvs();
-			for (int j=0;j<eevvss.size();j++) {
-				List<Double> evs = eevvss.get(j);
+			List<List<Double>> evss = data.getEvs();
+			for (int j=0;j<evss.size();j++) {
+				List<Double> evs = evss.get(j);
 				for (Double d : evs) {
-					System.out.println(d);
+					System.out.println("Evs: "+d);
+				}
+			}
+			List<List<Double>> stdss = data.getStds();
+			for (int j=0;j<stdss.size();j++) {
+				List<Double> stds = stdss.get(j);
+				for (Double d : stds) {
+					System.out.println("Stds: "+d);
 				}
 			}
 		}
