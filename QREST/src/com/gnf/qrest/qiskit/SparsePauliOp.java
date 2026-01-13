@@ -11,24 +11,6 @@ public class SparsePauliOp {
 //	private List<Pauli> paulis;
 	private Paulis paulis;
 	
-	public static void main(String[] args) {
-//		SparsePauliOp sp = SparsePauliOp.fromSparseList(List.of(
-//				new Pauli("ZYIIX",new int[]{1,4,2,3,0},1.0)),5);
-//		System.out.println("ZYIIX:"+sp);
-//		sp = SparsePauliOp.fromSparseList(List.of(
-//				new Pauli("ZIIIX",new int[]{1,4},1.0)),5);
-//		System.out.println(sp);
-//		sp = SparsePauliOp.fromSparseList(List.of(
-//			new Pauli("ZIIIIXY",new int[]{0,6},1.0),
-//			new Pauli("ZIIIX",new int[]{1,4},1.0),
-//			new Pauli("ZXI",new int[]{2,1},1.0),
-//			new Pauli("YIIY",new int[]{0,3},2.0)),7);
-//		System.out.println(sp);
-//		sp = SparsePauliOp.fromSparseList(List.of(
-//			new Pauli("XZZZZZZ",new int[]{1,2,0,3},1.0)),7);
-//		System.out.println(sp);
-	}
-	
 	private SparsePauliOp(Paulis paulis) {
 		this.paulis = paulis;
 	}

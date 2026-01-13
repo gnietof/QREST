@@ -1,12 +1,12 @@
 package com.gnf.qrest.circuit;
 
-public class QuantumRegister extends Register {
+public class AncillaRegister extends Register {
 
-	public QuantumRegister(int qubits) {
+	public AncillaRegister(int qubits) {
 		super(qubits);
 	}
 
-	public QuantumRegister(int qubits,String name) {
+	public AncillaRegister(int qubits,String name) {
 		super(qubits,name);
 	}
 
@@ -20,7 +20,7 @@ public class QuantumRegister extends Register {
 
 	@Override
 	protected String getPrefix() {
-		return "q";
+		return "a";
 	}
 	
 }

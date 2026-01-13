@@ -20,6 +20,9 @@ public class Sampler extends Primitive<SamplerPUB> {
 			.serializationInclusion(JsonInclude.Include.NON_NULL)
 			.build();
 
+	public static class SamplerResponse {
+	}
+
 	public Sampler(Backend backend) {
 		super(backend);
 	}
@@ -53,10 +56,6 @@ public class Sampler extends Primitive<SamplerPUB> {
 			super(backend,pubs,"sampler");
 		}
 		
-	}
-	
-
-	public static class SamplerResponse {
 	}
 
 }

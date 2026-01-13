@@ -21,6 +21,9 @@ public class Estimator extends Primitive<EstimatorPUB> {
 			.serializationInclusion(JsonInclude.Include.NON_NULL)
 			.build();
 
+	public static class EstimatorResponse extends PrimitiveResponse {
+	}
+
 	public Estimator(Backend backend) {
 		super(backend);
 	}
@@ -54,21 +57,6 @@ public class Estimator extends Primitive<EstimatorPUB> {
 		public EstimatorRequest(String backend,List<EstimatorPUB> pubs) {
 			super(backend,pubs,"estimator");
 		}
-		
-	}
-	
-
-	public static class EstimatorResponse extends PrimitiveResponse {
-//	    private String id;
-//	    private String backend;
-//	    private JobState state;
-//	    private JobStatus status;
-//	    private Map<String, Object> params;
-//	    private Program program;
-//	    private String created;
-//	    private String runtime;
-//	    private Integer cost;
-//	    private List<String> tags;
 		
 	}
 

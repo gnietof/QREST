@@ -1,21 +1,25 @@
 package com.gnf.qrest.circuit;
 
-public class ClassicalRegister {
-
-	int bits;
+public class ClassicalRegister extends Register {
 
 	public ClassicalRegister(int bits) {
-		this.bits = bits;
+		super(bits);
+	}
+
+	public ClassicalRegister(int bits,String name) {
+		super(bits,name);
 	}
 
 	public int getBits() {
-		return bits;
+		return getXBits();
 	}
 
 	public void setBits(int bits) {
-		this.bits = bits;
+		this.setXBits(bits);
 	}
 	
-	
-	
+	@Override
+	protected String getPrefix() {
+		return "c";
+	}
 }
