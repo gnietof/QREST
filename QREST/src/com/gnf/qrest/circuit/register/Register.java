@@ -1,20 +1,19 @@
-package com.gnf.qrest.circuit;
+package com.gnf.qrest.circuit.register;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public abstract class Register {
 	
 	protected static Map<String,Register> registers = new HashMap<String,Register>();
 
 	private int xbits;
+	private int base;
 	private String name;
-	
-	private int baseBit;
-
 	
 	public Register(int xbits) {
 		this.xbits = xbits;
@@ -29,7 +28,7 @@ public abstract class Register {
 		registers.put(name, this);
 	}
 
-	public int getXBits() {
+	protected int getXBits() {
 		return xbits;
 	}
 
@@ -37,7 +36,7 @@ public abstract class Register {
 		this.xbits = bits;
 	}
 
-	protected String getName() {
+	public String getName() {
 		return name;
 	}
 
@@ -74,14 +73,22 @@ public abstract class Register {
 		return names.stream().sorted().collect(Collectors.toList());
 	}
 	
-	protected abstract String getPrefix();
-
-	public int getBaseBit() {
-		return baseBit;
+	public int getBase() {
+		return base;
 	}
 
-	public void setBaseBit(int baseBit) {
-		this.baseBit = baseBit;
+	public void setBase(int base) {
+		this.base = base;
 	} 
 	
+	public List<Integer> get(int qubit) {
+		return List.of(getBase()+qubit);
+	}
+
+	public List<Integer> get(int qubit1, int qubit2) {
+		return IntStream.range(getBase()+qubit1, getBase()+qubit2).boxed().toList();
+	}
+
+	protected abstract String getPrefix();
+
 }

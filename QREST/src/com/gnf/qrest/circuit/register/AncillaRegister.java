@@ -1,6 +1,6 @@
-package com.gnf.qrest.circuit;
+package com.gnf.qrest.circuit.register;
 
-public class AncillaRegister extends Register {
+public class AncillaRegister extends QRegister {
 
 	public AncillaRegister(int qubits) {
 		super(qubits);
@@ -8,14 +8,6 @@ public class AncillaRegister extends Register {
 
 	public AncillaRegister(int qubits,String name) {
 		super(qubits,name);
-	}
-
-	public int getQubits() {
-		return getXBits();
-	}
-
-	public void setQubits(int qubits) {
-		this.setXBits(qubits);
 	}
 
 	@Override

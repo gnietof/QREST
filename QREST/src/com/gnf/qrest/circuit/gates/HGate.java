@@ -1,19 +1,11 @@
 package com.gnf.qrest.circuit.gates;
 
-public class HGate extends Gate {
+public class HGate extends Gate1Q {
 
 	private int qubit;
 	
 	public HGate(int qubit) {
-		this.qubit = qubit;
-	}
-
-	public int getQubit() {
-		return qubit;
-	}
-
-	public void setQubit(int qubit) {
-		this.qubit = qubit;
+		super(qubit);
 	}
 
 	@Override

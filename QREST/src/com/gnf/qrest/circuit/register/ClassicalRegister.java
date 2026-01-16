@@ -1,4 +1,4 @@
-package com.gnf.qrest.circuit;
+package com.gnf.qrest.circuit.register;
 
 public class ClassicalRegister extends Register {
 
