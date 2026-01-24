@@ -5,3 +5,15 @@
     <file-match-pattern match-pattern="." include-pattern="true"/>
   </fileset>
 </fileset-config>
+
+<module name="TreeWalker">
+
+        <!-- ===== Naming rules ===== -->
+
+        <!-- Allow multiple uppercase letters in method names -->
+        <!-- e.g. getHTTPResponse, parseXML -->
+        <module name="MethodName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+        </module>
+</module>
+
