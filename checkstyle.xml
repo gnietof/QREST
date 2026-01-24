@@ -1,16 +1,19 @@
 <?xml version="1.0"?>
 
-<module name="TreeWalker">
+<module name="Checker">
 
-        <!-- ===== Naming rules ===== -->
-
-        <!-- Allow multiple uppercase letters in method names -->
-        <!-- e.g. getHTTPResponse, parseXML -->
+        <module name="LineLength">
+            <property name="max" value="80"/>
+        </module>        
 
         <module name="SupressionsFilter">
             <property name="file" value="supressions.xml" />
         </module>
-    
+
+</module>
+
+<module name="TreeWalker">
+
         <module name="MethodName">
             <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
         </module>
@@ -27,7 +30,4 @@
             <property name="severity" value="warning"/>
         </module>        
 
-        <module name="LineLength">
-            <property name="max" value="80"/>
-        </module>        
 </module>
