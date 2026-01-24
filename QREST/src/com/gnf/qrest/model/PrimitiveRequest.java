@@ -1,45 +1,44 @@
 package com.gnf.qrest.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public abstract class PrimitiveRequest {
-	@JsonProperty("program_id")
-	private String programId;
-	private Params params;
-	private String backend;
-	
-	public PrimitiveRequest(String backend,List<? extends PUB> pubs,String programId) {
-		this.backend = backend;
-		this.programId = programId;
-		this.params = new Params();
-		params.setPubs(pubs);
-		
-	}
+  @JsonProperty("program_id")
+  private String programId;
+  private Params params;
+  private String backend;
 
-	public String getProgramId() {
-		return programId;
-	}
+  public PrimitiveRequest(String backend, List<? extends PUB> pubs, String programId) {
+    this.backend = backend;
+    this.programId = programId;
+    this.params = new Params();
+    params.setPubs(pubs);
 
-	public void setProgramId(String programId) {
-		this.programId = programId;
-	}
+  }
 
-	public Params getParams() {
-		return params;
-	}
+  public String getProgramId() {
+    return programId;
+  }
 
-	public void setParams(Params params) {
-		this.params = params;
-	}
+  public void setProgramId(String programId) {
+    this.programId = programId;
+  }
 
-	public String getBackend() {
-		return backend;
-	}
+  public Params getParams() {
+    return params;
+  }
 
-	public void setBackend(String backend) {
-		this.backend = backend;
-	}
+  public void setParams(Params params) {
+    this.params = params;
+  }
+
+  public String getBackend() {
+    return backend;
+  }
+
+  public void setBackend(String backend) {
+    this.backend = backend;
+  }
 
 }

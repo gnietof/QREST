@@ -1,58 +1,57 @@
 package com.gnf.qrest.transpilation;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gnf.qrest.model.Paulis;
+import java.util.List;
 
 public class LayoutRequest {
 
-	private String circuit;
-	private String backend;
-	private List<Paulis> observables;
-	private boolean trimObservables = false;
-	
-	@JsonProperty("optimization_level")
-	private int optimizationLevel=1;
+  private String circuit;
+  private String backend;
+  private List<Paulis> observables;
+  private boolean trimObservables = false;
 
-	public String getCircuit() {
-		return circuit;
-	}
+  @JsonProperty("optimization_level")
+  private int optimizationLevel = 1;
 
-	public void setCircuit(String circuit) {
-		this.circuit = circuit;
-	}
+  public String getCircuit() {
+    return circuit;
+  }
 
-	public String getBackend() {
-		return backend;
-	}
+  public void setCircuit(String circuit) {
+    this.circuit = circuit;
+  }
 
-	public void setBackend(String backend) {
-		this.backend = backend;
-	}
+  public String getBackend() {
+    return backend;
+  }
 
-	public int getOptimizationLevel() {
-		return optimizationLevel;
-	}
+  public void setBackend(String backend) {
+    this.backend = backend;
+  }
 
-	public void setOptimizationLevel(int optimizationLevel) {
-		this.optimizationLevel = optimizationLevel;
-	}
+  public int getOptimizationLevel() {
+    return optimizationLevel;
+  }
 
-	public List<Paulis> getObservables() {
-		return observables;
-	}
+  public void setOptimizationLevel(int optimizationLevel) {
+    this.optimizationLevel = optimizationLevel;
+  }
 
-	public void setObservables(List<Paulis> observables) {
-		this.observables = observables;
-	}
+  public List<Paulis> getObservables() {
+    return observables;
+  }
 
-	public boolean isTrimObservables() {
-		return trimObservables;
-	}
+  public void setObservables(List<Paulis> observables) {
+    this.observables = observables;
+  }
 
-	public void setTrimObservables(boolean trimObservables) {
-		this.trimObservables = trimObservables;
-	}
-		
+  public boolean isTrimObservables() {
+    return trimObservables;
+  }
+
+  public void setTrimObservables(boolean trimObservables) {
+    this.trimObservables = trimObservables;
+  }
+
 }

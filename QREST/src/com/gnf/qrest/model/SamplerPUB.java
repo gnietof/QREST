@@ -6,38 +6,38 @@ import com.gnf.qrest.serializers.SamplerPUBSerializer;
 @JsonSerialize(using = SamplerPUBSerializer.class)
 public class SamplerPUB extends PUB {
 
-	private int shots;
-	
-	public SamplerPUB(Builder builder) {
-		super(builder);
-		this.shots = builder.shots;
-	}
-	
-	public static class Builder extends PUB.Builder<Builder> {
-		private int shots=16;
-		
-		public Builder shots(int shots) {
-			this.shots = shots;
-			return this;
-		}
-		
-		@Override
-		public SamplerPUB build() {
-			return new SamplerPUB(this);
-		}
+  private int shots;
 
-		@Override
-		protected Builder self() {
-			return this;
-		}
-	}
+  public SamplerPUB(Builder builder) {
+    super(builder);
+    this.shots = builder.shots;
+  }
 
-	public int getShots() {
-		return shots;
-	}
+  public static class Builder extends PUB.Builder<Builder> {
+    private int shots = 16;
 
-	public void setShots(int shots) {
-		this.shots = shots;
-	}
-	
+    public Builder shots(int shots) {
+      this.shots = shots;
+      return this;
+    }
+
+    @Override
+    public SamplerPUB build() {
+      return new SamplerPUB(this);
+    }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
+  }
+
+  public int getShots() {
+    return shots;
+  }
+
+  public void setShots(int shots) {
+    this.shots = shots;
+  }
+
 }

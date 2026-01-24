@@ -1,32 +1,32 @@
 package com.gnf.qrest.model;
 
 public class ProcessorType {
-	private String family;
-	private String revision;
-	
-	private String segment;
+  private String family;
+  private String revision;
 
-	public String getFamily() {
-		return family;
-	}
+  private String segment;
 
-	public void setFamily(String family) {
-		this.family = family;
-	}
+  public String getFamily() {
+    return family;
+  }
 
-	public String getRevision() {
-		return revision;
-	}
+  public void setFamily(String family) {
+    this.family = family;
+  }
 
-	public void setRevision(String revision) {
-		this.revision = revision;
-	}
+  public String getRevision() {
+    return revision;
+  }
 
-	public String getSegment() {
-		return segment;
-	}
+  public void setRevision(String revision) {
+    this.revision = revision;
+  }
 
-	public void setSegment(String segment) {
-		this.segment = segment;
-	}
+  public String getSegment() {
+    return segment;
+  }
+
+  public void setSegment(String segment) {
+    this.segment = segment;
+  }
 }

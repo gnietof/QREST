@@ -4,179 +4,174 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Session {
 
-	private String id;
-	@JsonProperty("backend_name")
-	private String backendName;
-	
-	@JsonProperty("started_at")
-	private String startedAt;
+  private String id;
+  @JsonProperty("backend_name")
+  private String backendName;
 
-	@JsonProperty("activated_at")
-	private String activatedAt;
+  @JsonProperty("started_at")
+  private String startedAt;
 
-	@JsonProperty("closed_at")
-	private String closedAt;
+  @JsonProperty("activated_at")
+  private String activatedAt;
 
-	@JsonProperty("last_job_started")
-	private String lastJobStarted;
-	
-	@JsonProperty("last_job_completed")
-	private String lastJobCompleted;
+  @JsonProperty("closed_at")
+  private String closedAt;
 
-	@JsonProperty("interactive_ttl")
-	private int interactiveTTL;
-	
-	@JsonProperty("max_ttl")
-	private int maxTTL;
+  @JsonProperty("last_job_started")
+  private String lastJobStarted;
 
-	@JsonProperty("active_ttl")
-	private int activeTTL;
-	private String state;
+  @JsonProperty("last_job_completed")
+  private String lastJobCompleted;
 
-	@JsonProperty("state_reason")
-	private String stateReason;
-	
-	@JsonProperty("accepting_jobs")
-	private boolean acceptingJobs;
-	private String mode; 
+  @JsonProperty("interactive_ttl")
+  private int interactiveTTL;
 
-	@JsonProperty("user_id")
-	private String userId;
+  @JsonProperty("max_ttl")
+  private int maxTTL;
 
-	@JsonProperty("elapsed_time")
-	private int elapsedTime;
+  @JsonProperty("active_ttl")
+  private int activeTTL;
+  private String state;
 
-	public String getId() {
-		return id;
-	}
+  @JsonProperty("state_reason")
+  private String stateReason;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+  @JsonProperty("accepting_jobs")
+  private boolean acceptingJobs;
+  private String mode;
 
-	public String getBackendName() {
-		return backendName;
-	}
+  @JsonProperty("user_id")
+  private String userId;
 
-	public void setBackendName(String backendName) {
-		this.backendName = backendName;
-	}
+  @JsonProperty("elapsed_time")
+  private int elapsedTime;
 
-	public String getStartedAt() {
-		return startedAt;
-	}
+  public String getId() {
+    return id;
+  }
 
-	public void setStartedAt(String startedAt) {
-		this.startedAt = startedAt;
-	}
+  public void setId(String id) {
+    this.id = id;
+  }
 
-	public String getActivatedAt() {
-		return activatedAt;
-	}
+  public String getBackendName() {
+    return backendName;
+  }
 
-	public void setActivatedAt(String activatedAt) {
-		this.activatedAt = activatedAt;
-	}
+  public void setBackendName(String backendName) {
+    this.backendName = backendName;
+  }
 
-	public String getClosedAt() {
-		return closedAt;
-	}
+  public String getStartedAt() {
+    return startedAt;
+  }
 
-	public void setClosedAt(String closedAt) {
-		this.closedAt = closedAt;
-	}
+  public void setStartedAt(String startedAt) {
+    this.startedAt = startedAt;
+  }
 
-	public String getLastJobStarted() {
-		return lastJobStarted;
-	}
+  public String getActivatedAt() {
+    return activatedAt;
+  }
 
-	public void setLastJobStarted(String lastJobStarted) {
-		this.lastJobStarted = lastJobStarted;
-	}
+  public void setActivatedAt(String activatedAt) {
+    this.activatedAt = activatedAt;
+  }
 
-	public String getLastJobCompleted() {
-		return lastJobCompleted;
-	}
+  public String getClosedAt() {
+    return closedAt;
+  }
 
-	public void setLastJobCompleted(String lastJobCompleted) {
-		this.lastJobCompleted = lastJobCompleted;
-	}
+  public void setClosedAt(String closedAt) {
+    this.closedAt = closedAt;
+  }
 
-	public int getInteractiveTTL() {
-		return interactiveTTL;
-	}
+  public String getLastJobStarted() {
+    return lastJobStarted;
+  }
 
-	public void setInteractiveTTL(int interactiveTTL) {
-		this.interactiveTTL = interactiveTTL;
-	}
+  public void setLastJobStarted(String lastJobStarted) {
+    this.lastJobStarted = lastJobStarted;
+  }
 
-	public int getMaxTTL() {
-		return maxTTL;
-	}
+  public String getLastJobCompleted() {
+    return lastJobCompleted;
+  }
 
-	public void setMaxTTL(int maxTTL) {
-		this.maxTTL = maxTTL;
-	}
+  public void setLastJobCompleted(String lastJobCompleted) {
+    this.lastJobCompleted = lastJobCompleted;
+  }
 
-	public int getActiveTTL() {
-		return activeTTL;
-	}
+  public int getInteractiveTTL() {
+    return interactiveTTL;
+  }
 
-	public void setActiveTTL(int activeTTL) {
-		this.activeTTL = activeTTL;
-	}
+  public void setInteractiveTTL(int interactiveTTL) {
+    this.interactiveTTL = interactiveTTL;
+  }
 
-	public String getState() {
-		return state;
-	}
+  public int getMaxTTL() {
+    return maxTTL;
+  }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+  public void setMaxTTL(int maxTTL) {
+    this.maxTTL = maxTTL;
+  }
 
-	public String getStateReason() {
-		return stateReason;
-	}
+  public int getActiveTTL() {
+    return activeTTL;
+  }
 
-	public void setStateReason(String stateReason) {
-		this.stateReason = stateReason;
-	}
+  public void setActiveTTL(int activeTTL) {
+    this.activeTTL = activeTTL;
+  }
 
-	public boolean isAcceptingJobs() {
-		return acceptingJobs;
-	}
+  public String getState() {
+    return state;
+  }
 
-	public void setAcceptingJobs(boolean acceptingJobs) {
-		this.acceptingJobs = acceptingJobs;
-	}
+  public void setState(String state) {
+    this.state = state;
+  }
 
-	public String getMode() {
-		return mode;
-	}
+  public String getStateReason() {
+    return stateReason;
+  }
 
-	public void setMode(String mode) {
-		this.mode = mode;
-	}
+  public void setStateReason(String stateReason) {
+    this.stateReason = stateReason;
+  }
 
-	public String getUserId() {
-		return userId;
-	}
+  public boolean isAcceptingJobs() {
+    return acceptingJobs;
+  }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+  public void setAcceptingJobs(boolean acceptingJobs) {
+    this.acceptingJobs = acceptingJobs;
+  }
 
-	public int getElapsedTime() {
-		return elapsedTime;
-	}
+  public String getMode() {
+    return mode;
+  }
 
-	public void setElapsedTime(int elapsedTime) {
-		this.elapsedTime = elapsedTime;
-	}
-	
-	
-	
-	
-	
-	
+  public void setMode(String mode) {
+    this.mode = mode;
+  }
+
+  public String getUserId() {
+    return userId;
+  }
+
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
+
+  public int getElapsedTime() {
+    return elapsedTime;
+  }
+
+  public void setElapsedTime(int elapsedTime) {
+    this.elapsedTime = elapsedTime;
+  }
+
 }

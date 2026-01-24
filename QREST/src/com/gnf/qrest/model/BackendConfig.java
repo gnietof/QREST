@@ -1,428 +1,427 @@
 package com.gnf.qrest.model;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
 public class BackendConfig {
 
-    @JsonProperty("allow_q_object")
-    private boolean allowQObject;
+  @JsonProperty("allow_q_object")
+  private boolean allowQObject;
 
-    @JsonProperty("backend_name")
-    private String backendName;
+  @JsonProperty("backend_name")
+  private String backendName;
 
-    @JsonProperty("backend_version")
-    private String backendVersion;
+  @JsonProperty("backend_version")
+  private String backendVersion;
 
-    @JsonProperty("basis_gates")
-    private List<String> basisGates;
+  @JsonProperty("basis_gates")
+  private List<String> basisGates;
 
-    @JsonProperty("clops")
-    private Object clops;
+  @JsonProperty("clops")
+  private Object clops;
 
-    @JsonProperty("clops_h")
-    private int clopsH;
+  @JsonProperty("clops_h")
+  private int clopsH;
 
-    @JsonProperty("clops_v")
-    private Object clopsV;
+  @JsonProperty("clops_v")
+  private Object clopsV;
 
-    private boolean conditional;
+  private boolean conditional;
 
-    @JsonProperty("coords")
-    private List<List<Integer>> coords;
+  @JsonProperty("coords")
+  private List<List<Integer>> coords;
 
-    @JsonProperty("coupling_map")
-    private List<List<Integer>> couplingMap;
+  @JsonProperty("coupling_map")
+  private List<List<Integer>> couplingMap;
 
-    @JsonProperty("credits_required")
-    private boolean creditsRequired;
+  @JsonProperty("credits_required")
+  private boolean creditsRequired;
 
-    @JsonProperty("default_rep_delay")
-    private int defaultRepDelay;
+  @JsonProperty("default_rep_delay")
+  private int defaultRepDelay;
 
-    private String description;
-    
-    private int dt;
-    private int dtm;
+  private String description;
 
-    @JsonProperty("dynamic_reprate_enabled")
-    private boolean dynamicRepRateEnabled;
+  private int dt;
+  private int dtm;
 
-    private List<GateConfig> gates;
+  @JsonProperty("dynamic_reprate_enabled")
+  private boolean dynamicRepRateEnabled;
 
-    @JsonProperty("instruction_signatures")
-    private List<Object> instructionSignatures;
+  private List<GateConfig> gates;
 
-    private boolean local;
+  @JsonProperty("instruction_signatures")
+  private List<Object> instructionSignatures;
 
-    @JsonProperty("max_experiments")
-    private int maxExperiments;
+  private boolean local;
 
-    @JsonProperty("max_shots")
-    private int maxShots;
+  @JsonProperty("max_experiments")
+  private int maxExperiments;
 
-    @JsonProperty("meas_map")
-    private List<List<Integer>> measMap;
+  @JsonProperty("max_shots")
+  private int maxShots;
 
-    @JsonProperty("measure_esp_enabled")
-    private boolean measureEspEnabled;
+  @JsonProperty("meas_map")
+  private List<List<Integer>> measMap;
 
-    private boolean memory;
+  @JsonProperty("measure_esp_enabled")
+  private boolean measureEspEnabled;
 
-    @JsonProperty("multi_meas_enabled")
-    private boolean multiMeasEnabled;
+  private boolean memory;
 
-    @JsonProperty("n_qubits")
-    private int nQubits;
+  @JsonProperty("multi_meas_enabled")
+  private boolean multiMeasEnabled;
 
-    @JsonProperty("n_registers")
-    private int nRegisters;
+  @JsonProperty("n_qubits")
+  private int nQubits;
 
-    @JsonProperty("online_date")
-    private String onlineDate;
+  @JsonProperty("n_registers")
+  private int nRegisters;
 
-    @JsonProperty("open_pulse")
-    private boolean openPulse;
+  @JsonProperty("online_date")
+  private String onlineDate;
 
-    @JsonProperty("parallel_compilation")
-    private boolean parallelCompilation;
+  @JsonProperty("open_pulse")
+  private boolean openPulse;
 
-    @JsonProperty("processor_type")
-    private ProcessorType processorType;
+  @JsonProperty("parallel_compilation")
+  private boolean parallelCompilation;
 
-    @JsonProperty("quantum_volume")
-    private Object quantumVolume;
+  @JsonProperty("processor_type")
+  private ProcessorType processorType;
 
-    @JsonProperty("rep_delay_range")
-    private List<Integer> repDelayRange;
+  @JsonProperty("quantum_volume")
+  private Object quantumVolume;
 
-    @JsonProperty("sample_name")
-    private String sampleName;
+  @JsonProperty("rep_delay_range")
+  private List<Integer> repDelayRange;
 
-    private boolean simulator;
+  @JsonProperty("sample_name")
+  private String sampleName;
 
-    @JsonProperty("supported_features")
-    private List<String> supportedFeatures;
+  private boolean simulator;
 
-    @JsonProperty("supported_instructions")
-    private List<String> supportedInstructions;
+  @JsonProperty("supported_features")
+  private List<String> supportedFeatures;
 
-    @JsonProperty("timing_constraints")
-    private TimingConstraints timingConstraints;
+  @JsonProperty("supported_instructions")
+  private List<String> supportedInstructions;
 
-    private Object url;
+  @JsonProperty("timing_constraints")
+  private TimingConstraints timingConstraints;
 
-	public boolean isAllowQObject() {
-		return allowQObject;
-	}
+  private Object url;
 
-	public void setAllowQObject(boolean allowQObject) {
-		this.allowQObject = allowQObject;
-	}
+  public boolean isAllowQObject() {
+    return allowQObject;
+  }
 
-	public String getBackendName() {
-		return backendName;
-	}
+  public void setAllowQObject(boolean allowQObject) {
+    this.allowQObject = allowQObject;
+  }
 
-	public void setBackendName(String backendName) {
-		this.backendName = backendName;
-	}
+  public String getBackendName() {
+    return backendName;
+  }
 
-	public String getBackendVersion() {
-		return backendVersion;
-	}
+  public void setBackendName(String backendName) {
+    this.backendName = backendName;
+  }
 
-	public void setBackendVersion(String backendVersion) {
-		this.backendVersion = backendVersion;
-	}
+  public String getBackendVersion() {
+    return backendVersion;
+  }
 
-	public List<String> getBasisGates() {
-		return basisGates;
-	}
+  public void setBackendVersion(String backendVersion) {
+    this.backendVersion = backendVersion;
+  }
 
-	public void setBasisGates(List<String> basisGates) {
-		this.basisGates = basisGates;
-	}
+  public List<String> getBasisGates() {
+    return basisGates;
+  }
 
-	public Object getClops() {
-		return clops;
-	}
+  public void setBasisGates(List<String> basisGates) {
+    this.basisGates = basisGates;
+  }
 
-	public void setClops(Object clops) {
-		this.clops = clops;
-	}
+  public Object getClops() {
+    return clops;
+  }
 
-	public int getClopsH() {
-		return clopsH;
-	}
+  public void setClops(Object clops) {
+    this.clops = clops;
+  }
 
-	public void setClopsH(int clopsH) {
-		this.clopsH = clopsH;
-	}
+  public int getClopsH() {
+    return clopsH;
+  }
 
-	public Object getClopsV() {
-		return clopsV;
-	}
+  public void setClopsH(int clopsH) {
+    this.clopsH = clopsH;
+  }
 
-	public void setClopsV(Object clopsV) {
-		this.clopsV = clopsV;
-	}
+  public Object getClopsV() {
+    return clopsV;
+  }
 
-	public boolean isConditional() {
-		return conditional;
-	}
+  public void setClopsV(Object clopsV) {
+    this.clopsV = clopsV;
+  }
 
-	public void setConditional(boolean conditional) {
-		this.conditional = conditional;
-	}
+  public boolean isConditional() {
+    return conditional;
+  }
 
-	public List<List<Integer>> getCoords() {
-		return coords;
-	}
+  public void setConditional(boolean conditional) {
+    this.conditional = conditional;
+  }
 
-	public void setCoords(List<List<Integer>> coords) {
-		this.coords = coords;
-	}
+  public List<List<Integer>> getCoords() {
+    return coords;
+  }
 
-	public List<List<Integer>> getCouplingMap() {
-		return couplingMap;
-	}
+  public void setCoords(List<List<Integer>> coords) {
+    this.coords = coords;
+  }
 
-	public void setCouplingMap(List<List<Integer>> couplingMap) {
-		this.couplingMap = couplingMap;
-	}
+  public List<List<Integer>> getCouplingMap() {
+    return couplingMap;
+  }
 
-	public boolean isCreditsRequired() {
-		return creditsRequired;
-	}
+  public void setCouplingMap(List<List<Integer>> couplingMap) {
+    this.couplingMap = couplingMap;
+  }
 
-	public void setCreditsRequired(boolean creditsRequired) {
-		this.creditsRequired = creditsRequired;
-	}
+  public boolean isCreditsRequired() {
+    return creditsRequired;
+  }
 
-	public int getDefaultRepDelay() {
-		return defaultRepDelay;
-	}
+  public void setCreditsRequired(boolean creditsRequired) {
+    this.creditsRequired = creditsRequired;
+  }
 
-	public void setDefaultRepDelay(int defaultRepDelay) {
-		this.defaultRepDelay = defaultRepDelay;
-	}
+  public int getDefaultRepDelay() {
+    return defaultRepDelay;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public void setDefaultRepDelay(int defaultRepDelay) {
+    this.defaultRepDelay = defaultRepDelay;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+  public String getDescription() {
+    return description;
+  }
 
-	public int getDt() {
-		return dt;
-	}
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-	public void setDt(int dt) {
-		this.dt = dt;
-	}
+  public int getDt() {
+    return dt;
+  }
 
-	public int getDtm() {
-		return dtm;
-	}
+  public void setDt(int dt) {
+    this.dt = dt;
+  }
 
-	public void setDtm(int dtm) {
-		this.dtm = dtm;
-	}
+  public int getDtm() {
+    return dtm;
+  }
 
-	public boolean isDynamicRepRateEnabled() {
-		return dynamicRepRateEnabled;
-	}
+  public void setDtm(int dtm) {
+    this.dtm = dtm;
+  }
 
-	public void setDynamicRepRateEnabled(boolean dynamicRepRateEnabled) {
-		this.dynamicRepRateEnabled = dynamicRepRateEnabled;
-	}
+  public boolean isDynamicRepRateEnabled() {
+    return dynamicRepRateEnabled;
+  }
 
-	public List<GateConfig> getGates() {
-		return gates;
-	}
+  public void setDynamicRepRateEnabled(boolean dynamicRepRateEnabled) {
+    this.dynamicRepRateEnabled = dynamicRepRateEnabled;
+  }
 
-	public void setGates(List<GateConfig> gates) {
-		this.gates = gates;
-	}
+  public List<GateConfig> getGates() {
+    return gates;
+  }
 
-	public List<Object> getInstructionSignatures() {
-		return instructionSignatures;
-	}
+  public void setGates(List<GateConfig> gates) {
+    this.gates = gates;
+  }
 
-	public void setInstructionSignatures(List<Object> instructionSignatures) {
-		this.instructionSignatures = instructionSignatures;
-	}
+  public List<Object> getInstructionSignatures() {
+    return instructionSignatures;
+  }
 
-	public boolean isLocal() {
-		return local;
-	}
+  public void setInstructionSignatures(List<Object> instructionSignatures) {
+    this.instructionSignatures = instructionSignatures;
+  }
 
-	public void setLocal(boolean local) {
-		this.local = local;
-	}
+  public boolean isLocal() {
+    return local;
+  }
 
-	public int getMaxExperiments() {
-		return maxExperiments;
-	}
+  public void setLocal(boolean local) {
+    this.local = local;
+  }
 
-	public void setMaxExperiments(int maxExperiments) {
-		this.maxExperiments = maxExperiments;
-	}
+  public int getMaxExperiments() {
+    return maxExperiments;
+  }
 
-	public int getMaxShots() {
-		return maxShots;
-	}
+  public void setMaxExperiments(int maxExperiments) {
+    this.maxExperiments = maxExperiments;
+  }
 
-	public void setMaxShots(int maxShots) {
-		this.maxShots = maxShots;
-	}
+  public int getMaxShots() {
+    return maxShots;
+  }
 
-	public List<List<Integer>> getMeasMap() {
-		return measMap;
-	}
+  public void setMaxShots(int maxShots) {
+    this.maxShots = maxShots;
+  }
 
-	public void setMeasMap(List<List<Integer>> measMap) {
-		this.measMap = measMap;
-	}
+  public List<List<Integer>> getMeasMap() {
+    return measMap;
+  }
 
-	public boolean isMeasureEspEnabled() {
-		return measureEspEnabled;
-	}
+  public void setMeasMap(List<List<Integer>> measMap) {
+    this.measMap = measMap;
+  }
 
-	public void setMeasureEspEnabled(boolean measureEspEnabled) {
-		this.measureEspEnabled = measureEspEnabled;
-	}
+  public boolean isMeasureEspEnabled() {
+    return measureEspEnabled;
+  }
 
-	public boolean isMemory() {
-		return memory;
-	}
+  public void setMeasureEspEnabled(boolean measureEspEnabled) {
+    this.measureEspEnabled = measureEspEnabled;
+  }
 
-	public void setMemory(boolean memory) {
-		this.memory = memory;
-	}
+  public boolean isMemory() {
+    return memory;
+  }
 
-	public boolean isMultiMeasEnabled() {
-		return multiMeasEnabled;
-	}
+  public void setMemory(boolean memory) {
+    this.memory = memory;
+  }
 
-	public void setMultiMeasEnabled(boolean multiMeasEnabled) {
-		this.multiMeasEnabled = multiMeasEnabled;
-	}
+  public boolean isMultiMeasEnabled() {
+    return multiMeasEnabled;
+  }
 
-	public int getnQubits() {
-		return nQubits;
-	}
+  public void setMultiMeasEnabled(boolean multiMeasEnabled) {
+    this.multiMeasEnabled = multiMeasEnabled;
+  }
 
-	public void setnQubits(int nQubits) {
-		this.nQubits = nQubits;
-	}
+  public int getnQubits() {
+    return nQubits;
+  }
 
-	public int getnRegisters() {
-		return nRegisters;
-	}
+  public void setnQubits(int nQubits) {
+    this.nQubits = nQubits;
+  }
 
-	public void setnRegisters(int nRegisters) {
-		this.nRegisters = nRegisters;
-	}
+  public int getnRegisters() {
+    return nRegisters;
+  }
 
-	public String getOnlineDate() {
-		return onlineDate;
-	}
+  public void setnRegisters(int nRegisters) {
+    this.nRegisters = nRegisters;
+  }
 
-	public void setOnlineDate(String onlineDate) {
-		this.onlineDate = onlineDate;
-	}
+  public String getOnlineDate() {
+    return onlineDate;
+  }
 
-	public boolean isOpenPulse() {
-		return openPulse;
-	}
+  public void setOnlineDate(String onlineDate) {
+    this.onlineDate = onlineDate;
+  }
 
-	public void setOpenPulse(boolean openPulse) {
-		this.openPulse = openPulse;
-	}
+  public boolean isOpenPulse() {
+    return openPulse;
+  }
 
-	public boolean isParallelCompilation() {
-		return parallelCompilation;
-	}
+  public void setOpenPulse(boolean openPulse) {
+    this.openPulse = openPulse;
+  }
 
-	public void setParallelCompilation(boolean parallelCompilation) {
-		this.parallelCompilation = parallelCompilation;
-	}
+  public boolean isParallelCompilation() {
+    return parallelCompilation;
+  }
 
-	public ProcessorType getProcessorType() {
-		return processorType;
-	}
+  public void setParallelCompilation(boolean parallelCompilation) {
+    this.parallelCompilation = parallelCompilation;
+  }
 
-	public void setProcessorType(ProcessorType processorType) {
-		this.processorType = processorType;
-	}
+  public ProcessorType getProcessorType() {
+    return processorType;
+  }
 
-	public Object getQuantumVolume() {
-		return quantumVolume;
-	}
+  public void setProcessorType(ProcessorType processorType) {
+    this.processorType = processorType;
+  }
 
-	public void setQuantumVolume(Object quantumVolume) {
-		this.quantumVolume = quantumVolume;
-	}
+  public Object getQuantumVolume() {
+    return quantumVolume;
+  }
 
-	public List<Integer> getRepDelayRange() {
-		return repDelayRange;
-	}
+  public void setQuantumVolume(Object quantumVolume) {
+    this.quantumVolume = quantumVolume;
+  }
 
-	public void setRepDelayRange(List<Integer> repDelayRange) {
-		this.repDelayRange = repDelayRange;
-	}
+  public List<Integer> getRepDelayRange() {
+    return repDelayRange;
+  }
 
-	public String getSampleName() {
-		return sampleName;
-	}
+  public void setRepDelayRange(List<Integer> repDelayRange) {
+    this.repDelayRange = repDelayRange;
+  }
 
-	public void setSampleName(String sampleName) {
-		this.sampleName = sampleName;
-	}
+  public String getSampleName() {
+    return sampleName;
+  }
 
-	public boolean isSimulator() {
-		return simulator;
-	}
+  public void setSampleName(String sampleName) {
+    this.sampleName = sampleName;
+  }
 
-	public void setSimulator(boolean simulator) {
-		this.simulator = simulator;
-	}
+  public boolean isSimulator() {
+    return simulator;
+  }
 
-	public List<String> getSupportedFeatures() {
-		return supportedFeatures;
-	}
+  public void setSimulator(boolean simulator) {
+    this.simulator = simulator;
+  }
 
-	public void setSupportedFeatures(List<String> supportedFeatures) {
-		this.supportedFeatures = supportedFeatures;
-	}
+  public List<String> getSupportedFeatures() {
+    return supportedFeatures;
+  }
 
-	public List<String> getSupportedInstructions() {
-		return supportedInstructions;
-	}
+  public void setSupportedFeatures(List<String> supportedFeatures) {
+    this.supportedFeatures = supportedFeatures;
+  }
 
-	public void setSupportedInstructions(List<String> supportedInstructions) {
-		this.supportedInstructions = supportedInstructions;
-	}
+  public List<String> getSupportedInstructions() {
+    return supportedInstructions;
+  }
 
-	public TimingConstraints getTimingConstraints() {
-		return timingConstraints;
-	}
+  public void setSupportedInstructions(List<String> supportedInstructions) {
+    this.supportedInstructions = supportedInstructions;
+  }
 
-	public void setTimingConstraints(TimingConstraints timingConstraints) {
-		this.timingConstraints = timingConstraints;
-	}
+  public TimingConstraints getTimingConstraints() {
+    return timingConstraints;
+  }
 
-	public Object getUrl() {
-		return url;
-	}
+  public void setTimingConstraints(TimingConstraints timingConstraints) {
+    this.timingConstraints = timingConstraints;
+  }
 
-	public void setUrl(Object url) {
-		this.url = url;
-	}
-    
+  public Object getUrl() {
+    return url;
+  }
+
+  public void setUrl(Object url) {
+    this.url = url;
+  }
+
 }

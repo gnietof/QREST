@@ -3,15 +3,15 @@ package com.gnf.qrest.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Execution {
-	@JsonProperty("init_qubits")
-	private boolean initQubits = true;
+  @JsonProperty("init_qubits")
+  private boolean initQubits = true;
 
-	public boolean isInitQubits() {
-		return initQubits;
-	}
+  public boolean isInitQubits() {
+    return initQubits;
+  }
 
-	public void setInitQubits(boolean initQubits) {
-		this.initQubits = initQubits;
-	}
+  public void setInitQubits(boolean initQubits) {
+    this.initQubits = initQubits;
+  }
 
 }

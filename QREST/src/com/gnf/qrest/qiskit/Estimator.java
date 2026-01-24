@@ -1,7 +1,5 @@
 package com.gnf.qrest.qiskit;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -13,51 +11,51 @@ import com.gnf.qrest.model.Backend;
 import com.gnf.qrest.model.EstimatorPUB;
 import com.gnf.qrest.model.PrimitiveRequest;
 import com.gnf.qrest.model.PrimitiveResponse;
+import java.util.List;
 
 public class Estimator extends Primitive<EstimatorPUB> {
-	private static final ObjectMapper om = JsonMapper.builder()
-			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-			.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
-			.serializationInclusion(JsonInclude.Include.NON_NULL)
-			.build();
+  private static final ObjectMapper om = JsonMapper.builder()
+      .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+      .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
+      .serializationInclusion(JsonInclude.Include.NON_NULL)
+      .build();
 
-	public static class EstimatorResponse extends PrimitiveResponse {
-	}
+  public static class EstimatorResponse extends PrimitiveResponse {
+  }
 
-	public Estimator(Backend backend) {
-		super(backend);
-	}
+  public Estimator(Backend backend) {
+    super(backend);
+  }
 
-	@Override 
-	public Job run(EstimatorPUB pub) {
-		return run(List.of(pub));
-	}
-	
-	@Override 
-	public Job run(List<EstimatorPUB> pubs) {
-		QiskitRuntimeService service = QiskitRuntimeService.getInstance();
+  @Override
+  public Job run(EstimatorPUB pub) {
+    return run(List.of(pub));
+  }
 
-		EstimatorRequest req = new EstimatorRequest(getBackend().getName(),pubs);
-		
-		try {
-			String pretty = om.writerWithDefaultPrettyPrinter().writeValueAsString(req);
-			System.out.println(pretty);
-			
-			Job res = service.createJob(req);
-			return res;
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-//		System.out.println(res.getId());
-		return null;
-	}
-	
-	public static class EstimatorRequest extends PrimitiveRequest {
+  @Override
+  public Job run(List<EstimatorPUB> pubs) {
+    QiskitRuntimeService service = QiskitRuntimeService.getInstance();
 
-		public EstimatorRequest(String backend,List<EstimatorPUB> pubs) {
-			super(backend,pubs,"estimator");
-		}
-		
-	}
+    EstimatorRequest req = new EstimatorRequest(getBackend().getName(), pubs);
+
+    try {
+      String pretty = om.writerWithDefaultPrettyPrinter().writeValueAsString(req);
+      System.out.println(pretty);
+
+      Job res = service.createJob(req);
+      return res;
+    } catch (JsonProcessingException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  public static class EstimatorRequest extends PrimitiveRequest {
+
+    public EstimatorRequest(String backend, List<EstimatorPUB> pubs) {
+      super(backend, pubs, "estimator");
+    }
+
+  }
 
 }

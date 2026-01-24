@@ -1,61 +1,60 @@
 package com.gnf.qrest.model;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
 public class Workloads {
 
-	private List<Workload> workloads;
-	
-	@JsonProperty("total_count")
-	private int totalCount;
-	private int limit;
-	private Next next;
-	
-	public static class Next {
-		private String href;
+  private List<Workload> workloads;
 
-		public String getHref() {
-			return href;
-		}
+  @JsonProperty("total_count")
+  private int totalCount;
+  private int limit;
+  private Next next;
 
-		public void setHref(String href) {
-			this.href = href;
-		}
-		
-	}
+  public static class Next {
+    private String href;
 
-	public List<Workload> getWorkloads() {
-		return workloads;
-	}
+    public String getHref() {
+      return href;
+    }
 
-	public void setWorkloads(List<Workload> workloads) {
-		this.workloads = workloads;
-	}
+    public void setHref(String href) {
+      this.href = href;
+    }
 
-	public int getTotalCount() {
-		return totalCount;
-	}
+  }
 
-	public void setTotalCount(int totalCount) {
-		this.totalCount = totalCount;
-	}
+  public List<Workload> getWorkloads() {
+    return workloads;
+  }
 
-	public int getLimit() {
-		return limit;
-	}
+  public void setWorkloads(List<Workload> workloads) {
+    this.workloads = workloads;
+  }
 
-	public void setLimit(int limit) {
-		this.limit = limit;
-	}
+  public int getTotalCount() {
+    return totalCount;
+  }
 
-	public Next getNext() {
-		return next;
-	}
+  public void setTotalCount(int totalCount) {
+    this.totalCount = totalCount;
+  }
 
-	public void setNext(Next next) {
-		this.next = next;
-	}
-	
+  public int getLimit() {
+    return limit;
+  }
+
+  public void setLimit(int limit) {
+    this.limit = limit;
+  }
+
+  public Next getNext() {
+    return next;
+  }
+
+  public void setNext(Next next) {
+    this.next = next;
+  }
+
 }

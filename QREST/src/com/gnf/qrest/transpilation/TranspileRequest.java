@@ -4,34 +4,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TranspileRequest {
 
-	private String circuit;
-	private String backend;
-	
-	@JsonProperty("optimization_level")
-	private int optimizationLevel=1;
+  private String circuit;
+  private String backend;
 
-	public String getCircuit() {
-		return circuit;
-	}
+  @JsonProperty("optimization_level")
+  private int optimizationLevel = 1;
 
-	public void setCircuit(String circuit) {
-		this.circuit = circuit;
-	}
+  public String getCircuit() {
+    return circuit;
+  }
 
-	public String getBackend() {
-		return backend;
-	}
+  public void setCircuit(String circuit) {
+    this.circuit = circuit;
+  }
 
-	public void setBackend(String backend) {
-		this.backend = backend;
-	}
+  public String getBackend() {
+    return backend;
+  }
 
-	public int getOptimizationLevel() {
-		return optimizationLevel;
-	}
+  public void setBackend(String backend) {
+    this.backend = backend;
+  }
 
-	public void setOptimizationLevel(int optimizationLevel) {
-		this.optimizationLevel = optimizationLevel;
-	}
-		
+  public int getOptimizationLevel() {
+    return optimizationLevel;
+  }
+
+  public void setOptimizationLevel(int optimizationLevel) {
+    this.optimizationLevel = optimizationLevel;
+  }
+
 }

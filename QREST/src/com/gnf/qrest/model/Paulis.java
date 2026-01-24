@@ -1,59 +1,58 @@
 package com.gnf.qrest.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.gnf.qrest.qiskit.Pauli;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.gnf.qrest.qiskit.Pauli;
-
 public final class Paulis implements Iterable<Pauli> {
 
-    private final List<Pauli> paulis;
-    
-    public Paulis() {
-    	paulis = new ArrayList<Pauli>();
-    }
+  private final List<Pauli> paulis;
 
-    @JsonCreator
-    public Paulis(List<Pauli> paulis) {
-        this.paulis = List.copyOf(paulis); // defensive copy
-    }
+  public Paulis() {
+    paulis = new ArrayList<Pauli>();
+  }
 
-    public Paulis(Pauli... paulis) {
-        this.paulis = List.of(paulis);
-    }
-    
-    @JsonValue
-    public List<Pauli> asList() {
-        return paulis;
-    }
+  @JsonCreator
+  public Paulis(List<Pauli> paulis) {
+    this.paulis = List.copyOf(paulis); // defensive copy
+  }
 
-    public int size() {
-        return paulis.size();
-    }
+  public Paulis(Pauli... paulis) {
+    this.paulis = List.of(paulis);
+  }
 
-    public void add(Pauli pauli) {
-        paulis.add(pauli);
-    }
+  @JsonValue
+  public List<Pauli> asList() {
+    return paulis;
+  }
 
-    public void addAll(Collection<? extends Pauli> paulis) {
-        this.paulis.addAll(paulis);
-    }
+  public int size() {
+    return paulis.size();
+  }
 
-    public Pauli get(int index) {
-        return paulis.get(index);
-    }
+  public void add(Pauli pauli) {
+    paulis.add(pauli);
+  }
 
-    @Override
-	public Iterator<Pauli> iterator() {
-        return paulis.iterator();
-    }
-    
-    public Stream<Pauli> stream() {
-        return paulis.stream();
-    }    
+  public void addAll(Collection<? extends Pauli> paulis) {
+    this.paulis.addAll(paulis);
+  }
+
+  public Pauli get(int index) {
+    return paulis.get(index);
+  }
+
+  @Override
+  public Iterator<Pauli> iterator() {
+    return paulis.iterator();
+  }
+
+  public Stream<Pauli> stream() {
+    return paulis.stream();
+  }
 }

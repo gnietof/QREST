@@ -1,132 +1,131 @@
 package com.gnf.qrest.model;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
 public class Workload {
 
-	private String id;
-	
-	@JsonProperty("user_id")
-	private String userId;
-	private String created;
-	private String ended;
-	private String backend;
-	private String instance;
+  private String id;
 
-	@JsonProperty("accepting_jobs")
-	private boolean acceptingJobs;
-	private String mode;
-	private String status;
-	
-	@JsonProperty("status_reason")
-	private String statusReason;
-	private List<String> tags;
-	
-	@JsonProperty("usage_seconds")
-	private int usageSeconds;
+  @JsonProperty("user_id")
+  private String userId;
+  private String created;
+  private String ended;
+  private String backend;
+  private String instance;
 
-	public String getId() {
-		return id;
-	}
+  @JsonProperty("accepting_jobs")
+  private boolean acceptingJobs;
+  private String mode;
+  private String status;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+  @JsonProperty("status_reason")
+  private String statusReason;
+  private List<String> tags;
 
-	public String getUserId() {
-		return userId;
-	}
+  @JsonProperty("usage_seconds")
+  private int usageSeconds;
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+  public String getId() {
+    return id;
+  }
 
-	public String getCreated() {
-		return created;
-	}
+  public void setId(String id) {
+    this.id = id;
+  }
 
-	public void setCreated(String created) {
-		this.created = created;
-	}
+  public String getUserId() {
+    return userId;
+  }
 
-	public String getEnded() {
-		return ended;
-	}
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
 
-	public void setEnded(String ended) {
-		this.ended = ended;
-	}
+  public String getCreated() {
+    return created;
+  }
 
-	public String getBackend() {
-		return backend;
-	}
+  public void setCreated(String created) {
+    this.created = created;
+  }
 
-	public void setBackend(String backend) {
-		this.backend = backend;
-	}
+  public String getEnded() {
+    return ended;
+  }
 
-	public String getInstance() {
-		return instance;
-	}
+  public void setEnded(String ended) {
+    this.ended = ended;
+  }
 
-	public void setInstance(String instance) {
-		this.instance = instance;
-	}
+  public String getBackend() {
+    return backend;
+  }
 
-	public boolean isAcceptingJobs() {
-		return acceptingJobs;
-	}
+  public void setBackend(String backend) {
+    this.backend = backend;
+  }
 
-	public void setAcceptingJobs(boolean acceptingJobs) {
-		this.acceptingJobs = acceptingJobs;
-	}
+  public String getInstance() {
+    return instance;
+  }
 
-	public String getMode() {
-		return mode;
-	}
+  public void setInstance(String instance) {
+    this.instance = instance;
+  }
 
-	public void setMode(String mode) {
-		this.mode = mode;
-	}
+  public boolean isAcceptingJobs() {
+    return acceptingJobs;
+  }
 
-	public String getStatus() {
-		return status;
-	}
+  public void setAcceptingJobs(boolean acceptingJobs) {
+    this.acceptingJobs = acceptingJobs;
+  }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+  public String getMode() {
+    return mode;
+  }
 
-	public String getStatusReason() {
-		return statusReason;
-	}
+  public void setMode(String mode) {
+    this.mode = mode;
+  }
 
-	public void setStatusReason(String statusReason) {
-		this.statusReason = statusReason;
-	}
+  public String getStatus() {
+    return status;
+  }
 
-	public List<String> getTags() {
-		return tags;
-	}
+  public void setStatus(String status) {
+    this.status = status;
+  }
 
-	public void setTags(List<String> tags) {
-		this.tags = tags;
-	}
+  public String getStatusReason() {
+    return statusReason;
+  }
 
-	public int getUsageSeconds() {
-		return usageSeconds;
-	}
+  public void setStatusReason(String statusReason) {
+    this.statusReason = statusReason;
+  }
 
-	public void setUsageSeconds(int usageSeconds) {
-		this.usageSeconds = usageSeconds;
-	}
-	
-	@Override
-	public String toString() {
-		String s = String.format("%s: %s (%s) [%s]",getId(),getCreated(),getStatus(),getMode());
-		return s;
-	}
-	
+  public List<String> getTags() {
+    return tags;
+  }
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+  public int getUsageSeconds() {
+    return usageSeconds;
+  }
+
+  public void setUsageSeconds(int usageSeconds) {
+    this.usageSeconds = usageSeconds;
+  }
+
+  @Override
+  public String toString() {
+    String s = String.format("%s: %s (%s) [%s]", getId(), getCreated(), getStatus(), getMode());
+    return s;
+  }
+
 }

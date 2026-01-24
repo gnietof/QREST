@@ -2,58 +2,56 @@ package com.gnf.qrest.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-//public class BackendStatus extends QResponse {
 public class BackendStatus {
 
-	public boolean state;
-	public String status;
-	public String message;
+  public boolean state;
+  public String status;
+  public String message;
 
-	@JsonProperty("length_queue")
-	public int lengthQueue;
-	
-	@JsonProperty("backend_version")
-	public String backendVersion;
+  @JsonProperty("length_queue")
+  public int lengthQueue;
 
-	public boolean isState() {
-		return state;
-	}
+  @JsonProperty("backend_version")
+  public String backendVersion;
 
-	public void setState(boolean state) {
-		this.state = state;
-	}
+  public boolean isState() {
+    return state;
+  }
 
-	public String getStatus() {
-		return status;
-	}
+  public void setState(boolean state) {
+    this.state = state;
+  }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+  public String getStatus() {
+    return status;
+  }
 
-	public String getMessage() {
-		return message;
-	}
+  public void setStatus(String status) {
+    this.status = status;
+  }
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
+  public String getMessage() {
+    return message;
+  }
 
-	public int getLengthQueue() {
-		return lengthQueue;
-	}
+  public void setMessage(String message) {
+    this.message = message;
+  }
 
-	public void setLengthQueue(int lengthQueue) {
-		this.lengthQueue = lengthQueue;
-	}
+  public int getLengthQueue() {
+    return lengthQueue;
+  }
 
-	public String getBackendVersion() {
-		return backendVersion;
-	}
+  public void setLengthQueue(int lengthQueue) {
+    this.lengthQueue = lengthQueue;
+  }
 
-	public void setBackendVersion(String backendVersion) {
-		this.backendVersion = backendVersion;
-	}
-	
-	
+  public String getBackendVersion() {
+    return backendVersion;
+  }
+
+  public void setBackendVersion(String backendVersion) {
+    this.backendVersion = backendVersion;
+  }
+
 }

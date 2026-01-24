@@ -1,58 +1,53 @@
 package com.gnf.qrest.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Params {
-	private List<? extends PUB> pubs;
-	private Options options;
-	private int version = 2;
-	
-	@JsonProperty("support_qiskit")
-	private boolean supportQiskit = false;
-	
-	public Options getOptions() {
-		if (options == null) {
-			options = new Options();
-		}
-		return options;
-	}
+  private List<? extends PUB> pubs;
+  private Options options;
+  private int version = 2;
 
-	public void setOptions(Options options) {
-		this.options = options;
-	}
+  @JsonProperty("support_qiskit")
+  private boolean supportQiskit = false;
 
-	public int getVersion() {
-		return version;
-	}
+  public Options getOptions() {
+    if (options == null) {
+      options = new Options();
+    }
+    return options;
+  }
 
-	public void setVersion(int version) {
-		this.version = version;
-	}
+  public void setOptions(Options options) {
+    this.options = options;
+  }
 
-	public List<? extends PUB> getPubs() {
-		if (pubs==null) {
-			pubs = new ArrayList<PUB>();
-		}
-		return pubs;
-	}
+  public int getVersion() {
+    return version;
+  }
 
-	public void setPubs(List<? extends PUB> pubs) {
-		this.pubs = pubs;
-	}
+  public void setVersion(int version) {
+    this.version = version;
+  }
 
-//	public void addPub(PUB pub) {
-//		getPubs().add(pub.buildAsList());
-//	}
+  public List<? extends PUB> getPubs() {
+    if (pubs == null) {
+      pubs = new ArrayList<PUB>();
+    }
+    return pubs;
+  }
 
-	public boolean isSupportQiskit() {
-		return supportQiskit;
-	}
+  public void setPubs(List<? extends PUB> pubs) {
+    this.pubs = pubs;
+  }
 
-	public void setSupportQiskit(boolean supportQiskit) {
-		this.supportQiskit = supportQiskit;
-	}
-	
+  public boolean isSupportQiskit() {
+    return supportQiskit;
+  }
+
+  public void setSupportQiskit(boolean supportQiskit) {
+    this.supportQiskit = supportQiskit;
+  }
+
 }

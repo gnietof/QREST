@@ -3,76 +3,76 @@ package com.gnf.qrest.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Backend {
-	private String name;
-	private String state;
-	private String message;
+  private String name;
+  private String state;
+  private String message;
 
-	@JsonProperty("is_simulator")
-	private boolean isSimulator;
+  @JsonProperty("is_simulator")
+  private boolean isSimulator;
 
-	private int qubits;
-	
-	@JsonProperty("length_queue")
-	private int queueLength;
-	
-	@JsonProperty("backend_version")
-	private String backendVersion;
+  private int qubits;
+  
+  @JsonProperty("length_queue")
+  private int queueLength;
+  
+  @JsonProperty("backend_version")
+  private String backendVersion;
+  
+  public String getName() {
+    return name;
+  }
 
-	public String getName() {
-		return name;
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
+  
+  public String getState() {
+    return state;
+  }
+  
+  public void setState(String state) {
+    this.state = state;
+  }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  public String getMessage() {
+    return message;
+  }
 
-	public String getState() {
-		return state;
-	}
+  public void setMessage(String message) {
+    this.message = message;
+  }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+  public int getQueueLength() {
+    return queueLength;
+  }
 
-	public String getMessage() {
-		return message;
-	}
+  public void setQueueLength(int queueLength) {
+    this.queueLength = queueLength;
+  }
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
+  public String getBackendVersion() {
+    return backendVersion;
+  }
 
-	public int getQueueLength() {
-		return queueLength;
-	}
+  public void setBackendVersion(String backendVersion) {
+    this.backendVersion = backendVersion;
+  }
 
-	public void setQueueLength(int queueLength) {
-		this.queueLength = queueLength;
-	}
+  public boolean isSimulator() {
+    return isSimulator;
+  }
 
-	public String getBackendVersion() {
-		return backendVersion;
-	}
+  public void setSimulator(boolean isSimulator) {
+    this.isSimulator = isSimulator;
+  }
 
-	public void setBackendVersion(String backendVersion) {
-		this.backendVersion = backendVersion;
-	}
+  public int getQubits() {
+    return qubits;
+  }
 
-	public boolean isSimulator() {
-		return isSimulator;
-	}
+  public void setQubits(int qubits) {
+    this.qubits = qubits;
+  }
 
-	public void setSimulator(boolean isSimulator) {
-		this.isSimulator = isSimulator;
-	}
-
-	public int getQubits() {
-		return qubits;
-	}
-
-	public void setQubits(int qubits) {
-		this.qubits = qubits;
-	}
-
-	
+  
 }
