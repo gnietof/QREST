@@ -9,13 +9,15 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
-      - name: Run Checkstyle
-        uses: dbelyaev/action-checkstyle@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Options: google_checks.xml (default) or sun_checks.xml
-          checkstyle_config: google_checks.xml 
-          level: warning
-          workdir: ./QREST
-          args: src
+          fetch-depth: 0
+          
+
+      - name: Lint Java
+        uses: github/super-linter@v5
+        env:
+          VALIDATE_JAVA: true
+          DEFAULT_BRANCH: main
+          
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: true
