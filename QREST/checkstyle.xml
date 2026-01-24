@@ -1,3 +1,12 @@
+<?xml version="1.0"?>
+
+<suppressions>
+    <suppress checks="FinalParameters"/>
+    <suppress checks="HiddenField"/>
+    <suppress checks="DesignForExtension"/>
+    <suppress checks="MagicNumber"/>
+</suppressions>
+
 <module name="TreeWalker">
 
         <!-- ===== Naming rules ===== -->
