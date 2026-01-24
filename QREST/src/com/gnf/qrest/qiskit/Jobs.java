@@ -2,6 +2,9 @@ package com.gnf.qrest.qiskit;
 
 import java.util.List;
 
+/**
+ * Models a Jobs 
+ */
 public class Jobs {
 
   private List<Job> jobs;

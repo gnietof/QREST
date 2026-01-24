@@ -10,18 +10,23 @@ public class EstimatorResponse {
   private List<Double> result;
 
   /**
-   * @return the result
+   * Gets the result.
+   * 
+   * @return The result.
    */
   public List<Double> getResult() {
     return result;
   }
 
   /**
-   * @param result the result to set
+   * Sets the result.
+   * 
+   * @param result The result to set.
    */
   public void setResult(List<Double> result) {
     this.result = result;
   }
+
 
 
 }

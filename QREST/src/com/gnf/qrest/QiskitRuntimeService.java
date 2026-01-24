@@ -33,6 +33,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import javax.net.ssl.HttpsURLConnection;
 
+/**
+ * 
+ */
+/**
+ * 
+ */
 public class QiskitRuntimeService {
 
   private static final ObjectMapper om = JsonMapper.builder()
@@ -188,6 +194,9 @@ public class QiskitRuntimeService {
     return job;
   }
 
+  /**
+   * Gets a token in IBM Quantum for the configured user. 
+   */
   private String getToken() {
     String t = null;
     long d = new Date().getTime();
@@ -200,6 +209,10 @@ public class QiskitRuntimeService {
     return t;
   }
 
+
+  /**
+   * Retrieves the token from IBM Quantum. 
+   */
   private void doToken() {
     try {
       URL url = new URL("https://iam.cloud.ibm.com/oidc/token");
@@ -230,11 +243,34 @@ public class QiskitRuntimeService {
     }
   }
 
+  /**
+   * Calls a REST endpoint.
+   * 
+   * @param <T> The expected type of data for the results.
+   * @param href The URL for the endpoint.
+   * @param method The method which will be used (GET, POST...).
+   * @param params The parameters if any added to the request.
+   * @param data Any data included in the request.
+   * @param c The type of the expected results.
+   * @return An instance of the class T with the response provided. 
+   */
   private <T> T callREST(String href, String method, String params, 
       String data, Class<T> c) {
     return callREST(href, method, params, data, c, false);
   }
 
+  /**
+   * Calls a REST endpoint.
+   * 
+   * @param <T> The expected type of data for the results.
+   * @param href The URL for the endpoint.
+   * @param method The method which will be used (GET, POST...).
+   * @param params The parameters if any added to the request.
+   * @param data Any data included in the request.
+   * @param c The type of the expected results.
+   * @param debug Whether we want to display debug information or not.
+   * @return An instance of the class T with the response provided. 
+   */
   private <T> T callREST(String href, String method, String params, 
       String data, Class<T> c, boolean debug) {
 
