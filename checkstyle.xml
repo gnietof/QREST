@@ -10,9 +10,10 @@
             <property name="file" value="supressions.xml" />
         </module>
 
+        <module name="TreeWalker">
+        
+        
+        </module>
+
 </module>
 
-<module name="TreeWalker">
-
-
-</module>
