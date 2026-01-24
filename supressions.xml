@@ -1,0 +1,6 @@
+<suppressions>
+    <suppress checks="FinalParameters"/>
+    <suppress checks="HiddenField"/>
+    <suppress checks="DesignForExtension"/>
+    <suppress checks="MagicNumber"/>
+</suppressions>
