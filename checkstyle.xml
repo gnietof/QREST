@@ -1,18 +1,16 @@
 <?xml version="1.0"?>
 
-<suppressions>
-    <suppress checks="FinalParameters"/>
-    <suppress checks="HiddenField"/>
-    <suppress checks="DesignForExtension"/>
-    <suppress checks="MagicNumber"/>
-</suppressions>
-
 <module name="TreeWalker">
 
         <!-- ===== Naming rules ===== -->
 
         <!-- Allow multiple uppercase letters in method names -->
         <!-- e.g. getHTTPResponse, parseXML -->
+
+        <module name="SupressionsFilter">
+            <property name="file" value="supressions.xml" />
+        </module>
+    
         <module name="MethodName">
             <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
         </module>
