@@ -37,6 +37,10 @@
             <property name="ignoreSetter" value="true" />
             <property name="severity" value="warning"/>
         </module>
+
+        <module name="JavadocVariable">
+            <property name="scope" value="public"/>
+        </module>              
         
     </module>
 
