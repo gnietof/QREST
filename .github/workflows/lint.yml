@@ -17,4 +17,4 @@ jobs:
           # Options: google_checks.xml (default) or sun_checks.xml
           checkstyle_config: google_checks.xml 
           level: warning
-          workdir: ./QREST/src
+          args: ./QREST/src
