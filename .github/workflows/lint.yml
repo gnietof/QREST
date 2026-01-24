@@ -18,3 +18,4 @@ jobs:
           checkstyle_config: google_checks.xml 
           level: warning
           workdir: ./QREST
+          args: src
