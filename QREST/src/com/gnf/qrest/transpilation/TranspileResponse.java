@@ -1,6 +1,6 @@
 package com.gnf.qrest.transpilation;
 
-public class TranspileResponse {
+public final class TranspileResponse {
 
   private String qasm;
 
