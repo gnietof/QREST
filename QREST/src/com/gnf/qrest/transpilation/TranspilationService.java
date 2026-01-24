@@ -12,7 +12,6 @@ import com.gnf.qrest.simulator.EstimatorRequest;
 import com.gnf.qrest.simulator.EstimatorResponse;
 import com.gnf.qrest.simulator.SamplerRequest;
 import com.gnf.qrest.simulator.SamplerResponse;
-import com.gnf.qrest.tools.SSLTool;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -23,7 +22,10 @@ import java.util.List;
 import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
-public class TranspilationService {
+/**
+ * Provides a service to access circuit transpilation.
+ */
+public final class TranspilationService {
 
   private static final ObjectMapper om = JsonMapper.builder()
       .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
@@ -33,10 +35,23 @@ public class TranspilationService {
   private static final String TRANSPILATION = "https://www.gnf.es:8443";
   private static TranspilationService instance = new TranspilationService();
 
+  /**
+   * Retrieves an instance of the transpilation service.
+   * 
+   * @return Transpilation service instance
+   */
   public static TranspilationService getInstance() {
     return instance;
   }
 
+  /**
+   * Execute the transpilation of the circuit for the provided backend.
+   * 
+   * @param backend The backend which will run the circuit.
+   * @param circuit The circuit to run. 
+   * @param level The optimization level (0-3).
+   * @return The transpiled circuit.
+   */
   public String transpile(String backend, String circuit, int level) {
 
     TranspileRequest req = new TranspileRequest();
@@ -57,6 +72,14 @@ public class TranspilationService {
     return null;
   }
 
+  /**
+   * Execute the a Sampler of the circuit in the provided backend.
+   * 
+   * @param backend The backend which will run the circuit.
+   * @param circuit The circuit to run. 
+   * @param shots The number of shots to execute
+   * @return An array of primitive responses
+   */
   public SamplerResponse sampler(String circuit, int shots) {
 
     SamplerRequest req = new SamplerRequest();
@@ -76,6 +99,15 @@ public class TranspilationService {
     return null;
   }
 
+  /**
+   * Execute the an Estimator of the circuit for those observables in the 
+   * provided backend.
+   *  
+   * @param backend The backend which will run the circuit.
+   * @param circuit The circuit to run. 
+   * @param observables The array of observables to use. 
+   * @return An array of primitive responses
+   */
   public EstimatorResponse estimator(String circuit, String observable) {
 
     EstimatorRequest req = new EstimatorRequest();
@@ -95,6 +127,17 @@ public class TranspilationService {
     return null;
   }
 
+  /**
+   * Applies a layout to a list of observable based on the transpilation of 
+   * the cirtuit.
+   * 
+   * @param backend The backend which will run the circuit.
+   * @param circuit The ciruit to traspile.
+   * @param observables The array of observables to apply the circuit layout. 
+   * @param level The optimization level (0-3).
+   * @return The observables having the layout of the transpiled cirtuit 
+   * being applied.
+   */
   public LayoutResponse layout(String backend, String circuit, 
       List<Paulis> observables, int level) {
 
@@ -117,12 +160,17 @@ public class TranspilationService {
     return null;
   }
 
+  /**
+   * @param circuit
+   * @param os
+   */
   public void draw(String circuit, OutputStream os) {
 
     CircuitRequest req = new CircuitRequest();
     req.setCircuit(circuit);
 
-    try (InputStream is = callREST("/draw", "POST", null, om.writeValueAsString(req))) {
+    try (InputStream is = callREST("/draw", 
+        "POST", null, om.writeValueAsString(req))) {
       is.transferTo(os);
     } catch (JsonProcessingException e) {
       e.printStackTrace();
@@ -132,15 +180,36 @@ public class TranspilationService {
 
   }
 
+  /**
+   * Calls a REST endpoint.
+   * 
+   * @param <T> The expected type of data for the results.
+   * @param href The URL for the endpoint.
+   * @param method The method which will be used (GET, POST...).
+   * @param params The parameters if any added to the request.
+   * @param data Any data included in the request.
+   * @param c The type of the expected results.
+   * @return An instance of the class T with the response provided. 
+   */
   private <T> T callREST(String href, String method, 
       String params, String data, Class<T> c) {
     return callREST(href, method, params, data, c, false);
   }
 
+  /**
+   * Calls a REST endpoint.
+   * 
+   * @param <T> The expected type of data for the results.
+   * @param href The URL for the endpoint.
+   * @param method The method which will be used (GET, POST...).
+   * @param params The parameters if any added to the request.
+   * @param data Any data included in the request.
+   * @param c The type of the expected results.
+   * @param debug Whether we want to display debug information or not.
+   * @return An instance of the class T with the response provided. 
+   */
   private <T> T callREST(String href, String method, 
       String params, String data, Class<T> c, boolean debug) {
-
-    SSLTool.configureSSL();
 
     T o = null;
 
@@ -205,14 +274,28 @@ public class TranspilationService {
     return o;
   }
 
+  /**
+   * @param href
+   * @param method
+   * @param params
+   * @param data
+   * @return
+   */
   private InputStream callREST(String href, String method, 
       String params, String data) {
     return callREST(href, method, params, data, false);
   }
 
+  /**
+   * @param href
+   * @param method
+   * @param params
+   * @param data
+   * @param debug
+   * @return
+   */
   private InputStream callREST(String href, String method, 
       String params, String data, boolean debug) {
-    SSLTool.configureSSL();
 
     try {
       String u = TRANSPILATION + href + (params != null ? "?" + params : "");
