@@ -24,7 +24,7 @@ public class BackendProps {
   private List<List<Measure>> qubits;
 
   /**
-   * 
+   * Models a Gate.
    */
   public static class Gate {
     private String gate;
@@ -242,7 +242,7 @@ public class BackendProps {
     }
 
     /**
-     * Models a Qubit
+     * Models a Qubit.
      */
     public static class Qubit {
 

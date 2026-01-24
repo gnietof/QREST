@@ -6,6 +6,11 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.gnf.qrest.qiskit.Pauli;
 import java.io.IOException;
 
+/**
+ * Serializer for PauliSerializer.
+ * 
+ * @param qasm the qasm to set
+ */
 public class PauliSerializer extends JsonSerializer<Pauli> {
 
   @Override

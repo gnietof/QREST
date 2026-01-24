@@ -6,7 +6,6 @@ package com.gnf.qrest.simulator;
 public class SamplerRequest {
 
   private String circuit;
-
   private int shots;
 
   /**

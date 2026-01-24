@@ -12,15 +12,16 @@ import com.gnf.qrest.model.PrimitiveRequest;
 import com.gnf.qrest.model.SamplerPUB;
 import java.util.List;
 
+
+/**
+ * Sampler primitive implementation
+ */
 public class Sampler extends Primitive<SamplerPUB> {
   private static final ObjectMapper om = JsonMapper.builder()
       .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
       .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
       .serializationInclusion(JsonInclude.Include.NON_NULL)
       .build();
-
-  public static class SamplerResponse {
-  }
 
   public Sampler(Backend backend) {
     super(backend);
@@ -49,8 +50,14 @@ public class Sampler extends Primitive<SamplerPUB> {
     return null;
   }
 
+  /**
+   * Models a SamplerRequest.
+   */
   public static class SamplerRequest extends PrimitiveRequest {
 
+    /**
+     * Con
+     */
     public SamplerRequest(String backend, List<SamplerPUB> pubs) {
       super(backend, pubs, "sampler");
     }

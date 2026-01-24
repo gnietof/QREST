@@ -3,7 +3,7 @@ package com.gnf.qrest.qiskit;
 import java.util.List;
 
 /**
- * Models a Jobs 
+ * Models a Jobs.
  */
 public class Jobs {
 

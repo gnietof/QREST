@@ -12,7 +12,7 @@ public class SamplerResponse {
   private Result result;
 
   /**
-   * Models a Sampler results 
+   * Models a Sampler results.
    */
   public static class Result {
 

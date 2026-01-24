@@ -4,7 +4,12 @@ import com.gnf.qrest.model.Paulis;
 import java.util.List;
 import java.util.StringJoiner;
 
+
+/**
+ * Models a SparsePauliOp.
+ */
 public class SparsePauliOp {
+
 
   private String type = "SparsePauliOp";
   private Paulis paulis;
@@ -13,15 +18,24 @@ public class SparsePauliOp {
     this.paulis = paulis;
   }
 
+  /**
+   * Contruct a SparsePauliOp from a Paulis.
+   */
   public static SparsePauliOp fromList(Paulis paulis) {
     SparsePauliOp sop = new SparsePauliOp(paulis);
     return sop;
   }
 
+  /**
+   * Contruct a SparsePauliOp from a Paulis with num qubits.
+   */
   public static SparsePauliOp fromSparseList(Paulis paulis, int num) {
     return SparsePauliOp.fromSparseList(paulis.asList(), num);
   }
 
+  /**
+   * Contruct a SparsePauliOp from a list of Paulis with num qubits.
+   */
   public static SparsePauliOp fromSparseList(List<Pauli> paulis, int num) {
     Paulis pp = new Paulis();
     for (Pauli p : paulis) {
@@ -29,22 +43,6 @@ public class SparsePauliOp {
     }
     SparsePauliOp sop = new SparsePauliOp(pp);
     return sop;
-  }
-
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public Paulis getPaulis() {
-    return paulis;
-  }
-
-  public void setPaulis(List<Pauli> paulis) {
-    this.paulis = new Paulis(paulis);
   }
 
   @Override
@@ -55,5 +53,42 @@ public class SparsePauliOp {
     }
     return sj.toString();
   }
+
+  /**
+   * Gets the type.
+   * 
+   * @return The type.
+   */
+  public String getType() {
+    return type;
+  }
+
+  /**
+   * Sets the type.
+   * 
+   * @param type the type to set
+   */
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  /**
+   * Gets the paulis.
+   * 
+   * @return The paulis.
+   */
+  public Paulis getPaulis() {
+    return paulis;
+  }
+
+  /**
+   * Sets the paulis.
+   * 
+   * @param paulis the paulis to set
+   */
+  public void setPaulis(Paulis paulis) {
+    this.paulis = paulis;
+  }
+
 
 }

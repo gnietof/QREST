@@ -3,7 +3,7 @@ package com.gnf.qrest.simulator;
 import java.util.List;
 
 /**
- * Models an Estimator response 
+ * Models an Estimator response.
  */
 public class EstimatorResponse {
 

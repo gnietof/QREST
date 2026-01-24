@@ -8,6 +8,11 @@ import com.gnf.qrest.qiskit.Pauli;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Serializer for PauliListSerializer.
+ * 
+ * @param qasm the qasm to set
+ */
 public class PauliListSerializer extends JsonSerializer<List<Paulis>> {
 
   @Override

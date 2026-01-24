@@ -10,7 +10,6 @@ import com.gnf.qrest.QiskitRuntimeService;
 import com.gnf.qrest.model.Backend;
 import com.gnf.qrest.model.EstimatorPUB;
 import com.gnf.qrest.model.PrimitiveRequest;
-import com.gnf.qrest.model.PrimitiveResponse;
 import java.util.List;
 
 public class Estimator extends Primitive<EstimatorPUB> {
@@ -19,9 +18,6 @@ public class Estimator extends Primitive<EstimatorPUB> {
       .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
       .serializationInclusion(JsonInclude.Include.NON_NULL)
       .build();
-
-  public static class EstimatorResponse extends PrimitiveResponse {
-  }
 
   public Estimator(Backend backend) {
     super(backend);
@@ -50,6 +46,9 @@ public class Estimator extends Primitive<EstimatorPUB> {
     return null;
   }
 
+  /**
+   * Models a EstimatorRequest.
+   */
   public static class EstimatorRequest extends PrimitiveRequest {
 
     public EstimatorRequest(String backend, List<EstimatorPUB> pubs) {

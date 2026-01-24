@@ -6,6 +6,11 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.gnf.qrest.model.EstimatorPUB;
 import java.io.IOException;
 
+/**
+ * Serializer for EstimatorPUBSerializer.
+ * 
+ * @param qasm the qasm to set
+ */
 public class EstimatorPUBSerializer extends JsonSerializer<EstimatorPUB> {
 
   private PauliListSerializer pauliListSerializer = new PauliListSerializer();

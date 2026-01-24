@@ -8,7 +8,7 @@ import com.gnf.qrest.model.Usage;
 import java.util.List;
 
 /**
- * Models a QResponse 
+ * Models a QResponse.
  */
 public class Job extends QResponse {
 
@@ -34,7 +34,7 @@ public class Job extends QResponse {
   private List<String> tags;
 
   /**
-   * Models a State
+   * Models a State.
    */
   public static class State {
     private String status;
@@ -101,7 +101,7 @@ public class Job extends QResponse {
   }
 
   /**
-   * Cancels a job
+   * Cancels a job.
    */
   public void cancel() {
     QiskitRuntimeService service = QiskitRuntimeService.getInstance();

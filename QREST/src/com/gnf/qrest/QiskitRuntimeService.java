@@ -34,10 +34,7 @@ import java.util.stream.Collectors;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * 
- */
-/**
- * 
+ * Models a QiskitRuntimeService.
  */
 public class QiskitRuntimeService {
 
@@ -54,6 +51,11 @@ public class QiskitRuntimeService {
     return instance;
   }
 
+  /**
+   * Retrieves all workloads executed in a IBM QPU's.
+   * 
+   * @return The workloads.
+   */
   public Workloads workloads() {
 
     Workloads res = callREST("/workloads", "GET", null, null, Workloads.class);
@@ -61,26 +63,46 @@ public class QiskitRuntimeService {
 
   }
 
-  public Backend backend(String id) {
-    List<Backend> res = backends(new BackendsRequest.Builder().name(id).build());
+  /**
+   * Retrieves a backend by its name.
+   * 
+   * @return The backend.
+   */
+  public Backend backend(String name) {
+    List<Backend> res = backends(new BackendsRequest.Builder().name(name).build());
     if (res != null && res.size() > 0) {
       return res.get(0);
     }
     return null;
   }
 
+  /**
+   * Retrieves a backend status by its name.
+   * 
+   * @return The backend status.
+   */
   public BackendStatus backendStatus(String name) {
     BackendStatus res = callREST("/backends/" + name + "/status", 
         "GET", null, null, BackendStatus.class);
     return res;
   }
 
+  /**
+   * Retrieves a backend properties by its name.
+   * 
+   * @return The backend properties.
+   */
   public BackendProps backendProps(String name) {
     BackendProps res = callREST("/backends/" + name + "/properties", 
         "GET", null, null, BackendProps.class);
     return res;
   }
 
+  /**
+   * Retrieves a backend config by its name.
+   * 
+   * @return The backend config.
+   */
   public BackendConfig backendConfig(String name) {
     BackendConfig res = callREST("/backends/" + name + "/configuration", 
         "GET", null, null, BackendConfig.class);
@@ -117,21 +139,41 @@ public class QiskitRuntimeService {
     return null;
   }
 
+  /**
+   * Retrieves a job by its id.
+   * 
+   * @return The job.
+   */
   public Job job(String id) {
     Job res = job(id, false);
     return res;
   }
 
+  /**
+   * Retrieves a job by its id.
+   * 
+   * @return The job.
+   */
   public Job job(String id, boolean excludeParams) {
     Job res = callREST("/jobs/" + id, "GET", "exclude_params=" + excludeParams, null, Job.class);
     return res;
   }
 
+  /**
+   * Retrieves all jobs executed in a IBM QPU's.
+   * 
+   * @return The job.
+   */
   public Jobs jobs() {
     Jobs res = callREST("/jobs", "GET", null, null, Jobs.class);
     return res;
   }
 
+  /**
+   * Adds tags to a job.
+   * 
+   * @return The response for the request.
+   */
   public QResponse tags(String id, Tags tags) {
     try {
       QResponse res = callREST("/jobs/" + id + "/tags", 
@@ -143,38 +185,80 @@ public class QiskitRuntimeService {
     return null;
   }
 
+  /**
+   * Search and list the tags of jobs.
+   * 
+   * @param tag The tag.
+   * @return The tags.
+   */
   public Tags searchTags(String tag) {
     Tags tags = callREST("/tags", "GET", tag != null ? "search=" + tag : null, null, Tags.class);
     return tags;
   }
 
+  /**
+   * Retrieves a session by its id.
+   * 
+   * @param id The session id.
+   * @return The session.
+   */
   public Session session(String id) {
     Session res = callREST("/sessions/" + id, "GET", null, null, Session.class);
     return res;
   }
 
+  /**
+   * Retrieves the jobs in a session by its id.
+   * 
+   * @param id The session id.
+   * @return The jobs.
+   */
   public Jobs sessionJobs(String id) {
     Jobs res = callREST("/jobs", "GET", "session_id=" + id, null, Jobs.class);
     return res;
   }
 
+  /**
+   * Retrieves the details of a job its id.
+   * 
+   * @param id The job id.
+   * @return The job.
+   */
   public Job jobDetails(String id) {
     Job res = callREST("/jobs/" + id, "GET", null, null, Job.class);
     return res;
   }
 
+  /**
+   * Retrieves the primitive results of a job its id.
+   * 
+   * @param id The job id.
+   * @return The primitive results.
+   */
   public PrimitiveResults jobResults(String id) {
     PrimitiveResults res = callREST("/jobs/" + id + "/results", 
         "GET", null, null, PrimitiveResults.class);
     return res;
   }
 
+  /**
+   * Cancels a job by its id.
+   * 
+   * @param id The job id.
+   * @return The jobs.
+   */
   public QResponse cancelJob(String id) {
     QResponse res = callREST("/jobs/" + id + "/cancel", 
         "POST", null, "", QResponse.class);
     return res;
   }
 
+  /**
+   * Waits for the completion of a job its id.
+   * 
+   * @param id The job id.
+   * @return The job.
+   */
   public Job waitForFinalState(String id) {
     Job job = null;
 

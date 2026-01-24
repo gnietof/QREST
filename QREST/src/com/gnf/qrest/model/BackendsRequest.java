@@ -3,16 +3,20 @@ package com.gnf.qrest.model;
 public class BackendsRequest {
   private String name;
   private Integer minNumQubits;
+  
+//  public static Builder builder() {
+//        return new Builder();
+//    }
 
   public BackendsRequest(Builder builder) {
     this.name = builder.name;
     this.minNumQubits = builder.minNumQubits;
   }
-
+  
   public static class Builder {
     private String name;
     private Integer minNumQubits;
-
+    
     public Builder name(String name) {
       this.name = name;
       return this;
@@ -22,7 +26,7 @@ public class BackendsRequest {
       this.minNumQubits = minNumQubits;
       return this;
     }
-
+    
     public BackendsRequest build() {
       return new BackendsRequest(this);
     }
@@ -43,5 +47,5 @@ public class BackendsRequest {
   public void setMinNumQubits(Integer minNumQubits) {
     this.minNumQubits = minNumQubits;
   }
-
+  
 }

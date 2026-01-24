@@ -5,26 +5,38 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- *
+ * Models a Pauli.
  */
 public class Pauli {
 
   String label;
   double coeff;
 
+  /**
+   * Default Pauli constructor.
+   */
   public Pauli() {
   }
 
+  /**
+   * Pauli constructor from label.
+   */
   public Pauli(String label) {
     this.label = label;
     this.coeff = 1.0;
   }
 
+  /**
+   * Pauli constructor from label and coefficient.
+   */
   public Pauli(String label, double coeff) {
     this.label = label;
     this.coeff = coeff;
   }
 
+  /**
+   * Pauli constructor from label,indices and coefficient.
+   */
   public Pauli(String label, int[] indices, double coeff) {
     int num = check(indices);
     int num2 = label.length();
@@ -73,18 +85,38 @@ public class Pauli {
 
   }
 
+  /**
+   * Gets the label.
+   * 
+   * @return The label.
+   */
   public String getLabel() {
     return label;
   }
 
+  /**
+   * Sets the label.
+   * 
+   * @param label the label to set
+   */
   public void setLabel(String label) {
     this.label = label;
   }
 
+  /**
+   * Gets the coeff.
+   * 
+   * @return The coeff.
+   */
   public double getCoeff() {
     return coeff;
   }
 
+  /**
+   * Sets the coeff.
+   * 
+   * @param coeff the coeff to set
+   */
   public void setCoeff(double coeff) {
     this.coeff = coeff;
   }
@@ -93,4 +125,5 @@ public class Pauli {
   public String toString() {
     return String.format("(%s, %f)", label, coeff);
   }
+
 }

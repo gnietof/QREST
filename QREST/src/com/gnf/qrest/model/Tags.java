@@ -3,19 +3,28 @@ package com.gnf.qrest.model;
 import java.util.List;
 
 /**
- * Class for modeling job tags 
+ * Class for modeling job tags.
  */
 public class Tags {
 
   private List<String> tags;
 
+  /**
+   * Default Tags constructor.
+   */
   public Tags() {
   }
 
+  /**
+   * Tags constructor from list of strings.
+   */
   public Tags(List<String> tags) {
     this.tags = tags;
   }
 
+  /**
+   * Tags constructor from strings.
+   */
   public Tags(String... tags) {
     this.tags = List.of(tags);
   }
@@ -30,13 +39,12 @@ public class Tags {
   }
 
   /**
-   * Sets the tags.
-   *
+   * Sets the tags. import java.util.Collection;
+   * 
    * @param tags The tags to set.
    */
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
-
 
 }
