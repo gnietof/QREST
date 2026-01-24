@@ -4,15 +4,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BackendStatus {
 
-  public boolean state;
-  public String status;
-  public String message;
+  private boolean state;
+  private String status;
+  private String message;
 
   @JsonProperty("length_queue")
-  public int lengthQueue;
+  private int lengthQueue;
 
   @JsonProperty("backend_version")
-  public String backendVersion;
+  private String backendVersion;
 
   public boolean isState() {
     return state;
