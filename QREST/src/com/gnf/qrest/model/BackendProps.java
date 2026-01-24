@@ -37,37 +37,6 @@ public class BackendProps {
       private String unit;
       private Double value;
 
-      public String getDate() {
-        return date;
-      }
-
-      public void setDate(String date) {
-        this.date = date;
-      }
-
-      public String getName() {
-        return name;
-      }
-
-      public void setName(String name) {
-        this.name = name;
-      }
-
-      public String getUnit() {
-        return unit;
-      }
-
-      public void setUnit(String unit) {
-        this.unit = unit;
-      }
-
-      public Double getValue() {
-        return value;
-      }
-
-      public void setValue(Double value) {
-        this.value = value;
-      }
     }
 
     public static class Measure {
@@ -76,58 +45,13 @@ public class BackendProps {
       private String unit;
       private Double value;
 
-      public String getDate() {
-        return date;
-      }
-
-      public void setDate(String date) {
-        this.date = date;
-      }
-
-      public String getName() {
-        return name;
-      }
-
-      public void setName(String name) {
-        this.name = name;
-      }
-
-      public String getUnit() {
-        return unit;
-      }
-
-      public void setUnit(String unit) {
-        this.unit = unit;
-      }
-
-      public Double getValue() {
-        return value;
-      }
-
-      public void setValue(Double value) {
-        this.value = value;
-      }
     }
 
     public static class GeneralQLists {
       private String name;
+
       private List<Integer> qubits;
 
-      public String getName() {
-        return name;
-      }
-
-      public void setName(String name) {
-        this.name = name;
-      }
-
-      public List<Integer> getQubits() {
-        return qubits;
-      }
-
-      public void setQubits(List<Integer> qubits) {
-        this.qubits = qubits;
-      }
     }
 
     public static class Qubit {

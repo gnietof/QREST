@@ -25,7 +25,7 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Provides a service to access circuit transpilation.
  */
-public final class TranspilationService {
+public class TranspilationService {
 
   private static final ObjectMapper om = JsonMapper.builder()
       .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
@@ -136,7 +136,7 @@ public final class TranspilationService {
    * @param observables The array of observables to apply the circuit layout. 
    * @param level The optimization level (0-3).
    * @return The observables having the layout of the transpiled cirtuit 
-   * being applied.
+   *     being applied.
    */
   public LayoutResponse layout(String backend, String circuit, 
       List<Paulis> observables, int level) {
@@ -161,8 +161,10 @@ public final class TranspilationService {
   }
 
   /**
-   * @param circuit
-   * @param os
+   * Returns a Matplotlib style drawing of the circuit.
+   * 
+   * @param circuit The circuit to draw.
+   * @param os The outputstream with the data.
    */
   public void draw(String circuit, OutputStream os) {
 
@@ -275,11 +277,14 @@ public final class TranspilationService {
   }
 
   /**
-   * @param href
-   * @param method
-   * @param params
-   * @param data
-   * @return
+   * Calls a REST endpoint.
+   * 
+   * @param <T> The expected type of data for the results.
+   * @param href The URL for the endpoint.
+   * @param method The method which will be used (GET, POST...).
+   * @param params The parameters if any added to the request.
+   * @param data Any data included in the request.
+   * @return An input stream with the response.
    */
   private InputStream callREST(String href, String method, 
       String params, String data) {
@@ -287,12 +292,15 @@ public final class TranspilationService {
   }
 
   /**
-   * @param href
-   * @param method
-   * @param params
-   * @param data
-   * @param debug
-   * @return
+   * Calls a REST endpoint.
+   * 
+   * @param <T> The expected type of data for the results.
+   * @param href The URL for the endpoint.
+   * @param method The method which will be used (GET, POST...).
+   * @param params The parameters if any added to the request.
+   * @param data Any data included in the request.
+   * @param debug Whether we want to display debug information or not.
+   * @return An input stream with the response.
    */
   private InputStream callREST(String href, String method, 
       String params, String data, boolean debug) {

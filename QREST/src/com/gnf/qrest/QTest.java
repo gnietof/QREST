@@ -56,8 +56,10 @@ public class QTest {
       .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
       .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
       .serializationInclusion(JsonInclude.Include.NON_NULL).build();
-  private static QiskitRuntimeService service = QiskitRuntimeService.getInstance();
-  private static TranspilationService transpilation = TranspilationService.getInstance();
+  private static QiskitRuntimeService service = 
+      QiskitRuntimeService.getInstance();
+  private static TranspilationService transpilation = 
+      TranspilationService.getInstance();
 
   public static void main(String[] args) {
     QTest qt = new QTest();
