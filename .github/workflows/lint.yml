@@ -1,21 +1,19 @@
-name: Lint Code
+name: Java Linting
 
-on: [push, pull_request] # Runs on every push and PR
+on: [push, pull_request]
 
 jobs:
-  lint:
+  checkstyle:
+    name: Checkstyle
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Run Checkstyle
+        uses: dbelyaev/action-checkstyle@v1
         with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Linter
-        run: npm run lint # Replace with your specific lint command
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Options: google_checks.xml (default) or sun_checks.xml
+          checkstyle_config: google_checks.xml 
+          level: warning
