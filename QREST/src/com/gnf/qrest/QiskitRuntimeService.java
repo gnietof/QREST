@@ -188,8 +188,8 @@ public class QiskitRuntimeService {
    */
   public QResponse tags(String id, Tags tags) {
     try {
-      QResponse res = callREST("/jobs/" + id + "/tags", "PUT", null, mapper.writeValueAsString(tags),
-          QResponse.class);
+      QResponse res = callREST("/jobs/" + id + "/tags",
+          "PUT", null, mapper.writeValueAsString(tags), QResponse.class);
       return res;
     } catch (JsonProcessingException e) {
       e.printStackTrace();
