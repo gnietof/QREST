@@ -14,12 +14,13 @@ jobs:
           
 
       - name: Lint Java
-        uses: super-linter/super-linter@v6
+        uses: super-linter/super-linter@v7
         env:
           VALIDATE_JAVA: true
           DEFAULT_BRANCH: main
           
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: true
-          JAVA_CHECKSTYLE_CONFIG_FILE: .github/linters/checkstyle.xml
+          JAVA_CHECKSTYLE_CONFIG_FILE: checkstyle.xml
           VALIDATE_JAVA_FORMATTER: false
+          LINTER_RULES_PATH: .github/linters/ 
