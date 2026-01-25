@@ -3,9 +3,9 @@ name: Java Linting
 on: [push, pull_request]
 
 jobs:
-  checkstyle:
-    name: Checkstyle
+  lint:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -14,7 +14,7 @@ jobs:
           
 
       - name: Lint Java
-        uses: github/super-linter@v5
+        uses: super-linter/super-linter@v6
         env:
           VALIDATE_JAVA: true
           DEFAULT_BRANCH: main
