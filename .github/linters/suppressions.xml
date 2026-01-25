@@ -4,9 +4,9 @@
     "https://checkstyle.org/dtds/suppressions_1_2.dtd">
 
 <suppressions>
-    <suppress checks="FinalParameters"/>
-    <suppress checks="HiddenField"/>
-    <suppress checks="DesignForExtension"/>
-    <suppress checks="MagicNumber"/>
-    <suppress checks="JavadocVariable"/>
+    <suppress checks="FinalParametersCheck"/>
+    <suppress checks="HiddenFieldCheck"/>
+    <suppress checks="DesignForExtensionCheck"/>
+    <suppress checks="MagicNumberCheck"/>
+    <suppress checks="JavadocVariableCheck"/>
 </suppressions>
