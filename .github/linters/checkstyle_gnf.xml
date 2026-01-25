@@ -33,9 +33,12 @@
         </module>        
 
         <module name="HiddenField">
+        <!--
             <property name="ignoreConstructorParameter" value="true" />
             <property name="ignoreSetter" value="true" />
             <property name="severity" value="warning"/>
+        -->
+            <property name="tokens" value="VARIABLE_DEF"/>
         </module>
 
         <module name="JavadocVariable">
