@@ -12,7 +12,7 @@ public class Backends {
 
   /**
    * Gets the devices.
-   * 
+   *
    * @return The devices.
    */
   public List<Backend> getDevices() {
@@ -21,7 +21,7 @@ public class Backends {
 
   /**
    * Sets the devices.
-   * 
+   *
    * @param devices the devices to set.
    */
   public void setDevices(List<Backend> devices) {

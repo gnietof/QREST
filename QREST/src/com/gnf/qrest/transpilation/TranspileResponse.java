@@ -9,7 +9,7 @@ public final class TranspileResponse {
 
   /**
    * Gets the qasm.
-   * 
+   *
    * @return The qasm.
    */
   public String getQASM() {
@@ -18,7 +18,7 @@ public final class TranspileResponse {
 
   /**
    * Sets the qasm.
-   * 
+   *
    * @param qasm the qasm to set
    */
   public void setQASM(String qasm) {

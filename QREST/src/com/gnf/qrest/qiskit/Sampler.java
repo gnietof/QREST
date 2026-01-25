@@ -16,7 +16,7 @@ import java.util.List;
  * Sampler primitive implementation.
  */
 public class Sampler extends Primitive<SamplerPUB> {
-  private static final ObjectMapper om = JsonMapper.builder()
+  private static final ObjectMapper mapper = JsonMapper.builder()
       .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
       .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
       .serializationInclusion(JsonInclude.Include.NON_NULL).build();
@@ -42,7 +42,7 @@ public class Sampler extends Primitive<SamplerPUB> {
     SamplerRequest req = new SamplerRequest(getBackend().getName(), pubs);
 
     try {
-      String pretty = om.writerWithDefaultPrettyPrinter().writeValueAsString(req);
+      String pretty = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(req);
       System.out.println(pretty);
 
       Job res = service.createJob(req);

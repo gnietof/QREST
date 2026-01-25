@@ -26,7 +26,7 @@ public class Params {
 
   /**
    * Sets the pubs.
-   * 
+   *
    * @param pubs the pubs to set
    */
   public void setPubs(List<? extends PUB> pubs) {
@@ -47,7 +47,7 @@ public class Params {
 
   /**
    * Sets the options.
-   * 
+   *
    * @param options the options to set
    */
   public void setOptions(Options options) {
@@ -65,7 +65,7 @@ public class Params {
 
   /**
    * Sets the version.
-   * 
+   *
    * @param version the version to set
    */
   public void setVersion(int version) {
@@ -83,7 +83,7 @@ public class Params {
 
   /**
    * Sets the supportQiskit.
-   * 
+   *
    * @param supportQiskit the supportQiskit to set
    */
   public void setSupportQiskit(boolean supportQiskit) {

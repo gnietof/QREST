@@ -38,7 +38,7 @@ import javax.net.ssl.HttpsURLConnection;
  */
 public class QiskitRuntimeService {
 
-  private static final ObjectMapper om = JsonMapper.builder()
+  private static final ObjectMapper mapper = JsonMapper.builder()
       .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
       .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
       .serializationInclusion(JsonInclude.Include.NON_NULL).build();
@@ -143,7 +143,7 @@ public class QiskitRuntimeService {
   public Job createJob(PrimitiveRequest req) {
 
     try {
-      Job res = callREST("/jobs", "POST", null, om.writeValueAsString(req), Job.class);
+      Job res = callREST("/jobs", "POST", null, mapper.writeValueAsString(req), Job.class);
       return res;
     } catch (JsonProcessingException e) {
       e.printStackTrace();
@@ -188,7 +188,7 @@ public class QiskitRuntimeService {
    */
   public QResponse tags(String id, Tags tags) {
     try {
-      QResponse res = callREST("/jobs/" + id + "/tags", "PUT", null, om.writeValueAsString(tags),
+      QResponse res = callREST("/jobs/" + id + "/tags", "PUT", null, mapper.writeValueAsString(tags),
           QResponse.class);
       return res;
     } catch (JsonProcessingException e) {
@@ -326,7 +326,7 @@ public class QiskitRuntimeService {
       if (rc == HttpURLConnection.HTTP_OK) {
         InputStream is = uc.getInputStream();
         String s = new String(is.readAllBytes(), StandardCharsets.UTF_8);
-        token = om.readValue(s, Token.class);
+        token = mapper.readValue(s, Token.class);
       } else {
         InputStream es = uc.getErrorStream();
         String s = new String(es.readAllBytes(), StandardCharsets.UTF_8);
@@ -414,8 +414,8 @@ public class QiskitRuntimeService {
           }
           if (!s1.isEmpty()) {
             if (c != null) {
-              JavaType jt = om.getTypeFactory().constructType(c);
-              o = om.readValue(s1, jt);
+              JavaType jt = mapper.getTypeFactory().constructType(c);
+              o = mapper.readValue(s1, jt);
             }
           }
           break;
@@ -426,8 +426,8 @@ public class QiskitRuntimeService {
             System.out.println(s2);
             if (!s2.isEmpty()) {
               if (c != null) {
-                JavaType jt = om.getTypeFactory().constructType(c);
-                o = om.readValue(s2, jt);
+                JavaType jt = mapper.getTypeFactory().constructType(c);
+                o = mapper.readValue(s2, jt);
               }
             }
           }

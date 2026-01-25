@@ -25,7 +25,7 @@ public class QResponse {
 
     /**
      * Gets the code.
-     * 
+     *
      * @return The code.
      */
     public int getCode() {
@@ -34,7 +34,7 @@ public class QResponse {
 
     /**
      * Sets the code.
-     * 
+     *
      * @param code The code to set.
      */
     public void setCode(int code) {
@@ -43,7 +43,7 @@ public class QResponse {
 
     /**
      * Gets the message.
-     * 
+     *
      * @return The message.
      */
     public String getMessage() {
@@ -52,7 +52,7 @@ public class QResponse {
 
     /**
      * Sets the message.
-     * 
+     *
      * @param message The message to set.
      */
     public void setMessage(String message) {
@@ -61,7 +61,7 @@ public class QResponse {
 
     /**
      * Gets the solution.
-     * 
+     *
      * @return The solution.
      */
     public String getSolution() {
@@ -70,7 +70,7 @@ public class QResponse {
 
     /**
      * Sets the solution.
-     * 
+     *
      * @param solution The solution to set.
      */
     public void setSolution(String solution) {
@@ -79,7 +79,7 @@ public class QResponse {
 
     /**
      * Gets the moreInfo.
-     * 
+     *
      * @return The moreInfo.
      */
     public String getMoreInfo() {
@@ -88,7 +88,7 @@ public class QResponse {
 
     /**
      * Sets the moreInfo.
-     * 
+     *
      * @param moreInfo The moreInfo to set.
      */
     public void setMoreInfo(String moreInfo) {
@@ -99,7 +99,7 @@ public class QResponse {
 
   /**
    * Gets the trace.
-   * 
+   *
    * @return The trace.
    */
   public String getTrace() {
@@ -108,7 +108,7 @@ public class QResponse {
 
   /**
    * Sets the trace.
-   * 
+   *
    * @param trace The trace to set.
    */
   public void setTrace(String trace) {
@@ -117,7 +117,7 @@ public class QResponse {
 
   /**
    * Gets the errors.
-   * 
+   *
    * @return The errors.
    */
   public List<QError> getErrors() {
@@ -126,7 +126,7 @@ public class QResponse {
 
   /**
    * Sets the errors.
-   * 
+   *
    * @param errors The errors to set.
    */
   public void setErrors(List<QError> errors) {

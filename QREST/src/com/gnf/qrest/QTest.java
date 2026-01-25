@@ -55,7 +55,7 @@ public class QTest {
   private static final String BACKEND = "ibm_torino";
   // private static final String BACKEND = "ibm_fez";
   // private static final String BACKEND = "ibm_marrakesh";
-  private static final ObjectMapper om = JsonMapper.builder()
+  private static final ObjectMapper mapper = JsonMapper.builder()
       .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
       .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
       .serializationInclusion(JsonInclude.Include.NON_NULL).build();
@@ -304,7 +304,7 @@ public class QTest {
     try {
       Pauli p = new Pauli("XI", 2.0);
 
-      String pretty = om.writerWithDefaultPrettyPrinter().writeValueAsString(p);
+      String pretty = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(p);
       System.out.println(pretty);
     } catch (JsonProcessingException e) {
       e.printStackTrace();

@@ -13,7 +13,7 @@ public abstract class PUB {
 
   /**
    * PUB constructor from builder.
-   * 
+   *
    * @param builder The builder to use.
    */
   public PUB(Builder<?> builder) {
@@ -43,7 +43,7 @@ public abstract class PUB {
 
   /**
    * Gets the circuit.
-   * 
+   *
    * @return The circuit.
    */
   public String getCircuit() {
@@ -52,7 +52,7 @@ public abstract class PUB {
 
   /**
    * Sets the circuit.
-   * 
+   *
    * @param circuit the circuit to set
    */
   public void setCircuit(String circuit) {
@@ -61,7 +61,7 @@ public abstract class PUB {
 
   /**
    * Gets the parameters.
-   * 
+   *
    * @return The parameters.
    */
   public List<List<Double>> getParameters() {
@@ -70,7 +70,7 @@ public abstract class PUB {
 
   /**
    * Sets the parameters.
-   * 
+   *
    * @param parameters the parameters to set
    */
   public void setParameters(List<List<Double>> parameters) {

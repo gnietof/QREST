@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Abstract class for Primitives.
- * 
+ *
  * @param <P> Class implementing the type of primitive.
  */
 public abstract class Primitive<P extends PUB> {
@@ -16,7 +16,7 @@ public abstract class Primitive<P extends PUB> {
 
   /**
    * Constructor for a backend.
-   * 
+   *
    * @param backend The backend.
    */
   public Primitive(Backend backend) {
@@ -25,7 +25,7 @@ public abstract class Primitive<P extends PUB> {
 
   /**
    * Abstract method for running a primitive.
-   * 
+   *
    * @param pub The PUB used.
    * @return The job run.
    */
@@ -33,7 +33,7 @@ public abstract class Primitive<P extends PUB> {
 
   /**
    * Abstract method for running a primitive.
-   * 
+   *
    * @param pub The list of PUBs used.
    * @return The job run.
    */
@@ -50,7 +50,7 @@ public abstract class Primitive<P extends PUB> {
 
   /**
    * Sets the backend.
-   * 
+   *
    * @param backend the backend to set
    */
   public void setBackend(Backend backend) {

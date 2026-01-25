@@ -37,7 +37,7 @@ public class Workload {
 
   /**
    * Gets the id.
-   * 
+   *
    * @return The id.
    */
   public String getId() {
@@ -46,7 +46,7 @@ public class Workload {
 
   /**
    * Sets the id.
-   * 
+   *
    * @param id the id to set
    */
   public void setId(String id) {
@@ -55,7 +55,7 @@ public class Workload {
 
   /**
    * Gets the userId.
-   * 
+   *
    * @return The userId.
    */
   public String getUserId() {
@@ -64,7 +64,7 @@ public class Workload {
 
   /**
    * Sets the userId.
-   * 
+   *
    * @param userId the userId to set
    */
   public void setUserId(String userId) {
@@ -73,7 +73,7 @@ public class Workload {
 
   /**
    * Gets the created.
-   * 
+   *
    * @return The created.
    */
   public String getCreated() {
@@ -82,7 +82,7 @@ public class Workload {
 
   /**
    * Sets the created.
-   * 
+   *
    * @param created the created to set
    */
   public void setCreated(String created) {
@@ -91,7 +91,7 @@ public class Workload {
 
   /**
    * Gets the ended.
-   * 
+   *
    * @return The ended.
    */
   public String getEnded() {
@@ -100,7 +100,7 @@ public class Workload {
 
   /**
    * Sets the ended.
-   * 
+   *
    * @param ended the ended to set
    */
   public void setEnded(String ended) {
@@ -109,7 +109,7 @@ public class Workload {
 
   /**
    * Gets the backend.
-   * 
+   *
    * @return The backend.
    */
   public String getBackend() {
@@ -118,7 +118,7 @@ public class Workload {
 
   /**
    * Sets the backend.
-   * 
+   *
    * @param backend the backend to set
    */
   public void setBackend(String backend) {
@@ -127,7 +127,7 @@ public class Workload {
 
   /**
    * Gets the instance.
-   * 
+   *
    * @return The instance.
    */
   public String getInstance() {
@@ -136,7 +136,7 @@ public class Workload {
 
   /**
    * Sets the instance.
-   * 
+   *
    * @param instance the instance to set
    */
   public void setInstance(String instance) {
@@ -145,7 +145,7 @@ public class Workload {
 
   /**
    * Gets the acceptingJobs.
-   * 
+   *
    * @return The acceptingJobs.
    */
   public boolean isAcceptingJobs() {
@@ -154,7 +154,7 @@ public class Workload {
 
   /**
    * Sets the acceptingJobs.
-   * 
+   *
    * @param acceptingJobs the acceptingJobs to set
    */
   public void setAcceptingJobs(boolean acceptingJobs) {
@@ -163,7 +163,7 @@ public class Workload {
 
   /**
    * Gets the mode.
-   * 
+   *
    * @return The mode.
    */
   public String getMode() {
@@ -172,7 +172,7 @@ public class Workload {
 
   /**
    * Sets the mode.
-   * 
+   *
    * @param mode the mode to set
    */
   public void setMode(String mode) {
@@ -181,7 +181,7 @@ public class Workload {
 
   /**
    * Gets the status.
-   * 
+   *
    * @return The status.
    */
   public String getStatus() {
@@ -190,7 +190,7 @@ public class Workload {
 
   /**
    * Sets the status.
-   * 
+   *
    * @param status the status to set
    */
   public void setStatus(String status) {
@@ -199,7 +199,7 @@ public class Workload {
 
   /**
    * Gets the statusReason.
-   * 
+   *
    * @return The statusReason.
    */
   public String getStatusReason() {
@@ -208,7 +208,7 @@ public class Workload {
 
   /**
    * Sets the statusReason.
-   * 
+   *
    * @param statusReason the statusReason to set
    */
   public void setStatusReason(String statusReason) {
@@ -217,7 +217,7 @@ public class Workload {
 
   /**
    * Gets the tags.
-   * 
+   *
    * @return The tags.
    */
   public List<String> getTags() {
@@ -226,7 +226,7 @@ public class Workload {
 
   /**
    * Sets the tags.
-   * 
+   *
    * @param tags the tags to set
    */
   public void setTags(List<String> tags) {
@@ -235,7 +235,7 @@ public class Workload {
 
   /**
    * Gets the usageSeconds.
-   * 
+   *
    * @return The usageSeconds.
    */
   public int getUsageSeconds() {
@@ -244,7 +244,7 @@ public class Workload {
 
   /**
    * Sets the usageSeconds.
-   * 
+   *
    * @param usageSeconds the usageSeconds to set
    */
   public void setUsageSeconds(int usageSeconds) {

@@ -40,7 +40,7 @@ public class Tags {
 
   /**
    * Sets the tags. import java.util.Collection;
-   * 
+   *
    * @param tags The tags to set.
    */
   public void setTags(List<String> tags) {

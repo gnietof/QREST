@@ -18,6 +18,8 @@ public class SparsePauliOp {
 
   /**
    * Contruct a SparsePauliOp from a Paulis.
+   *
+   * @param paulis The paulis.
    */
   public static SparsePauliOp fromList(Paulis paulis) {
     SparsePauliOp sop = new SparsePauliOp(paulis);
@@ -26,6 +28,9 @@ public class SparsePauliOp {
 
   /**
    * Contruct a SparsePauliOp from a Paulis with num qubits.
+   *
+   * @param paulis The paulis.
+   * @param num The num of qubits.
    */
   public static SparsePauliOp fromSparseList(Paulis paulis, int num) {
     return SparsePauliOp.fromSparseList(paulis.asList(), num);
@@ -33,6 +38,9 @@ public class SparsePauliOp {
 
   /**
    * Contruct a SparsePauliOp from a list of Paulis with num qubits.
+   *
+   * @param paulis The list of paulis.
+   * @param num The num of qubits.
    */
   public static SparsePauliOp fromSparseList(List<Pauli> paulis, int num) {
     Paulis pp = new Paulis();

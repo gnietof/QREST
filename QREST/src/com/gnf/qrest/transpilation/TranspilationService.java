@@ -27,7 +27,7 @@ import javax.net.ssl.HttpsURLConnection;
  */
 public class TranspilationService {
 
-  private static final ObjectMapper om = JsonMapper.builder()
+  private static final ObjectMapper mapper = JsonMapper.builder()
       .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
       .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
       .serializationInclusion(JsonInclude.Include.NON_NULL).build();
@@ -59,7 +59,7 @@ public class TranspilationService {
     req.setOptimizationLevel(level);
 
     try {
-      TranspileResponse res = callREST("/transpile", "POST", null, om.writeValueAsString(req),
+      TranspileResponse res = callREST("/transpile", "POST", null, mapper.writeValueAsString(req),
           TranspileResponse.class);
       if (res != null) {
         return res.getQASM();
@@ -86,7 +86,7 @@ public class TranspilationService {
     req.setShots(shots);
 
     try {
-      SamplerResponse res = callREST("/sampler", "POST", null, om.writeValueAsString(req),
+      SamplerResponse res = callREST("/sampler", "POST", null, mapper.writeValueAsString(req),
           SamplerResponse.class);
       if (res != null) {
         return res;
@@ -113,7 +113,7 @@ public class TranspilationService {
     req.setObservable(observable);
 
     try {
-      EstimatorResponse res = callREST("/estimator", "POST", null, om.writeValueAsString(req),
+      EstimatorResponse res = callREST("/estimator", "POST", null, mapper.writeValueAsString(req),
           EstimatorResponse.class);
       if (res != null) {
         return res;
@@ -144,7 +144,7 @@ public class TranspilationService {
     req.setOptimizationLevel(level);
 
     try {
-      LayoutResponse res = callREST("/layout", "POST", null, om.writeValueAsString(req),
+      LayoutResponse res = callREST("/layout", "POST", null, mapper.writeValueAsString(req),
           LayoutResponse.class);
       if (res != null) {
         return res;
@@ -167,7 +167,7 @@ public class TranspilationService {
     CircuitRequest req = new CircuitRequest();
     req.setCircuit(circuit);
 
-    try (InputStream is = callREST("/draw", "POST", null, om.writeValueAsString(req))) {
+    try (InputStream is = callREST("/draw", "POST", null, mapper.writeValueAsString(req))) {
       is.transferTo(os);
     } catch (JsonProcessingException e) {
       e.printStackTrace();
@@ -251,8 +251,8 @@ public class TranspilationService {
 
           if (!s1.isEmpty()) {
             if (c != null) {
-              JavaType jt = om.getTypeFactory().constructType(c);
-              o = om.readValue(s1, jt);
+              JavaType jt = mapper.getTypeFactory().constructType(c);
+              o = mapper.readValue(s1, jt);
             }
           }
           break;

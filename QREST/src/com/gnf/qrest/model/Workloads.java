@@ -24,7 +24,7 @@ public class Workloads {
 
     /**
      * Gets the href.
-     * 
+     *
      * @return The href.
      */
     public String getHref() {
@@ -33,7 +33,7 @@ public class Workloads {
 
     /**
      * Sets the href.
-     * 
+     *
      * @param href the href to set
      */
     public void setHref(String href) {
@@ -45,7 +45,7 @@ public class Workloads {
 
   /**
    * Gets the workloads.
-   * 
+   *
    * @return The workloads.
    */
   public List<Workload> getWorkloads() {
@@ -54,7 +54,7 @@ public class Workloads {
 
   /**
    * Sets the workloads.
-   * 
+   *
    * @param workloads the workloads to set
    */
   public void setWorkloads(List<Workload> workloads) {
@@ -63,7 +63,7 @@ public class Workloads {
 
   /**
    * Gets the totalCount.
-   * 
+   *
    * @return The totalCount.
    */
   public int getTotalCount() {
@@ -72,7 +72,7 @@ public class Workloads {
 
   /**
    * Sets the totalCount.
-   * 
+   *
    * @param totalCount the totalCount to set
    */
   public void setTotalCount(int totalCount) {
@@ -81,7 +81,7 @@ public class Workloads {
 
   /**
    * Gets the limit.
-   * 
+   *
    * @return The limit.
    */
   public int getLimit() {
@@ -90,7 +90,7 @@ public class Workloads {
 
   /**
    * Sets the limit.
-   * 
+   *
    * @param limit the limit to set
    */
   public void setLimit(int limit) {
@@ -99,7 +99,7 @@ public class Workloads {
 
   /**
    * Gets the next.
-   * 
+   *
    * @return The next.
    */
   public Next getNext() {
@@ -108,7 +108,7 @@ public class Workloads {
 
   /**
    * Sets the next.
-   * 
+   *
    * @param next the next to set
    */
   public void setNext(Next next) {
