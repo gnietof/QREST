@@ -74,7 +74,6 @@ public class TranspilationService {
   /**
    * Execute the a Sampler of the circuit in the provided backend.
    *
-   * @param backend The backend which will run the circuit.
    * @param circuit The circuit to run.
    * @param shots   The number of shots to execute
    * @return An array of primitive responses
@@ -101,9 +100,7 @@ public class TranspilationService {
   /**
    * Execute the an Estimator of the circuit for those observables in the provided backend.
    *
-   * @param backend     The backend which will run the circuit.
    * @param circuit     The circuit to run.
-   * @param observables The array of observables to use.
    * @return An array of primitive responses
    */
   public EstimatorResponse estimator(String circuit, String observable) {
