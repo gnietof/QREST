@@ -5,6 +5,9 @@ import com.gnf.qrest.model.BackendProps.Gate.GeneralQLists;
 import com.gnf.qrest.model.BackendProps.Gate.Measure;
 import java.util.List;
 
+/**
+ * Models a BackendProps.
+ */
 public class BackendProps {
 
   @JsonProperty("backend_name")
@@ -32,6 +35,9 @@ public class BackendProps {
     private List<Parameter> parameters;
     private List<Integer> qubits;
 
+    /**
+     * Models a Parameter.
+     */
     public static class Parameter {
       private String date;
       private String name;

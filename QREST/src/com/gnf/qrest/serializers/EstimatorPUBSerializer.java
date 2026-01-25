@@ -7,9 +7,7 @@ import com.gnf.qrest.model.EstimatorPUB;
 import java.io.IOException;
 
 /**
- * Serializer for EstimatorPUBSerializer.
- * 
- * @param qasm the qasm to set
+ * Serializer for EstimatorPUB.
  */
 public class EstimatorPUBSerializer extends JsonSerializer<EstimatorPUB> {
 

@@ -2,6 +2,9 @@ package com.gnf.qrest.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Models a BackendStatus
+ */
 public class BackendStatus {
 
   private boolean state;

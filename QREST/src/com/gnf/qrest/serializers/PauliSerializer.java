@@ -7,9 +7,7 @@ import com.gnf.qrest.qiskit.Pauli;
 import java.io.IOException;
 
 /**
- * Serializer for PauliSerializer.
- * 
- * @param qasm the qasm to set
+ * Serializer for Pauli.
  */
 public class PauliSerializer extends JsonSerializer<Pauli> {
 

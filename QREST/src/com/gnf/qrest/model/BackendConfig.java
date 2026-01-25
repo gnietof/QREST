@@ -3,6 +3,9 @@ package com.gnf.qrest.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
+/**
+ * Models a BackendConfig
+ */
 public class BackendConfig {
 
   @JsonProperty("allow_q_object")

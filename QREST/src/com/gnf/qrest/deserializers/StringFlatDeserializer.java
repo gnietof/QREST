@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Deserializer for String arrays.
+ */
 public class StringFlatDeserializer extends JsonDeserializer<List<List<String>>> {
 
   @Override

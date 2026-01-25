@@ -9,9 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Serializer for PauliListSerializer.
- * 
- * @param qasm the qasm to set
+ * Serializer for PauliList.
  */
 public class PauliListSerializer extends JsonSerializer<List<Paulis>> {
 

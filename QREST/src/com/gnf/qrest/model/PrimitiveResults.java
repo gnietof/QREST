@@ -24,7 +24,6 @@ public class PrimitiveResults extends QResponse {
   private Metadata metadata;
 
   public static class Result {
-//    private Map<String,ResultData> data;
     @JsonDeserialize(using = ResultDataDeserializer.class)
     private ResultData data;
     private Metadata metadadata;
@@ -108,7 +107,6 @@ public class PrimitiveResults extends QResponse {
 
       public static class SamplerRegisters {
         @JsonDeserialize(using = BitStringFlatDeserializer.class)
-//        @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
         private List<BitString> samples;
 
         @JsonProperty("num_bits")
@@ -146,12 +144,12 @@ public class PrimitiveResults extends QResponse {
           this.numBits = numBits;
         }
 
-        public Map<String, Long> getCounts() {
-          return getCounts(-1);
-        }
-
         public int size() {
           return samples.size();
+        }
+
+        public Map<String, Long> getCounts() {
+          return getCounts(-1);
         }
 
         public Map<String, Long> getCounts(int index) {

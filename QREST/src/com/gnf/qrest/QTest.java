@@ -61,6 +61,11 @@ public class QTest {
   private static TranspilationService transpilation = 
       TranspilationService.getInstance();
 
+  /**
+   * Main method for testing code.
+   * 
+   * @param args The args provided to the main method.
+   */
   public static void main(String[] args) {
     QTest qt = new QTest();
 
@@ -339,6 +344,9 @@ public class QTest {
     }
   }
 
+  /**
+   * Estimator results test.
+   */
   public void testResultsEstimator() {
     System.out.println("Estimator");
     //    PrimitiveResults results2 = service.jobResults("d53lee1smlfc739f0220"); // Single
@@ -358,6 +366,9 @@ public class QTest {
 
   }
 
+  /**
+   * Dumps EVS.
+   */
   private void dumpEvs(PrimitiveResults results) {
     List<Result> results2 = results.getResults();
     for (int i = 0; i < results2.size(); i++) {
@@ -402,6 +413,9 @@ public class QTest {
 
   }
 
+  /**
+   * Dumps counts.
+   */
   private void dumpCounts(PrimitiveResults results) {
     for (Result result : results.getResults()) {
       SamplerData data = (SamplerData) result.getData();
@@ -443,6 +457,9 @@ public class QTest {
     }
   }
 
+  /**
+   * Estimator test.
+   */
   private void testEstimator() {
     Backend backend = service.backend(BACKEND);
     Estimator estimator = new Estimator(backend);
@@ -462,6 +479,9 @@ public class QTest {
 
   }
 
+  /**
+   * Broadcast Estimator test.
+   */
   private void testBroadEstimator() {
     Backend backend = service.backend(BACKEND);
     Estimator estimator = new Estimator(backend);
@@ -489,6 +509,9 @@ public class QTest {
 
   }
 
+  /**
+   * Broadcast Estimator test with parameters.
+   */
   private void testBroadParamsEstimator() {
     Backend backend = service.backend(BACKEND);
     Estimator estimator = new Estimator(backend);
@@ -544,6 +567,9 @@ public class QTest {
     }
   }
 
+  /**
+   * Broadcast Estimator test with observables.
+   */
   private void testEstimatorComplete() {
     Backend backend = service.backend(BACKEND);
     Estimator estimator = new Estimator(backend);
@@ -566,6 +592,9 @@ public class QTest {
     }
   }
 
+  /**
+   * Broadcast Estimator test with parameters and observables.
+   */
   private void testEstimatorParamsComplete() {
     Backend backend = service.backend(BACKEND);
     Estimator estimator = new Estimator(backend);
@@ -820,6 +849,9 @@ public class QTest {
 
   }
 
+  /**
+   * Backends test.
+   */
   public void testBackends() {
     List<Backend> bb = service.backends(new BackendsRequest
         .Builder()
@@ -847,12 +879,18 @@ public class QTest {
 
   }
 
+  /**
+   * Dump jobs.
+   */
   private void jobsDump(Jobs jobs) {
     for (Job job : jobs.getJobs()) {
       System.out.println(job);
     }
   }
 
+  /**
+   * Dump workloads.
+   */
   private void workloadsDump(Workloads workloads) {
     for (Workload workload : workloads.getWorkloads()) {
       System.out.println(workload);

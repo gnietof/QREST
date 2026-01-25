@@ -25,6 +25,8 @@ public class EstimatorPUB extends PUB {
 
     /**
      * Build using precision. 
+     * 
+     * @param precision The precision.
      */
     public Builder precision(double precision) {
       this.precision = precision;
@@ -33,6 +35,8 @@ public class EstimatorPUB extends PUB {
 
     /**
      * Build using observables from list of Paulis.
+     * 
+     * @param observables The observables.
      */
     public Builder observables(List<Paulis> observables) {
       this.observables = observables;
@@ -41,6 +45,8 @@ public class EstimatorPUB extends PUB {
 
     /**
      * Build using observables from Pauli.
+     * 
+     * @param observables The observable.
      */
     public Builder observable(Paulis observable) {
       this.observables = List.of(observable);
@@ -49,6 +55,8 @@ public class EstimatorPUB extends PUB {
 
     /**
      * Build using observables from SparsePauliOp.
+     * 
+     * @param observable The observable.
      */
     public Builder observable(SparsePauliOp observable) {
       this.observables = List.of(observable.getPaulis());

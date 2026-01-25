@@ -10,6 +10,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Deserializer for Double arrays.
+ * 
+ * @param qasm the qasm to set
+ */
 public class DoubleFlatDeserializer extends JsonDeserializer<List<List<Double>>> {
 
   @Override

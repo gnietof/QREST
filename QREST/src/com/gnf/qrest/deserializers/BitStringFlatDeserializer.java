@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Deserializer for Bitstring arrays.
+ */
 public class BitStringFlatDeserializer extends JsonDeserializer<List<BitString>> {
 
   @Override

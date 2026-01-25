@@ -8,8 +8,6 @@ import java.io.IOException;
 
 /**
  * Serializer for SamplerPUB.
- * 
- * @param qasm the qasm to set
  */
 public class SamplerPUBSerializer extends JsonSerializer<SamplerPUB> {
 

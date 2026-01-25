@@ -7,6 +7,21 @@ import java.util.Set;
 /**
  * Models a Pauli.
  */
+/**
+ * 
+ */
+/**
+ * 
+ */
+/**
+ * 
+ */
+/**
+ * 
+ */
+/**
+ * 
+ */
 public class Pauli {
 
   String label;
@@ -73,13 +88,13 @@ public class Pauli {
     return num;
   }
 
-  protected static Pauli extend(Pauli pauli, int num2) {
-    int num = pauli.getLabel().length();
-    if (num2 < num) {
+  protected static Pauli extend(Pauli pauli, int num) {
+    int num2 = pauli.getLabel().length();
+    if (num < num2) {
       throw new IllegalArgumentException(
-          String.format("Number of qubits must be equal or higher than %d", num));
+          String.format("Number of qubits must be equal or higher than %d", num2));
     }
-    String label = "I".repeat(num2 - num) + pauli.getLabel();
+    String label = "I".repeat(num - num2) + pauli.getLabel();
     Pauli pauli2 = new Pauli(label, pauli.getCoeff());
     return pauli2;
 

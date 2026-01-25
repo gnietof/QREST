@@ -12,13 +12,20 @@ import com.gnf.qrest.model.EstimatorPUB;
 import com.gnf.qrest.model.PrimitiveRequest;
 import java.util.List;
 
+/**
+ * Estimator primitive implementation.
+ */
 public class Estimator extends Primitive<EstimatorPUB> {
   private static final ObjectMapper om = JsonMapper.builder()
       .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
       .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
-      .serializationInclusion(JsonInclude.Include.NON_NULL)
-      .build();
+      .serializationInclusion(JsonInclude.Include.NON_NULL).build();
 
+  /**
+   * Estimator constructor for backend.
+   * 
+   * @param backend The backend to run in.
+   */
   public Estimator(Backend backend) {
     super(backend);
   }
@@ -51,6 +58,12 @@ public class Estimator extends Primitive<EstimatorPUB> {
    */
   public static class EstimatorRequest extends PrimitiveRequest {
 
+    /**
+     * EstimatorRequest constructor for backend and pubs.
+     * 
+     * @param backend The backend to run in.
+     * @param pubs The pubs to use for the sampler.
+     */
     public EstimatorRequest(String backend, List<EstimatorPUB> pubs) {
       super(backend, pubs, "estimator");
     }
