@@ -8,4 +8,5 @@
     <suppress checks="HiddenField"/>
     <suppress checks="DesignForExtension"/>
     <suppress checks="MagicNumber"/>
+    <suppress checks="JavadocVariable"/>
 </suppressions>

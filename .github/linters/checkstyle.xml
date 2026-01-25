@@ -6,8 +6,8 @@
 
 <module name="Checker">
 
-    <module name="SupressionsFilter">
-        <property name="file" value="supressions.xml" />
+    <module name="SuppressionFilter">
+        <property name="file" value="suppressions.xml" />
     </module>
 
     <module name="LineLength">
@@ -38,10 +38,6 @@
             <property name="severity" value="warning"/>
         </module>
 
-        <module name="JavadocVariable">
-            <property name="scope" value="public"/>
-        </module>              
-        
     </module>
 
 </module>
