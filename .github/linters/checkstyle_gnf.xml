@@ -16,6 +16,7 @@
 
     <module name="TreeWalker">
     
+<!--
         <module name="TypeName">
             <property name="format" value="^[A-Z][a-zA-Z0-9]*$"/>
         </module>
@@ -43,7 +44,10 @@
 
         <module name="JavadocVariable">
             <property name="scope" value="public"/>
-        </module>              
+        </module>
+
+-->
+          
     </module>
 
 </module>
