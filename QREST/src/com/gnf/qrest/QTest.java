@@ -51,6 +51,7 @@ import java.util.stream.Collectors;
  * Class for running tests.
  */
 public class QTest {
+  private static final int DEFAULT_SHOTS = 16;
 
   private static final String BACKEND = "ibm_torino";
   // private static final String BACKEND = "ibm_fez";
@@ -555,9 +556,9 @@ public class QTest {
     String qasm = "OPENQASM 3.0;include \'stdgates.inc\';input float[64] theta;bit[2] c;"
         + "rz(pi/2) $0;sx $0;rz(pi) $0;rz(-pi/2) $1;rz(pi + theta) $1;sx $1;rz(5*pi/2) $1;"
         + "cz $1, $0;sx $0;rz(pi/2) $0;barrier $1, $0;c[0] = measure $1;c[1] = measure $0;";
-    List<List<Double>> parms1 = List.of(List.of(3.14), List.of(1.57));
-    List<List<Double>> parms2 = List.of(List.of(1.57), List.of(3.14));
-    List<List<Double>> parms3 = List.of(List.of(0.0), List.of(3.14));
+    List<List<Double>> parms1 = List.of(List.of(Math.PI), List.of(Math.PI/2));
+    List<List<Double>> parms2 = List.of(List.of(Math.PI/2), List.of(Math.PI));
+    List<List<Double>> parms3 = List.of(List.of(0.0), List.of(Math.PI));
     SparsePauliOp observables11 = SparsePauliOp.fromSparseList(
         new Paulis(new Pauli("YZ", new int[] { 0, 1 }, 2), new Pauli("ZY", new int[] { 0, 1 }, 1)),
         2);
@@ -634,7 +635,7 @@ public class QTest {
     String qasm = "OPENQASM 3.0;include \'stdgates.inc\';input float[64] theta;bit[2] c;"
         + "rz(pi/2) $0;sx $0;rz(pi) $0;rz(-pi/2) $1;rz(pi + theta) $1;sx $1;rz(5*pi/2) $1;"
         + "cz $1, $0;sx $0;rz(pi/2) $0;barrier $1, $0;c[0] = measure $1;c[1] = measure $0;";
-    List<List<Double>> parms = List.of(List.of(3.14), List.of(1.57));
+    List<List<Double>> parms = List.of(List.of(Math.PI), List.of(Math.PI/2));
     SparsePauliOp observables = SparsePauliOp.fromSparseList(
         new Paulis(new Pauli("XZ", new int[] { 0, 1 }, 1), new Pauli("ZX", new int[] { 0, 1 }, 2)),
         2);
@@ -717,7 +718,7 @@ public class QTest {
     String qasm = "OPENQASM 3.0;include \"stdgates.inc\";bit[2] c;rz(pi/2) $0;sx $0;"
         + "rz(pi/2) $0;rz(pi/2) $1;sx $1;rz(pi/2) $1;cz $0, $1;rz(pi/2) $1;sx $1;"
         + "rz(pi/2) $1;c[0] = measure $0;c[1] = measure $1;";
-    SamplerPUB pub = new SamplerPUB.Builder().circuit(qasm).shots(16).build();
+    SamplerPUB pub = new SamplerPUB.Builder().circuit(qasm).shots(DEFAULT_SHOTS).build();
     Job job = sampler.run(pub);
 
     service.job(job.getId()).getStatus();
@@ -742,7 +743,7 @@ public class QTest {
     // + "sx $0;rz(pi/2) $0;c1[0] = measure $0;c1[1] = measure $1;rz(pi/2) $1;sx $1;"
     // + "rz(pi/2) $1;cz $0, $1;rz(pi/2) $1;sx $1;rz(pi/2) $1;"
     // + "c2[0] = measure $0;c2[1] = measure $1;";
-    SamplerPUB pub = new SamplerPUB.Builder().circuit(qasm).shots(16).build();
+    SamplerPUB pub = new SamplerPUB.Builder().circuit(qasm).shots(DEFAULT_SHOTS).build();
     Job job = sampler.run(pub);
 
     service.job(job.getId()).getStatus();
@@ -763,8 +764,8 @@ public class QTest {
         + "rz(pi/2) $12;sx $12;rz(pi) $12;rz(-pi/2) $18;rz(pi + theta) $18;sx $18;"
         + "rz(5*pi/2) $18;cz $18, $12;sx $12;rz(pi/2) $12;barrier $18, $12;"
         + "c[0] = measure $18;c[1] = measure $12;";
-    List<List<Double>> parms = List.of(List.of(3.14));
-    SamplerPUB pub = new SamplerPUB.Builder().circuit(qasm).parameters(parms).shots(16).build();
+    List<List<Double>> parms = List.of(List.of(Math.PI));
+    SamplerPUB pub = new SamplerPUB.Builder().circuit(qasm).parameters(parms).shots(DEFAULT_SHOTS).build();
     Job job = sampler.run(pub);
 
     service.job(job.getId()).getStatus();
@@ -781,8 +782,8 @@ public class QTest {
         + "c1[0] = measure $18;c1[1] = measure $12;rz(pi + theta) $18;sx $18;"
         + "rz(5*pi/2) $18;cz $18, $12;sx $12;rz(pi/2) $12;barrier $18, $12;"
         + "c2[0] = measure $18;c2[1] = measure $12;";
-    List<List<Double>> parms = List.of(List.of(0.0), List.of(1.57), List.of(3.14));
-    SamplerPUB pub = new SamplerPUB.Builder().circuit(qasm).parameters(parms).shots(16).build();
+    List<List<Double>> parms = List.of(List.of(0.0), List.of(Math.PI/2), List.of(Math.PI));
+    SamplerPUB pub = new SamplerPUB.Builder().circuit(qasm).parameters(parms).shots(DEFAULT_SHOTS).build();
     Job job = sampler.run(pub);
 
     service.job(job.getId()).getStatus();
@@ -797,7 +798,7 @@ public class QTest {
     String qasm = "OPENQASM 3.0;include \"stdgates.inc\";bit[2] c;rz(pi/2) $0;sx $0;"
         + "rz(pi/2) $0;rz(pi/2) $1;sx $1;rz(pi/2) $1;cz $0, $1;rz(pi/2) $1;sx $1;"
         + "rz(pi/2) $1;c[0] = measure $0;c[1] = measure $1;";
-    SamplerPUB pub = new SamplerPUB.Builder().circuit(qasm).shots(16).build();
+    SamplerPUB pub = new SamplerPUB.Builder().circuit(qasm).shots(DEFAULT_SHOTS).build();
     Job job = sampler.run(pub);
 
     job = service.waitForFinalState(job.getId());
@@ -847,8 +848,8 @@ public class QTest {
         + "rz(pi/2) $12;sx $12;rz(pi) $12;rz(-pi/2) $18;rz(pi + theta) $18;sx $18;"
         + "rz(5*pi/2) $18;cz $18, $12;sx $12;rz(pi/2) $12;barrier $18, $12;"
         + "c[0] = measure $18;c[1] = measure $12;";
-    List<List<Double>> parms = List.of(List.of(3.14), List.of(1.57), List.of(0.0));
-    SamplerPUB pub = new SamplerPUB.Builder().circuit(qasm).parameters(parms).shots(16).build();
+    List<List<Double>> parms = List.of(List.of(Math.PI), List.of(Math.PI/2), List.of(0.0));
+    SamplerPUB pub = new SamplerPUB.Builder().circuit(qasm).parameters(parms).shots(DEFAULT_SHOTS).build();
     Job job = sampler.run(pub);
 
     job = service.waitForFinalState(job.getId());
