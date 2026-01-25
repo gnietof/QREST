@@ -38,10 +38,6 @@
             <property name="severity" value="warning"/>
         </module>
 
-        <module name="JavadocVariable">
-            <property name="scope" value="public"/>
-        </module>              
-        
     </module>
 
 </module>
