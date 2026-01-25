@@ -7,7 +7,7 @@
 <module name="Checker">
 
     <module name="SupressionsFilter">
-        <property name="file" value="supressions.xml" />
+        <property name="file" value="suppressions.xml" />
     </module>
 
     <module name="LineLength">
