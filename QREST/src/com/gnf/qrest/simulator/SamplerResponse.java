@@ -21,7 +21,7 @@ public class SamplerResponse {
 
     /**
      * Gets the quasiDists.
-     * 
+     *
      * @return The quasiDists.
      */
     public List<Map<Integer, Double>> getQuasiDists() {
@@ -30,7 +30,7 @@ public class SamplerResponse {
 
     /**
      * Sets the quasiDists.
-     * 
+     *
      * @param quasiDists the quasiDists to set.
      */
     public void setQuasiDists(List<Map<Integer, Double>> quasiDists) {
@@ -41,7 +41,7 @@ public class SamplerResponse {
 
   /**
    * Gets the result.
-   * 
+   *
    * @return The result.
    */
   public Result getResult() {
@@ -50,13 +50,11 @@ public class SamplerResponse {
 
   /**
    * Sets the result.
-   * 
+   *
    * @param result the result to set.
    */
   public void setResult(Result result) {
     this.result = result;
   }
-
-
 
 }

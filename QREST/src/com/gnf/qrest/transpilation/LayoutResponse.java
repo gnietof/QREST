@@ -15,7 +15,7 @@ public class LayoutResponse {
   /**
    * Gets the qasm.
    *
-   *  @return The qasm.
+   * @return The qasm.
    */
   public String getQASM() {
     return qasm;
@@ -23,7 +23,7 @@ public class LayoutResponse {
 
   /**
    * Sets the qasm.
-   * 
+   *
    * @param qasm The qasm to set.
    */
   public void setQASM(String qasm) {
@@ -33,7 +33,7 @@ public class LayoutResponse {
   /**
    * Gets the observables.
    *
-   *  @return The observables.
+   * @return The observables.
    */
   public List<Paulis> getObservables() {
     return observables;
@@ -41,12 +41,11 @@ public class LayoutResponse {
 
   /**
    * Sets the observables.
-   * 
+   *
    * @param observables The observables to set.
    */
   public void setObservables(List<Paulis> observables) {
     this.observables = observables;
   }
-
 
 }

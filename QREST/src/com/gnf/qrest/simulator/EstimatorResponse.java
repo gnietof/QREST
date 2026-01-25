@@ -11,7 +11,7 @@ public class EstimatorResponse {
 
   /**
    * Gets the result.
-   * 
+   *
    * @return The result.
    */
   public List<Double> getResult() {
@@ -20,13 +20,11 @@ public class EstimatorResponse {
 
   /**
    * Sets the result.
-   * 
+   *
    * @param result The result to set.
    */
   public void setResult(List<Double> result) {
     this.result = result;
   }
-
-
 
 }

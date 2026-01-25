@@ -20,7 +20,7 @@ public class LayoutRequest {
   /**
    * Gets the circuit.
    *
-   *  @return The circuit.
+   * @return The circuit.
    */
   public String getCircuit() {
     return circuit;
@@ -28,7 +28,7 @@ public class LayoutRequest {
 
   /**
    * Sets the circuit.
-   * 
+   *
    * @param circuit The circuit to set.
    */
   public void setCircuit(String circuit) {
@@ -38,7 +38,7 @@ public class LayoutRequest {
   /**
    * Gets the backend.
    *
-   *  @return The backend.
+   * @return The backend.
    */
   public String getBackend() {
     return backend;
@@ -46,7 +46,7 @@ public class LayoutRequest {
 
   /**
    * Sets the backend.
-   * 
+   *
    * @param backend The backend to set.
    */
   public void setBackend(String backend) {
@@ -56,7 +56,7 @@ public class LayoutRequest {
   /**
    * Gets the observables.
    *
-   *  @return The observables.
+   * @return The observables.
    */
   public List<Paulis> getObservables() {
     return observables;
@@ -64,7 +64,7 @@ public class LayoutRequest {
 
   /**
    * Sets the observables.
-   * 
+   *
    * @param observables The observables to set.
    */
   public void setObservables(List<Paulis> observables) {
@@ -74,7 +74,7 @@ public class LayoutRequest {
   /**
    * Gets the trimObservables.
    *
-   *  @return The trimObservables.
+   * @return The trimObservables.
    */
   public boolean isTrimObservables() {
     return trimObservables;
@@ -82,7 +82,7 @@ public class LayoutRequest {
 
   /**
    * Sets the trimObservables.
-   * 
+   *
    * @param trimObservables The trimObservables to set.
    */
   public void setTrimObservables(boolean trimObservables) {
@@ -92,7 +92,7 @@ public class LayoutRequest {
   /**
    * Gets the optimizationLevel.
    *
-   *  @return The optimizationLevel.
+   * @return The optimizationLevel.
    */
   public int getOptimizationLevel() {
     return optimizationLevel;
@@ -100,12 +100,11 @@ public class LayoutRequest {
 
   /**
    * Sets the optimizationLevel.
-   * 
+   *
    * @param optimizationLevel The optimizationLevel to set.
    */
   public void setOptimizationLevel(int optimizationLevel) {
     this.optimizationLevel = optimizationLevel;
   }
-
 
 }

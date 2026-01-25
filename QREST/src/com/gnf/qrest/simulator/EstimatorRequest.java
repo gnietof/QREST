@@ -1,7 +1,7 @@
 package com.gnf.qrest.simulator;
 
 /**
- * Models a request to run an Estimator. 
+ * Models a request to run an Estimator.
  */
 public class EstimatorRequest {
 
@@ -11,7 +11,7 @@ public class EstimatorRequest {
 
   /**
    * Gets the circuit.
-   * 
+   *
    * @return The circuit.
    */
   public String getCircuit() {
@@ -20,7 +20,7 @@ public class EstimatorRequest {
 
   /**
    * Sets the circuit.
-   * 
+   *
    * @param circuit the circuit to set.
    */
   public void setCircuit(String circuit) {
@@ -29,7 +29,7 @@ public class EstimatorRequest {
 
   /**
    * Gets the observable.
-   * 
+   *
    * @return The observable.
    */
   public String getObservable() {
@@ -38,7 +38,7 @@ public class EstimatorRequest {
 
   /**
    * Sets the observable.
-   * 
+   *
    * @param observable the observable to set.
    */
   public void setObservable(String observable) {
@@ -47,7 +47,7 @@ public class EstimatorRequest {
 
   /**
    * Gets the shots.
-   * 
+   *
    * @return The shots.
    */
   public int getShots() {
@@ -56,12 +56,11 @@ public class EstimatorRequest {
 
   /**
    * Sets the shots.
-   * 
+   *
    * @param shots the shots to set.
    */
   public void setShots(int shots) {
     this.shots = shots;
   }
-
 
 }

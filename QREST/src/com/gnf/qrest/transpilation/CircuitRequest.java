@@ -10,7 +10,7 @@ public class CircuitRequest {
   /**
    * Gets the circuit.
    *
-   *  @return The circuit.
+   * @return The circuit.
    */
   public String getCircuit() {
     return circuit;
@@ -18,12 +18,11 @@ public class CircuitRequest {
 
   /**
    * Sets the circuit.
-   * 
+   *
    * @param circuit The circuit to set.
    */
   public void setCircuit(String circuit) {
     this.circuit = circuit;
   }
-
 
 }

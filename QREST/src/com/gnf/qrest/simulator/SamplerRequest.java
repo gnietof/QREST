@@ -10,7 +10,7 @@ public class SamplerRequest {
 
   /**
    * Gets the circuit.
-   * 
+   *
    * @return The circuit.
    */
   public String getCircuit() {
@@ -19,7 +19,7 @@ public class SamplerRequest {
 
   /**
    * Sets the circuit.
-   * 
+   *
    * @param circuit the circuit to set.
    */
   public void setCircuit(String circuit) {
@@ -28,7 +28,7 @@ public class SamplerRequest {
 
   /**
    * Gets the shots.
-   * 
+   *
    * @return The shots.
    */
   public int getShots() {
@@ -37,12 +37,11 @@ public class SamplerRequest {
 
   /**
    * Sets the shots.
-   * 
+   *
    * @param shots the shots to set.
    */
   public void setShots(int shots) {
     this.shots = shots;
   }
-
 
 }
