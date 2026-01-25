@@ -21,6 +21,5 @@ jobs:
           
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: true
-          LINTER_RULES_PATH: .github/linters
-          JAVA_CHECKSTYLE_CONFIG_FILE: checkstyle.xml
+          JAVA_CHECKSTYLE_CONFIG_FILE: .github/linters/checkstyle.xml
           VALIDATE_JAVA_FORMATTER: false
