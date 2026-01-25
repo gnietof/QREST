@@ -38,6 +38,9 @@
             <property name="severity" value="warning"/>
         </module>
 
+        <module name="JavadocVariable">
+            <property name="accessModifiers" value="public"/>
+        </module>              
     </module>
 
 </module>
