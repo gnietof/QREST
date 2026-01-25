@@ -45,7 +45,7 @@ public class Job extends QResponse {
 
     /**
      * Gets the status.
-     * 
+     *
      * @return The status.
      */
     public String getStatus() {
@@ -54,7 +54,7 @@ public class Job extends QResponse {
 
     /**
      * Sets the status.
-     * 
+     *
      * @param status The status to set.
      */
     public void setStatus(String status) {
@@ -63,7 +63,7 @@ public class Job extends QResponse {
 
     /**
      * Gets the reason.
-     * 
+     *
      * @return The reason.
      */
     public String getReason() {
@@ -72,7 +72,7 @@ public class Job extends QResponse {
 
     /**
      * Sets the reason.
-     * 
+     *
      * @param reason The reason to set.
      */
     public void setReason(String reason) {
@@ -81,7 +81,7 @@ public class Job extends QResponse {
 
     /**
      * Gets the reasonCode.
-     * 
+     *
      * @return The reasonCode.
      */
     public int getReasonCode() {
@@ -90,13 +90,12 @@ public class Job extends QResponse {
 
     /**
      * Sets the reasonCode.
-     * 
+     *
      * @param reasonCode The reasonCode to set.
      */
     public void setReasonCode(int reasonCode) {
       this.reasonCode = reasonCode;
     }
-
 
   }
 
@@ -111,7 +110,7 @@ public class Job extends QResponse {
 
   /**
    * Checks if this job is in an completed state.
-   * 
+   *
    * @return Whether this job is in a completed state.
    */
   public boolean isDone() {
@@ -121,7 +120,7 @@ public class Job extends QResponse {
 
   /**
    * Checks if this job is in an running state.
-   * 
+   *
    * @return Whether this job is in a running state.
    */
   public boolean isRunning() {
@@ -131,7 +130,7 @@ public class Job extends QResponse {
 
   /**
    * Checks if this job is in an error state.
-   * 
+   *
    * @return Whether this job is in an error state.
    */
   public boolean isError() {
@@ -141,7 +140,7 @@ public class Job extends QResponse {
 
   /**
    * Checks if this job is in an final state.
-   * 
+   *
    * @return Whether this job is in an final state.
    */
   public boolean isInFinalState() {
@@ -151,14 +150,14 @@ public class Job extends QResponse {
 
   @Override
   public String toString() {
-    String s = String.format("%s: %s [%s] (%s-%s) %s", getId(), getCreated(),
-        getBackend(), getProgram().getId(), getStatus(), getTags().toString());
+    String s = String.format("%s: %s [%s] (%s-%s) %s", getId(), getCreated(), getBackend(),
+        getProgram().getId(), getStatus(), getTags().toString());
     return s;
   }
 
   /**
    * Gets the id.
-   * 
+   *
    * @return The id.
    */
   public String getId() {
@@ -167,7 +166,7 @@ public class Job extends QResponse {
 
   /**
    * Sets the id.
-   * 
+   *
    * @param id The id to set.
    */
   public void setId(String id) {
@@ -176,7 +175,7 @@ public class Job extends QResponse {
 
   /**
    * Gets the backend.
-   * 
+   *
    * @return The backend.
    */
   public String getBackend() {
@@ -185,7 +184,7 @@ public class Job extends QResponse {
 
   /**
    * Sets the backend.
-   * 
+   *
    * @param backend The backend to set.
    */
   public void setBackend(String backend) {
@@ -194,7 +193,7 @@ public class Job extends QResponse {
 
   /**
    * Gets the state.
-   * 
+   *
    * @return The state.
    */
   public State getState() {
@@ -203,7 +202,7 @@ public class Job extends QResponse {
 
   /**
    * Sets the state.
-   * 
+   *
    * @param state The state to set.
    */
   public void setState(State state) {
@@ -212,7 +211,7 @@ public class Job extends QResponse {
 
   /**
    * Gets the userId.
-   * 
+   *
    * @return The userId.
    */
   public String getUserId() {
@@ -221,7 +220,7 @@ public class Job extends QResponse {
 
   /**
    * Sets the userId.
-   * 
+   *
    * @param userId The userId to set.
    */
   public void setUserId(String userId) {
@@ -230,7 +229,7 @@ public class Job extends QResponse {
 
   /**
    * Gets the program.
-   * 
+   *
    * @return The program.
    */
   public Program getProgram() {
@@ -239,7 +238,7 @@ public class Job extends QResponse {
 
   /**
    * Sets the program.
-   * 
+   *
    * @param program The program to set.
    */
   public void setProgram(Program program) {
@@ -248,7 +247,7 @@ public class Job extends QResponse {
 
   /**
    * Gets the created.
-   * 
+   *
    * @return The created.
    */
   public String getCreated() {
@@ -257,7 +256,7 @@ public class Job extends QResponse {
 
   /**
    * Sets the created.
-   * 
+   *
    * @param created The created to set.
    */
   public void setCreated(String created) {
@@ -266,7 +265,7 @@ public class Job extends QResponse {
 
   /**
    * Gets the usage.
-   * 
+   *
    * @return The usage.
    */
   public Usage getUsage() {
@@ -275,7 +274,7 @@ public class Job extends QResponse {
 
   /**
    * Sets the usage.
-   * 
+   *
    * @param usage The usage to set.
    */
   public void setUsage(Usage usage) {
@@ -284,7 +283,7 @@ public class Job extends QResponse {
 
   /**
    * Gets the sessionId.
-   * 
+   *
    * @return The sessionId.
    */
   public String getSessionId() {
@@ -293,7 +292,7 @@ public class Job extends QResponse {
 
   /**
    * Sets the sessionId.
-   * 
+   *
    * @param sessionId The sessionId to set.
    */
   public void setSessionId(String sessionId) {
@@ -302,7 +301,7 @@ public class Job extends QResponse {
 
   /**
    * Gets the status.
-   * 
+   *
    * @return The status.
    */
   public String getStatus() {
@@ -311,7 +310,7 @@ public class Job extends QResponse {
 
   /**
    * Sets the status.
-   * 
+   *
    * @param status The status to set.
    */
   public void setStatus(String status) {
@@ -320,7 +319,7 @@ public class Job extends QResponse {
 
   /**
    * Gets the tags.
-   * 
+   *
    * @return The tags.
    */
   public List<String> getTags() {
@@ -329,7 +328,7 @@ public class Job extends QResponse {
 
   /**
    * Sets the tags.
-   * 
+   *
    * @param tags The tags to set.
    */
   public void setTags(List<String> tags) {

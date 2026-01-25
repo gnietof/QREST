@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
- * Models a BackendConfig
+ * Models a BackendConfig.
  */
 public class BackendConfig {
 
@@ -117,7 +117,7 @@ public class BackendConfig {
 
   /**
    * Gets the allowQObject.
-   * 
+   *
    * @return The allowQObject.
    */
   public boolean isAllowQObject() {
@@ -126,7 +126,7 @@ public class BackendConfig {
 
   /**
    * Sets the allowQObject.
-   * 
+   *
    * @param allowQObject the allowQObject to set.
    */
   public void setAllowQObject(boolean allowQObject) {
@@ -135,7 +135,7 @@ public class BackendConfig {
 
   /**
    * Gets the backendName.
-   * 
+   *
    * @return The backendName.
    */
   public String getBackendName() {
@@ -144,7 +144,7 @@ public class BackendConfig {
 
   /**
    * Sets the backendName.
-   * 
+   *
    * @param backendName the backendName to set.
    */
   public void setBackendName(String backendName) {
@@ -153,7 +153,7 @@ public class BackendConfig {
 
   /**
    * Gets the backendVersion.
-   * 
+   *
    * @return The backendVersion.
    */
   public String getBackendVersion() {
@@ -162,7 +162,7 @@ public class BackendConfig {
 
   /**
    * Sets the backendVersion.
-   * 
+   *
    * @param backendVersion the backendVersion to set.
    */
   public void setBackendVersion(String backendVersion) {
@@ -171,7 +171,7 @@ public class BackendConfig {
 
   /**
    * Gets the basisGates.
-   * 
+   *
    * @return The basisGates.
    */
   public List<String> getBasisGates() {
@@ -180,7 +180,7 @@ public class BackendConfig {
 
   /**
    * Sets the basisGates.
-   * 
+   *
    * @param basisGates the basisGates to set.
    */
   public void setBasisGates(List<String> basisGates) {
@@ -189,7 +189,7 @@ public class BackendConfig {
 
   /**
    * Gets the clops.
-   * 
+   *
    * @return The clops.
    */
   public Object getClops() {
@@ -198,7 +198,7 @@ public class BackendConfig {
 
   /**
    * Sets the clops.
-   * 
+   *
    * @param clops the clops to set.
    */
   public void setClops(Object clops) {
@@ -207,7 +207,7 @@ public class BackendConfig {
 
   /**
    * Gets the clopsH.
-   * 
+   *
    * @return The clopsH.
    */
   public int getClopsH() {
@@ -216,7 +216,7 @@ public class BackendConfig {
 
   /**
    * Sets the clopsH.
-   * 
+   *
    * @param clopsH the clopsH to set.
    */
   public void setClopsH(int clopsH) {
@@ -225,7 +225,7 @@ public class BackendConfig {
 
   /**
    * Gets the clopsV.
-   * 
+   *
    * @return The clopsV.
    */
   public Object getClopsV() {
@@ -234,7 +234,7 @@ public class BackendConfig {
 
   /**
    * Sets the clopsV.
-   * 
+   *
    * @param clopsV the clopsV to set.
    */
   public void setClopsV(Object clopsV) {
@@ -243,7 +243,7 @@ public class BackendConfig {
 
   /**
    * Gets the conditional.
-   * 
+   *
    * @return The conditional.
    */
   public boolean isConditional() {
@@ -252,7 +252,7 @@ public class BackendConfig {
 
   /**
    * Sets the conditional.
-   * 
+   *
    * @param conditional the conditional to set.
    */
   public void setConditional(boolean conditional) {
@@ -261,7 +261,7 @@ public class BackendConfig {
 
   /**
    * Gets the coords.
-   * 
+   *
    * @return The coords.
    */
   public List<List<Integer>> getCoords() {
@@ -270,7 +270,7 @@ public class BackendConfig {
 
   /**
    * Sets the coords.
-   * 
+   *
    * @param coords the coords to set.
    */
   public void setCoords(List<List<Integer>> coords) {
@@ -279,7 +279,7 @@ public class BackendConfig {
 
   /**
    * Gets the couplingMap.
-   * 
+   *
    * @return The couplingMap.
    */
   public List<List<Integer>> getCouplingMap() {
@@ -288,7 +288,7 @@ public class BackendConfig {
 
   /**
    * Sets the couplingMap.
-   * 
+   *
    * @param couplingMap the couplingMap to set.
    */
   public void setCouplingMap(List<List<Integer>> couplingMap) {
@@ -297,7 +297,7 @@ public class BackendConfig {
 
   /**
    * Gets the creditsRequired.
-   * 
+   *
    * @return The creditsRequired.
    */
   public boolean isCreditsRequired() {
@@ -306,7 +306,7 @@ public class BackendConfig {
 
   /**
    * Sets the creditsRequired.
-   * 
+   *
    * @param creditsRequired the creditsRequired to set.
    */
   public void setCreditsRequired(boolean creditsRequired) {
@@ -315,7 +315,7 @@ public class BackendConfig {
 
   /**
    * Gets the defaultRepDelay.
-   * 
+   *
    * @return The defaultRepDelay.
    */
   public int getDefaultRepDelay() {
@@ -324,7 +324,7 @@ public class BackendConfig {
 
   /**
    * Sets the defaultRepDelay.
-   * 
+   *
    * @param defaultRepDelay the defaultRepDelay to set.
    */
   public void setDefaultRepDelay(int defaultRepDelay) {
@@ -333,7 +333,7 @@ public class BackendConfig {
 
   /**
    * Gets the description.
-   * 
+   *
    * @return The description.
    */
   public String getDescription() {
@@ -342,7 +342,7 @@ public class BackendConfig {
 
   /**
    * Sets the description.
-   * 
+   *
    * @param description the description to set.
    */
   public void setDescription(String description) {
@@ -351,7 +351,7 @@ public class BackendConfig {
 
   /**
    * Gets the dt.
-   * 
+   *
    * @return The dt.
    */
   public int getDt() {
@@ -360,7 +360,7 @@ public class BackendConfig {
 
   /**
    * Sets the dt.
-   * 
+   *
    * @param dt the dt to set.
    */
   public void setDt(int dt) {
@@ -369,7 +369,7 @@ public class BackendConfig {
 
   /**
    * Gets the dtm.
-   * 
+   *
    * @return The dtm.
    */
   public int getDtm() {
@@ -378,7 +378,7 @@ public class BackendConfig {
 
   /**
    * Sets the dtm.
-   * 
+   *
    * @param dtm the dtm to set.
    */
   public void setDtm(int dtm) {
@@ -387,7 +387,7 @@ public class BackendConfig {
 
   /**
    * Gets the dynamicRepRateEnabled.
-   * 
+   *
    * @return The dynamicRepRateEnabled.
    */
   public boolean isDynamicRepRateEnabled() {
@@ -396,7 +396,7 @@ public class BackendConfig {
 
   /**
    * Sets the dynamicRepRateEnabled.
-   * 
+   *
    * @param dynamicRepRateEnabled the dynamicRepRateEnabled to set.
    */
   public void setDynamicRepRateEnabled(boolean dynamicRepRateEnabled) {
@@ -405,7 +405,7 @@ public class BackendConfig {
 
   /**
    * Gets the gates.
-   * 
+   *
    * @return The gates.
    */
   public List<GateConfig> getGates() {
@@ -414,7 +414,7 @@ public class BackendConfig {
 
   /**
    * Sets the gates.
-   * 
+   *
    * @param gates the gates to set.
    */
   public void setGates(List<GateConfig> gates) {
@@ -423,7 +423,7 @@ public class BackendConfig {
 
   /**
    * Gets the instructionSignatures.
-   * 
+   *
    * @return The instructionSignatures.
    */
   public List<Object> getInstructionSignatures() {
@@ -432,7 +432,7 @@ public class BackendConfig {
 
   /**
    * Sets the instructionSignatures.
-   * 
+   *
    * @param instructionSignatures the instructionSignatures to set.
    */
   public void setInstructionSignatures(List<Object> instructionSignatures) {
@@ -441,7 +441,7 @@ public class BackendConfig {
 
   /**
    * Gets the local.
-   * 
+   *
    * @return The local.
    */
   public boolean isLocal() {
@@ -450,7 +450,7 @@ public class BackendConfig {
 
   /**
    * Sets the local.
-   * 
+   *
    * @param local the local to set.
    */
   public void setLocal(boolean local) {
@@ -459,7 +459,7 @@ public class BackendConfig {
 
   /**
    * Gets the maxExperiments.
-   * 
+   *
    * @return The maxExperiments.
    */
   public int getMaxExperiments() {
@@ -468,7 +468,7 @@ public class BackendConfig {
 
   /**
    * Sets the maxExperiments.
-   * 
+   *
    * @param maxExperiments the maxExperiments to set.
    */
   public void setMaxExperiments(int maxExperiments) {
@@ -477,7 +477,7 @@ public class BackendConfig {
 
   /**
    * Gets the maxShots.
-   * 
+   *
    * @return The maxShots.
    */
   public int getMaxShots() {
@@ -486,7 +486,7 @@ public class BackendConfig {
 
   /**
    * Sets the maxShots.
-   * 
+   *
    * @param maxShots the maxShots to set.
    */
   public void setMaxShots(int maxShots) {
@@ -495,7 +495,7 @@ public class BackendConfig {
 
   /**
    * Gets the measMap.
-   * 
+   *
    * @return The measMap.
    */
   public List<List<Integer>> getMeasMap() {
@@ -504,7 +504,7 @@ public class BackendConfig {
 
   /**
    * Sets the measMap.
-   * 
+   *
    * @param measMap the measMap to set.
    */
   public void setMeasMap(List<List<Integer>> measMap) {
@@ -513,7 +513,7 @@ public class BackendConfig {
 
   /**
    * Gets the measureEspEnabled.
-   * 
+   *
    * @return The measureEspEnabled.
    */
   public boolean isMeasureEspEnabled() {
@@ -522,7 +522,7 @@ public class BackendConfig {
 
   /**
    * Sets the measureEspEnabled.
-   * 
+   *
    * @param measureEspEnabled the measureEspEnabled to set.
    */
   public void setMeasureEspEnabled(boolean measureEspEnabled) {
@@ -531,7 +531,7 @@ public class BackendConfig {
 
   /**
    * Gets the memory.
-   * 
+   *
    * @return The memory.
    */
   public boolean isMemory() {
@@ -540,7 +540,7 @@ public class BackendConfig {
 
   /**
    * Sets the memory.
-   * 
+   *
    * @param memory the memory to set.
    */
   public void setMemory(boolean memory) {
@@ -549,7 +549,7 @@ public class BackendConfig {
 
   /**
    * Gets the multiMeasEnabled.
-   * 
+   *
    * @return The multiMeasEnabled.
    */
   public boolean isMultiMeasEnabled() {
@@ -558,7 +558,7 @@ public class BackendConfig {
 
   /**
    * Sets the multiMeasEnabled.
-   * 
+   *
    * @param multiMeasEnabled the multiMeasEnabled to set.
    */
   public void setMultiMeasEnabled(boolean multiMeasEnabled) {
@@ -567,7 +567,7 @@ public class BackendConfig {
 
   /**
    * Gets the nQubits.
-   * 
+   *
    * @return The nQubits.
    */
   public int getnQubits() {
@@ -576,7 +576,7 @@ public class BackendConfig {
 
   /**
    * Sets the nQubits.
-   * 
+   *
    * @param nQubits the nQubits to set.
    */
   public void setnQubits(int nQubits) {
@@ -585,7 +585,7 @@ public class BackendConfig {
 
   /**
    * Gets the nRegisters.
-   * 
+   *
    * @return The nRegisters.
    */
   public int getnRegisters() {
@@ -594,7 +594,7 @@ public class BackendConfig {
 
   /**
    * Sets the nRegisters.
-   * 
+   *
    * @param nRegisters the nRegisters to set.
    */
   public void setnRegisters(int nRegisters) {
@@ -603,7 +603,7 @@ public class BackendConfig {
 
   /**
    * Gets the onlineDate.
-   * 
+   *
    * @return The onlineDate.
    */
   public String getOnlineDate() {
@@ -612,7 +612,7 @@ public class BackendConfig {
 
   /**
    * Sets the onlineDate.
-   * 
+   *
    * @param onlineDate the onlineDate to set.
    */
   public void setOnlineDate(String onlineDate) {
@@ -621,7 +621,7 @@ public class BackendConfig {
 
   /**
    * Gets the openPulse.
-   * 
+   *
    * @return The openPulse.
    */
   public boolean isOpenPulse() {
@@ -630,7 +630,7 @@ public class BackendConfig {
 
   /**
    * Sets the openPulse.
-   * 
+   *
    * @param openPulse the openPulse to set.
    */
   public void setOpenPulse(boolean openPulse) {
@@ -639,7 +639,7 @@ public class BackendConfig {
 
   /**
    * Gets the parallelCompilation.
-   * 
+   *
    * @return The parallelCompilation.
    */
   public boolean isParallelCompilation() {
@@ -648,7 +648,7 @@ public class BackendConfig {
 
   /**
    * Sets the parallelCompilation.
-   * 
+   *
    * @param parallelCompilation the parallelCompilation to set.
    */
   public void setParallelCompilation(boolean parallelCompilation) {
@@ -657,7 +657,7 @@ public class BackendConfig {
 
   /**
    * Gets the processorType.
-   * 
+   *
    * @return The processorType.
    */
   public ProcessorType getProcessorType() {
@@ -666,7 +666,7 @@ public class BackendConfig {
 
   /**
    * Sets the processorType.
-   * 
+   *
    * @param processorType the processorType to set.
    */
   public void setProcessorType(ProcessorType processorType) {
@@ -675,7 +675,7 @@ public class BackendConfig {
 
   /**
    * Gets the quantumVolume.
-   * 
+   *
    * @return The quantumVolume.
    */
   public Object getQuantumVolume() {
@@ -684,7 +684,7 @@ public class BackendConfig {
 
   /**
    * Sets the quantumVolume.
-   * 
+   *
    * @param quantumVolume the quantumVolume to set.
    */
   public void setQuantumVolume(Object quantumVolume) {
@@ -693,7 +693,7 @@ public class BackendConfig {
 
   /**
    * Gets the repDelayRange.
-   * 
+   *
    * @return The repDelayRange.
    */
   public List<Integer> getRepDelayRange() {
@@ -702,7 +702,7 @@ public class BackendConfig {
 
   /**
    * Sets the repDelayRange.
-   * 
+   *
    * @param repDelayRange the repDelayRange to set.
    */
   public void setRepDelayRange(List<Integer> repDelayRange) {
@@ -711,7 +711,7 @@ public class BackendConfig {
 
   /**
    * Gets the sampleName.
-   * 
+   *
    * @return The sampleName.
    */
   public String getSampleName() {
@@ -720,7 +720,7 @@ public class BackendConfig {
 
   /**
    * Sets the sampleName.
-   * 
+   *
    * @param sampleName the sampleName to set.
    */
   public void setSampleName(String sampleName) {
@@ -729,7 +729,7 @@ public class BackendConfig {
 
   /**
    * Gets the simulator.
-   * 
+   *
    * @return The simulator.
    */
   public boolean isSimulator() {
@@ -738,7 +738,7 @@ public class BackendConfig {
 
   /**
    * Sets the simulator.
-   * 
+   *
    * @param simulator the simulator to set.
    */
   public void setSimulator(boolean simulator) {
@@ -747,7 +747,7 @@ public class BackendConfig {
 
   /**
    * Gets the supportedFeatures.
-   * 
+   *
    * @return The supportedFeatures.
    */
   public List<String> getSupportedFeatures() {
@@ -756,7 +756,7 @@ public class BackendConfig {
 
   /**
    * Sets the supportedFeatures.
-   * 
+   *
    * @param supportedFeatures the supportedFeatures to set.
    */
   public void setSupportedFeatures(List<String> supportedFeatures) {
@@ -765,7 +765,7 @@ public class BackendConfig {
 
   /**
    * Gets the supportedInstructions.
-   * 
+   *
    * @return The supportedInstructions.
    */
   public List<String> getSupportedInstructions() {
@@ -774,7 +774,7 @@ public class BackendConfig {
 
   /**
    * Sets the supportedInstructions.
-   * 
+   *
    * @param supportedInstructions the supportedInstructions to set.
    */
   public void setSupportedInstructions(List<String> supportedInstructions) {
@@ -783,7 +783,7 @@ public class BackendConfig {
 
   /**
    * Gets the timingConstraints.
-   * 
+   *
    * @return The timingConstraints.
    */
   public TimingConstraints getTimingConstraints() {
@@ -792,7 +792,7 @@ public class BackendConfig {
 
   /**
    * Sets the timingConstraints.
-   * 
+   *
    * @param timingConstraints the timingConstraints to set.
    */
   public void setTimingConstraints(TimingConstraints timingConstraints) {
@@ -801,7 +801,7 @@ public class BackendConfig {
 
   /**
    * Gets the url.
-   * 
+   *
    * @return The url.
    */
   public Object getUrl() {
@@ -810,12 +810,11 @@ public class BackendConfig {
 
   /**
    * Sets the url.
-   * 
+   *
    * @param url the url to set.
    */
   public void setUrl(Object url) {
     this.url = url;
   }
 
-  
 }

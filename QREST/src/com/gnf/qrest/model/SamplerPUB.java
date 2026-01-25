@@ -25,9 +25,8 @@ public class SamplerPUB extends PUB {
   public static class Builder extends PUB.Builder<Builder> {
     private int shots = 16;
 
-    
     /**
-     * Build using number of shots. 
+     * Build using number of shots.
      */
     public Builder shots(int shots) {
       this.shots = shots;
@@ -47,7 +46,7 @@ public class SamplerPUB extends PUB {
 
   /**
    * Gets the shots.
-   * 
+   *
    * @return The shots.
    */
   public int getShots() {
@@ -56,12 +55,11 @@ public class SamplerPUB extends PUB {
 
   /**
    * Sets the shots.
-   * 
+   *
    * @param shots the shots to set
    */
   public void setShots(int shots) {
     this.shots = shots;
   }
-
 
 }

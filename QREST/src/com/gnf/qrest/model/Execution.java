@@ -12,7 +12,7 @@ public class Execution {
   /**
    * Gets the initQubits.
    *
-   *  @return The initQubits.
+   * @return The initQubits.
    */
   public boolean isInitQubits() {
     return initQubits;
@@ -20,12 +20,11 @@ public class Execution {
 
   /**
    * Sets the initQubits.
-   * 
+   *
    * @param initQubits The initQubits to set.
    */
   public void setInitQubits(boolean initQubits) {
     this.initQubits = initQubits;
   }
-
 
 }

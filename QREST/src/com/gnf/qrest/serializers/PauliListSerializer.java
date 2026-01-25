@@ -14,7 +14,7 @@ import java.util.List;
 public class PauliListSerializer extends JsonSerializer<List<Paulis>> {
 
   @Override
-  public void serialize(List<Paulis> value, JsonGenerator gen, SerializerProvider serializers) 
+  public void serialize(List<Paulis> value, JsonGenerator gen, SerializerProvider serializers)
       throws IOException {
 
     gen.writeStartArray();

@@ -23,7 +23,7 @@ public class Estimator extends Primitive<EstimatorPUB> {
 
   /**
    * Estimator constructor for backend.
-   * 
+   *
    * @param backend The backend to run in.
    */
   public Estimator(Backend backend) {
@@ -60,9 +60,9 @@ public class Estimator extends Primitive<EstimatorPUB> {
 
     /**
      * EstimatorRequest constructor for backend and pubs.
-     * 
+     *
      * @param backend The backend to run in.
-     * @param pubs The pubs to use for the sampler.
+     * @param pubs    The pubs to use for the sampler.
      */
     public EstimatorRequest(String backend, List<EstimatorPUB> pubs) {
       super(backend, pubs, "estimator");

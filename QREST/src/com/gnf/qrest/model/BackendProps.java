@@ -46,7 +46,7 @@ public class BackendProps {
 
       /**
        * Gets the date.
-       * 
+       *
        * @return The date.
        */
       public String getDate() {
@@ -55,7 +55,7 @@ public class BackendProps {
 
       /**
        * Sets the date.
-       * 
+       *
        * @param date The date to set.
        */
       public void setDate(String date) {
@@ -64,7 +64,7 @@ public class BackendProps {
 
       /**
        * Gets the name.
-       * 
+       *
        * @return The name.
        */
       public String getName() {
@@ -73,7 +73,7 @@ public class BackendProps {
 
       /**
        * Sets the name.
-       * 
+       *
        * @param name The name to set.
        */
       public void setName(String name) {
@@ -82,7 +82,7 @@ public class BackendProps {
 
       /**
        * Gets the unit.
-       * 
+       *
        * @return The unit.
        */
       public String getUnit() {
@@ -91,7 +91,7 @@ public class BackendProps {
 
       /**
        * Sets the unit.
-       * 
+       *
        * @param unit The unit to set.
        */
       public void setUnit(String unit) {
@@ -100,7 +100,7 @@ public class BackendProps {
 
       /**
        * Gets the value.
-       * 
+       *
        * @return The value.
        */
       public Double getValue() {
@@ -109,7 +109,7 @@ public class BackendProps {
 
       /**
        * Sets the value.
-       * 
+       *
        * @param value The value to set.
        */
       public void setValue(Double value) {
@@ -129,7 +129,7 @@ public class BackendProps {
 
       /**
        * Gets the date.
-       * 
+       *
        * @return The date.
        */
       public String getDate() {
@@ -138,7 +138,7 @@ public class BackendProps {
 
       /**
        * Sets the date.
-       * 
+       *
        * @param date The date to set.
        */
       public void setDate(String date) {
@@ -147,7 +147,7 @@ public class BackendProps {
 
       /**
        * Gets the name.
-       * 
+       *
        * @return The name.
        */
       public String getName() {
@@ -156,7 +156,7 @@ public class BackendProps {
 
       /**
        * Sets the name.
-       * 
+       *
        * @param name The name to set.
        */
       public void setName(String name) {
@@ -165,7 +165,7 @@ public class BackendProps {
 
       /**
        * Gets the unit.
-       * 
+       *
        * @return The unit.
        */
       public String getUnit() {
@@ -174,7 +174,7 @@ public class BackendProps {
 
       /**
        * Sets the unit.
-       * 
+       *
        * @param unit The unit to set.
        */
       public void setUnit(String unit) {
@@ -183,7 +183,7 @@ public class BackendProps {
 
       /**
        * Gets the value.
-       * 
+       *
        * @return The value.
        */
       public Double getValue() {
@@ -192,7 +192,7 @@ public class BackendProps {
 
       /**
        * Sets the value.
-       * 
+       *
        * @param value The value to set.
        */
       public void setValue(Double value) {
@@ -210,7 +210,7 @@ public class BackendProps {
 
       /**
        * Gets the name.
-       * 
+       *
        * @return The name.
        */
       public String getName() {
@@ -219,7 +219,7 @@ public class BackendProps {
 
       /**
        * Sets the name.
-       * 
+       *
        * @param name The name to set.
        */
       public void setName(String name) {
@@ -228,7 +228,7 @@ public class BackendProps {
 
       /**
        * Gets the qubits.
-       * 
+       *
        * @return The qubits.
        */
       public List<Integer> getQubits() {
@@ -237,13 +237,12 @@ public class BackendProps {
 
       /**
        * Sets the qubits.
-       * 
+       *
        * @param qubits The qubits to set.
        */
       public void setQubits(List<Integer> qubits) {
         this.qubits = qubits;
       }
-
 
     }
 
@@ -256,7 +255,7 @@ public class BackendProps {
 
     /**
      * Gets the gate.
-     * 
+     *
      * @return The gate.
      */
     public String getGate() {
@@ -265,7 +264,7 @@ public class BackendProps {
 
     /**
      * Sets the gate.
-     * 
+     *
      * @param gate The gate to set.
      */
     public void setGate(String gate) {
@@ -274,7 +273,7 @@ public class BackendProps {
 
     /**
      * Gets the id.
-     * 
+     *
      * @return The id.
      */
     public String getId() {
@@ -283,7 +282,7 @@ public class BackendProps {
 
     /**
      * Sets the id.
-     * 
+     *
      * @param id The id to set.
      */
     public void setId(String id) {
@@ -292,7 +291,7 @@ public class BackendProps {
 
     /**
      * Gets the parameters.
-     * 
+     *
      * @return The parameters.
      */
     public List<Parameter> getParameters() {
@@ -301,7 +300,7 @@ public class BackendProps {
 
     /**
      * Sets the parameters.
-     * 
+     *
      * @param parameters The parameters to set.
      */
     public void setParameters(List<Parameter> parameters) {
@@ -310,7 +309,7 @@ public class BackendProps {
 
     /**
      * Gets the qubits.
-     * 
+     *
      * @return The qubits.
      */
     public List<Integer> getQubits() {
@@ -319,20 +318,18 @@ public class BackendProps {
 
     /**
      * Sets the qubits.
-     * 
+     *
      * @param qubits The qubits to set.
      */
     public void setQubits(List<Integer> qubits) {
       this.qubits = qubits;
     }
 
-
-
   }
 
   /**
    * Gets the backendName.
-   * 
+   *
    * @return The backendName.
    */
   public String getBackendName() {
@@ -341,7 +338,7 @@ public class BackendProps {
 
   /**
    * Sets the backendName.
-   * 
+   *
    * @param backendName The backendName to set.
    */
   public void setBackendName(String backendName) {
@@ -350,7 +347,7 @@ public class BackendProps {
 
   /**
    * Gets the backendVersion.
-   * 
+   *
    * @return The backendVersion.
    */
   public String getBackendVersion() {
@@ -359,7 +356,7 @@ public class BackendProps {
 
   /**
    * Sets the backendVersion.
-   * 
+   *
    * @param backendVersion The backendVersion to set.
    */
   public void setBackendVersion(String backendVersion) {
@@ -368,7 +365,7 @@ public class BackendProps {
 
   /**
    * Gets the gates.
-   * 
+   *
    * @return The gates.
    */
   public List<Gate> getGates() {
@@ -377,7 +374,7 @@ public class BackendProps {
 
   /**
    * Sets the gates.
-   * 
+   *
    * @param gates The gates to set.
    */
   public void setGates(List<Gate> gates) {
@@ -386,7 +383,7 @@ public class BackendProps {
 
   /**
    * Gets the general.
-   * 
+   *
    * @return The general.
    */
   public List<Measure> getGeneral() {
@@ -395,7 +392,7 @@ public class BackendProps {
 
   /**
    * Sets the general.
-   * 
+   *
    * @param general The general to set.
    */
   public void setGeneral(List<Measure> general) {
@@ -404,7 +401,7 @@ public class BackendProps {
 
   /**
    * Gets the generalQLists.
-   * 
+   *
    * @return The generalQLists.
    */
   public List<GeneralQLists> getGeneralQLists() {
@@ -413,7 +410,7 @@ public class BackendProps {
 
   /**
    * Sets the generalQLists.
-   * 
+   *
    * @param generalQLists The generalQLists to set.
    */
   public void setGeneralQLists(List<GeneralQLists> generalQLists) {
@@ -422,7 +419,7 @@ public class BackendProps {
 
   /**
    * Gets the lastUpdateDate.
-   * 
+   *
    * @return The lastUpdateDate.
    */
   public String getLastUpdateDate() {
@@ -431,7 +428,7 @@ public class BackendProps {
 
   /**
    * Sets the lastUpdateDate.
-   * 
+   *
    * @param lastUpdateDate The lastUpdateDate to set.
    */
   public void setLastUpdateDate(String lastUpdateDate) {
@@ -440,7 +437,7 @@ public class BackendProps {
 
   /**
    * Gets the qubits.
-   * 
+   *
    * @return The qubits.
    */
   public List<List<Measure>> getQubits() {
@@ -449,13 +446,11 @@ public class BackendProps {
 
   /**
    * Sets the qubits.
-   * 
+   *
    * @param qubits The qubits to set.
    */
   public void setQubits(List<List<Measure>> qubits) {
     this.qubits = qubits;
   }
-
-
 
 }

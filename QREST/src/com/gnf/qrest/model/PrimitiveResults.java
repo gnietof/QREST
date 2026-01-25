@@ -88,7 +88,7 @@ public class PrimitiveResults extends QResponse {
       List<List<Double>> ensembleStandardError;
 
       /**
-       * Models a EstimatorData. 
+       * Models a EstimatorData.
        */
       public EstimatorData() {
       }
@@ -104,7 +104,7 @@ public class PrimitiveResults extends QResponse {
 
       /**
        * Sets the evs.
-       * 
+       *
        * @param evs The evs to set.
        */
       public void setEvs(List<List<Double>> evs) {
@@ -122,7 +122,7 @@ public class PrimitiveResults extends QResponse {
 
       /**
        * Sets the stds.
-       * 
+       *
        * @param stds The stds to set.
        */
       public void setStds(List<List<Double>> stds) {
@@ -140,7 +140,7 @@ public class PrimitiveResults extends QResponse {
 
       /**
        * Sets the ensembleStandardError.
-       * 
+       *
        * @param ensembleStandardError The ensembleStandardError to set.
        */
       public void setEnsembleStandardError(List<List<Double>> ensembleStandardError) {
@@ -174,17 +174,16 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Returns the bitstrings.
-         * 
+         *
          * @return The bitstrings.
          */
         public BitString getBitString() {
           return getBitString(-1);
         }
 
-        
         /**
          * Returns a bitstring.
-         * 
+         *
          * @return The index of the bitstring.
          */
         public BitString getBitString(int index) {
@@ -198,11 +197,10 @@ public class PrimitiveResults extends QResponse {
           }
           return bb;
         }
- 
-        
+
         /**
          * Returns the number of samples.
-         * 
+         *
          * @return The number of samples.
          */
         public int size() {
@@ -211,7 +209,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Retrieves bitstrings as counts.
-         * 
+         *
          * @return The int counts.
          */
         public Map<String, Long> getCounts() {
@@ -220,7 +218,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Retrieves a bitstring as counts.
-         * 
+         *
          * @param index The bitstring to return.
          * @return The counts.
          */
@@ -233,7 +231,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Retrieves bitstrings as int counts.
-         * 
+         *
          * @return The int counts.
          */
         public Map<Integer, Long> getIntCounts() {
@@ -242,7 +240,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Retrieves a bitstring as int counts.
-         * 
+         *
          * @param index The bitstring to return.
          * @return The int counts.
          */
@@ -253,40 +251,36 @@ public class PrimitiveResults extends QResponse {
           return counts;
         }
 
-
         /**
          * Gets the samples.
          *
-         *  @return The samples.
+         * @return The samples.
          */
         public List<BitString> getSamples() {
           return samples;
         }
 
-
         /**
          * Sets the samples.
-         * 
+         *
          * @param samples The samples to set.
          */
         public void setSamples(List<BitString> samples) {
           this.samples = samples;
         }
 
-
         /**
          * Gets the numBits.
          *
-         *  @return The numBits.
+         * @return The numBits.
          */
         public int getNumBits() {
           return numBits;
         }
 
-
         /**
          * Sets the numBits.
-         * 
+         *
          * @param numBits The numBits to set.
          */
         public void setNumBits(int numBits) {
@@ -357,7 +351,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Sets the enable.
-         * 
+         *
          * @param enable The enable to set.
          */
         public void setEnable(boolean enable) {
@@ -375,7 +369,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Sets the sequenceType.
-         * 
+         *
          * @param sequenceType The sequenceType to set.
          */
         public void setSequenceType(String sequenceType) {
@@ -393,7 +387,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Sets the extraSlackDistribution.
-         * 
+         *
          * @param extraSlackDistribution The extraSlackDistribution to set.
          */
         public void setExtraSlackDistribution(String extraSlackDistribution) {
@@ -411,7 +405,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Sets the schedulingMethod.
-         * 
+         *
          * @param schedulingMethod The schedulingMethod to set.
          */
         public void setSchedulingMethod(String schedulingMethod) {
@@ -452,7 +446,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Sets the enableGates.
-         * 
+         *
          * @param enableGates The enableGates to set.
          */
         public void setEnableGates(boolean enableGates) {
@@ -470,7 +464,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Sets the enableMeasure.
-         * 
+         *
          * @param enableMeasure The enableMeasure to set.
          */
         public void setEnableMeasure(boolean enableMeasure) {
@@ -488,7 +482,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Sets the numRandomizations.
-         * 
+         *
          * @param numRandomizations The numRandomizations to set.
          */
         public void setNumRandomizations(String numRandomizations) {
@@ -506,7 +500,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Sets the shotsPerRandomization.
-         * 
+         *
          * @param shotsPerRandomization The shotsPerRandomization to set.
          */
         public void setShotsPerRandomization(String shotsPerRandomization) {
@@ -524,7 +518,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Sets the interleaveRandomizations.
-         * 
+         *
          * @param interleaveRandomizations The interleaveRandomizations to set.
          */
         public void setInterleaveRandomizations(boolean interleaveRandomizations) {
@@ -542,7 +536,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Sets the strategy.
-         * 
+         *
          * @param strategy The strategy to set.
          */
         public void setStrategy(boolean strategy) {
@@ -564,7 +558,6 @@ public class PrimitiveResults extends QResponse {
         @JsonProperty("pec_mitigation")
         private boolean pecMitigation;
 
-
         /**
          * Gets the measureMitigation.
          *
@@ -576,7 +569,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Sets the measureMitigation.
-         * 
+         *
          * @param measureMitigation The measureMitigation to set.
          */
         public void setMeasureMitigation(boolean measureMitigation) {
@@ -594,7 +587,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Sets the zneMitigation.
-         * 
+         *
          * @param zneMitigation The zneMitigation to set.
          */
         public void setZneMitigation(boolean zneMitigation) {
@@ -612,7 +605,7 @@ public class PrimitiveResults extends QResponse {
 
         /**
          * Sets the pecMitigation.
-         * 
+         *
          * @param pecMitigation The pecMitigation to set.
          */
         public void setPecMitigation(boolean pecMitigation) {
@@ -717,71 +710,78 @@ public class PrimitiveResults extends QResponse {
       private String extraSlackDistribution;
       @JsonProperty("scheduling_method")
       private String schedulingMethod;
+
       /**
        * Gets the enable.
        *
-       *  @return The enable.
+       * @return The enable.
        */
       public boolean isEnable() {
         return enable;
       }
+
       /**
        * Sets the enable.
-       * 
+       *
        * @param enable The enable to set.
        */
       public void setEnable(boolean enable) {
         this.enable = enable;
       }
+
       /**
        * Gets the sequenceType.
        *
-       *  @return The sequenceType.
+       * @return The sequenceType.
        */
       public String getSequenceType() {
         return sequenceType;
       }
+
       /**
        * Sets the sequenceType.
-       * 
+       *
        * @param sequenceType The sequenceType to set.
        */
       public void setSequenceType(String sequenceType) {
         this.sequenceType = sequenceType;
       }
+
       /**
        * Gets the extraSlackDistribution.
        *
-       *  @return The extraSlackDistribution.
+       * @return The extraSlackDistribution.
        */
       public String getExtraSlackDistribution() {
         return extraSlackDistribution;
       }
+
       /**
        * Sets the extraSlackDistribution.
-       * 
+       *
        * @param extraSlackDistribution The extraSlackDistribution to set.
        */
       public void setExtraSlackDistribution(String extraSlackDistribution) {
         this.extraSlackDistribution = extraSlackDistribution;
       }
+
       /**
        * Gets the schedulingMethod.
        *
-       *  @return The schedulingMethod.
+       * @return The schedulingMethod.
        */
       public String getSchedulingMethod() {
         return schedulingMethod;
       }
+
       /**
        * Sets the schedulingMethod.
-       * 
+       *
        * @param schedulingMethod The schedulingMethod to set.
        */
       public void setSchedulingMethod(String schedulingMethod) {
         this.schedulingMethod = schedulingMethod;
       }
-
 
     }
 
@@ -812,7 +812,7 @@ public class PrimitiveResults extends QResponse {
 
       /**
        * Sets the enableGates.
-       * 
+       *
        * @param enableGates the enableGates to set
        */
       public void setEnableGates(boolean enableGates) {
@@ -830,7 +830,7 @@ public class PrimitiveResults extends QResponse {
 
       /**
        * Sets the enableMeasure.
-       * 
+       *
        * @param enableMeasure the enableMeasure to set
        */
       public void setEnableMeasure(boolean enableMeasure) {
@@ -848,7 +848,7 @@ public class PrimitiveResults extends QResponse {
 
       /**
        * Sets the numRandomizations.
-       * 
+       *
        * @param numRandomizations the numRandomizations to set
        */
       public void setNumRandomizations(String numRandomizations) {
@@ -866,7 +866,7 @@ public class PrimitiveResults extends QResponse {
 
       /**
        * Sets the shotsPerRandomizations.
-       * 
+       *
        * @param shotsPerRandomizations the shotsPerRandomizations to set
        */
       public void setShotsPerRandomizations(String shotsPerRandomizations) {
@@ -884,7 +884,7 @@ public class PrimitiveResults extends QResponse {
 
       /**
        * Sets the interleaveRandomizations.
-       * 
+       *
        * @param interleaveRandomizations the interleaveRandomizations to set
        */
       public void setInterleaveRandomizations(boolean interleaveRandomizations) {
@@ -902,7 +902,7 @@ public class PrimitiveResults extends QResponse {
 
       /**
        * Sets the strategy.
-       * 
+       *
        * @param strategy the strategy to set
        */
       public void setStrategy(String strategy) {
@@ -934,7 +934,7 @@ public class PrimitiveResults extends QResponse {
 
       /**
        * Sets the measureMitigation.
-       * 
+       *
        * @param measureMitigation The measureMitigation to set.
        */
       public void setMeasureMitigation(boolean measureMitigation) {
@@ -952,7 +952,7 @@ public class PrimitiveResults extends QResponse {
 
       /**
        * Sets the zneMitigation.
-       * 
+       *
        * @param zneMitigation The zneMitigation to set.
        */
       public void setZneMitigation(boolean zneMitigation) {
@@ -970,7 +970,7 @@ public class PrimitiveResults extends QResponse {
 
       /**
        * Sets the pecMitigation.
-       * 
+       *
        * @param pecMitigation The pecMitigation to set.
        */
       public void setPecMitigation(boolean pecMitigation) {
@@ -1002,7 +1002,7 @@ public class PrimitiveResults extends QResponse {
 
     /**
      * Sets the dynamicalDecoupling.
-     * 
+     *
      * @param dynamicalDecoupling The dynamicalDecoupling to set.
      */
     public void setDynamicalDecoupling(DynamicalDecoupling dynamicalDecoupling) {
@@ -1020,7 +1020,7 @@ public class PrimitiveResults extends QResponse {
 
     /**
      * Sets the resilience.
-     * 
+     *
      * @param resilience The resilience to set.
      */
     public void setResilience(Resilience resilience) {
@@ -1038,7 +1038,7 @@ public class PrimitiveResults extends QResponse {
 
     /**
      * Sets the version.
-     * 
+     *
      * @param version The version to set.
      */
     public void setVersion(int version) {
@@ -1047,7 +1047,7 @@ public class PrimitiveResults extends QResponse {
 
     /**
      * Sets the twirling.
-     * 
+     *
      * @param twirling The twirling to set.
      */
     public void setTwirling(Twirling twirling) {
@@ -1057,7 +1057,7 @@ public class PrimitiveResults extends QResponse {
     /**
      * Gets the twirling.
      *
-     *  @return The twirling.
+     * @return The twirling.
      */
     public Twirling getTwirling() {
       return twirling;
@@ -1076,7 +1076,7 @@ public class PrimitiveResults extends QResponse {
 
   /**
    * Sets the results.
-   * 
+   *
    * @param results The results to set.
    */
   public void setResults(List<Result> results) {
@@ -1094,7 +1094,7 @@ public class PrimitiveResults extends QResponse {
 
   /**
    * Sets the metadata.
-   * 
+   *
    * @param metadata The metadata to set.
    */
   public void setMetadata(Metadata metadata) {

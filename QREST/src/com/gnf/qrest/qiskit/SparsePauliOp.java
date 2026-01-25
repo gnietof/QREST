@@ -4,12 +4,10 @@ import com.gnf.qrest.model.Paulis;
 import java.util.List;
 import java.util.StringJoiner;
 
-
 /**
  * Models a SparsePauliOp.
  */
 public class SparsePauliOp {
-
 
   private String type = "SparsePauliOp";
   private Paulis paulis;
@@ -56,7 +54,7 @@ public class SparsePauliOp {
 
   /**
    * Gets the type.
-   * 
+   *
    * @return The type.
    */
   public String getType() {
@@ -65,7 +63,7 @@ public class SparsePauliOp {
 
   /**
    * Sets the type.
-   * 
+   *
    * @param type the type to set
    */
   public void setType(String type) {
@@ -74,7 +72,7 @@ public class SparsePauliOp {
 
   /**
    * Gets the paulis.
-   * 
+   *
    * @return The paulis.
    */
   public Paulis getPaulis() {
@@ -83,12 +81,11 @@ public class SparsePauliOp {
 
   /**
    * Sets the paulis.
-   * 
+   *
    * @param paulis the paulis to set
    */
   public void setPaulis(Paulis paulis) {
     this.paulis = paulis;
   }
-
 
 }

@@ -12,7 +12,7 @@ import java.io.IOException;
 public class PauliSerializer extends JsonSerializer<Pauli> {
 
   @Override
-  public void serialize(Pauli value, JsonGenerator gen, SerializerProvider serializers) 
+  public void serialize(Pauli value, JsonGenerator gen, SerializerProvider serializers)
       throws IOException {
 
     gen.writeStartObject();

@@ -14,7 +14,7 @@ public class Usage {
 
   /**
    * Gets the quantumSeconds.
-   * 
+   *
    * @return The quantumSeconds.
    */
   public int getQuantumSeconds() {
@@ -23,7 +23,7 @@ public class Usage {
 
   /**
    * Sets the quantumSeconds.
-   * 
+   *
    * @param quantumSeconds the quantumSeconds to set
    */
   public void setQuantumSeconds(int quantumSeconds) {
@@ -32,7 +32,7 @@ public class Usage {
 
   /**
    * Gets the seconds.
-   * 
+   *
    * @return The seconds.
    */
   public int getSeconds() {
@@ -41,12 +41,11 @@ public class Usage {
 
   /**
    * Sets the seconds.
-   * 
+   *
    * @param seconds the seconds to set
    */
   public void setSeconds(int seconds) {
     this.seconds = seconds;
   }
-
 
 }

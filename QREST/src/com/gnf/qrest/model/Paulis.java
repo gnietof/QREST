@@ -16,7 +16,6 @@ public final class Paulis implements Iterable<Pauli> {
 
   private final List<Pauli> paulis;
 
-
   /**
    * Default constructor.
    */
@@ -34,7 +33,7 @@ public final class Paulis implements Iterable<Pauli> {
 
   /**
    * Constructor from list of Pauli.
-   * 
+   *
    * @param paulis The Paulis.
    */
   public Paulis(Pauli... paulis) {
@@ -49,10 +48,9 @@ public final class Paulis implements Iterable<Pauli> {
     return paulis;
   }
 
-  
   /**
    * Returns the size of the list.
-   * 
+   *
    * @return The size of the list.
    */
   public int size() {
@@ -61,7 +59,7 @@ public final class Paulis implements Iterable<Pauli> {
 
   /**
    * Adds a Pauli to the list.
-   * 
+   *
    * @param pauli The Pauli to add.
    */
   public void add(Pauli pauli) {
@@ -70,7 +68,7 @@ public final class Paulis implements Iterable<Pauli> {
 
   /**
    * Adds a collection of Pauli to the list.
-   * 
+   *
    * @param paulis The collection of Pauli to add.
    */
   public void addAll(Collection<? extends Pauli> paulis) {
@@ -79,7 +77,7 @@ public final class Paulis implements Iterable<Pauli> {
 
   /**
    * Returns a Pauli from the list.
-   * 
+   *
    * @param index The index of the Pauli.
    */
   public Pauli get(int index) {

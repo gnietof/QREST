@@ -8,22 +8,22 @@ import java.util.Set;
  * Models a Pauli.
  */
 /**
- * 
+ *
  */
 /**
- * 
+ *
  */
 /**
- * 
+ *
  */
 /**
- * 
+ *
  */
 /**
- * 
+ *
  */
 /**
- * 
+ *
  */
 public class Pauli {
 
@@ -91,11 +91,11 @@ public class Pauli {
     return num;
   }
 
-  
   /**
    * Extends a Pauli to the number of qubits.
+   *
    * @param pauli The Pauli to extend.
-   * @param num The number of qubits.
+   * @param num   The number of qubits.
    * @return The Pauli extended to the number of qubits.
    */
   protected static Pauli extend(Pauli pauli, int num) {
@@ -112,7 +112,7 @@ public class Pauli {
 
   /**
    * Gets the label.
-   * 
+   *
    * @return The label.
    */
   public String getLabel() {
@@ -121,7 +121,7 @@ public class Pauli {
 
   /**
    * Sets the label.
-   * 
+   *
    * @param label the label to set
    */
   public void setLabel(String label) {
@@ -130,7 +130,7 @@ public class Pauli {
 
   /**
    * Gets the coeff.
-   * 
+   *
    * @return The coeff.
    */
   public double getCoeff() {
@@ -139,7 +139,7 @@ public class Pauli {
 
   /**
    * Sets the coeff.
-   * 
+   *
    * @param coeff the coeff to set
    */
   public void setCoeff(double coeff) {

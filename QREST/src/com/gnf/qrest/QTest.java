@@ -64,7 +64,7 @@ public class QTest {
 
   /**
    * Main method for testing code.
-   * 
+   *
    * @param args The args provided to the main method.
    */
   public static void main(String[] args) {
@@ -105,6 +105,9 @@ public class QTest {
 
   }
 
+  /**
+   * Test circuit layout.
+   */
   private void testLayoutCircuit() {
     String circuit = "qc = QuantumCircuit(3)\nqc.h(0)\nqc.cx(0,1)\nqc.cx(0,2)";
     SparsePauliOp sparse1 = SparsePauliOp.fromSparseList(new Paulis(
@@ -122,6 +125,9 @@ public class QTest {
 
   }
 
+  /**
+   * Test layout.
+   */
   private void testLayoutEstimatorCircuit() {
     Backend backend = service.backend(BACKEND);
     Estimator estimator = new Estimator(backend);
@@ -161,6 +167,9 @@ public class QTest {
 
   }
 
+  /**
+   * Test transpiler.
+   */
   private void testTranspileCircuit() {
 
     String circuit = null;
@@ -232,6 +241,13 @@ public class QTest {
 
   }
 
+  /**
+   * Calculate number of shots required.
+   *
+   * @param prob
+   * @param options
+   * @return
+   */
   private int calculateShots(float prob, int options) {
     int n = 0;
     float nProb = 1;
@@ -246,6 +262,9 @@ public class QTest {
     }
   }
 
+  /**
+   * Test drawing a circuit
+   */
   private void testDrawCircuit() {
     try (FileOutputStream fos = new FileOutputStream("/home/genaro/cricuit.png")) {
       String circuit = "qc = QuantumCircuit(2)\nqc.h(0)\nqc.cx(0,1)";
@@ -256,10 +275,16 @@ public class QTest {
 
   }
 
+  /**
+   * Test cancel
+   */
   private void testCancel() {
     service.cancelJob("d53llspsmlfc739f08q0");
   }
 
+  /**
+   * Test tags
+   */
   private void testTags() {
     Tags tags2 = service.searchTags(null);
     if (tags2 != null) {
@@ -272,6 +297,9 @@ public class QTest {
 
   }
 
+  /**
+   * Test Pauli
+   */
   private void testPauli() {
     try {
       Pauli p = new Pauli("XI", 2.0);
@@ -284,6 +312,9 @@ public class QTest {
 
   }
 
+  /**
+   * Test status
+   */
   private void testStatus() {
     System.out.println("Job");
     Job job = service.job("d52lpg9smlfc739e2nh0");
@@ -292,6 +323,9 @@ public class QTest {
         job.getBackend(), job.getStatus()));
   }
 
+  /**
+   * Test session
+   */
   private void testSession() {
     System.out.println("Session Dump");
     Session session = service.session("5cd95f31-764e-4865-a25f-8ecc34ee39f8");
@@ -299,22 +333,34 @@ public class QTest {
         session.getBackendName(), session.getMode()));
   }
 
+  /**
+   * Test session jobs
+   */
   private void testSessionJobs() {
     System.out.println("Session Jobs Dump");
     Jobs jobs = service.sessionJobs("5cd95f31-764e-4865-a25f-8ecc34ee39f8");
     jobsDump(jobs);
   }
 
+  /**
+   * Test workloads
+   */
   private void testWorkloads() {
     Workloads workloads = service.workloads();
 
     workloadsDump(workloads);
   }
 
+  /**
+   * Test job details
+   */
   private void testDetails() {
     service.jobDetails("d54hjs7p3tbc73andsog");
   }
 
+  /**
+   * Test results sampler
+   */
   private void testResultsSampler() {
     // Sampler
     System.out.println("Sampler");

@@ -3,7 +3,7 @@ package com.gnf.qrest.transpilation;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Models a request for the Transpiler
+ * Models a request for the Transpiler.
  */
 public class TranspileRequest {
 

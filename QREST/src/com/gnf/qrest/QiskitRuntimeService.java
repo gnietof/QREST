@@ -41,8 +41,7 @@ public class QiskitRuntimeService {
   private static final ObjectMapper om = JsonMapper.builder()
       .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
       .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
-      .serializationInclusion(JsonInclude.Include.NON_NULL)
-      .build();
+      .serializationInclusion(JsonInclude.Include.NON_NULL).build();
   private static final String API = "https://quantum.cloud.ibm.com/api/v1";
   private Token token;
   private static QiskitRuntimeService instance = new QiskitRuntimeService();
@@ -53,7 +52,7 @@ public class QiskitRuntimeService {
 
   /**
    * Retrieves all workloads executed in a IBM QPU's.
-   * 
+   *
    * @return The workloads.
    */
   public Workloads workloads() {
@@ -65,7 +64,7 @@ public class QiskitRuntimeService {
 
   /**
    * Retrieves a backend by its name.
-   * 
+   *
    * @return The backend.
    */
   public Backend backend(String name) {
@@ -78,34 +77,34 @@ public class QiskitRuntimeService {
 
   /**
    * Retrieves a backend status by its name.
-   * 
+   *
    * @return The backend status.
    */
   public BackendStatus backendStatus(String name) {
-    BackendStatus res = callREST("/backends/" + name + "/status", 
-        "GET", null, null, BackendStatus.class);
+    BackendStatus res = callREST("/backends/" + name + "/status", "GET", null, null,
+        BackendStatus.class);
     return res;
   }
 
   /**
    * Retrieves a backend properties by its name.
-   * 
+   *
    * @return The backend properties.
    */
   public BackendProps backendProps(String name) {
-    BackendProps res = callREST("/backends/" + name + "/properties", 
-        "GET", null, null, BackendProps.class);
+    BackendProps res = callREST("/backends/" + name + "/properties", "GET", null, null,
+        BackendProps.class);
     return res;
   }
 
   /**
    * Retrieves a backend config by its name.
-   * 
+   *
    * @return The backend config.
    */
   public BackendConfig backendConfig(String name) {
-    BackendConfig res = callREST("/backends/" + name + "/configuration", 
-        "GET", null, null, BackendConfig.class);
+    BackendConfig res = callREST("/backends/" + name + "/configuration", "GET", null, null,
+        BackendConfig.class);
     return res;
   }
 
@@ -116,10 +115,10 @@ public class QiskitRuntimeService {
     List<Backend> devs = res.getDevices();
 
     try {
-      devs = devs.stream().filter(d -> request.getName() == null 
-          || d.getName().equals(request.getName()))
-          .filter(d -> request.getMinNumQubits() == null 
-          || d.getQubits() >= request.getMinNumQubits())
+      devs = devs.stream()
+          .filter(d -> request.getName() == null || d.getName().equals(request.getName()))
+          .filter(
+              d -> request.getMinNumQubits() == null || d.getQubits() >= request.getMinNumQubits())
           .collect(Collectors.toList());
     } catch (Exception e) {
       e.printStackTrace();
@@ -141,7 +140,7 @@ public class QiskitRuntimeService {
 
   /**
    * Retrieves a job by its id.
-   * 
+   *
    * @return The job.
    */
   public Job job(String id) {
@@ -151,7 +150,7 @@ public class QiskitRuntimeService {
 
   /**
    * Retrieves a job by its id.
-   * 
+   *
    * @return The job.
    */
   public Job job(String id, boolean excludeParams) {
@@ -161,7 +160,7 @@ public class QiskitRuntimeService {
 
   /**
    * Retrieves all jobs executed in a IBM QPU's.
-   * 
+   *
    * @return The job.
    */
   public Jobs jobs() {
@@ -171,13 +170,13 @@ public class QiskitRuntimeService {
 
   /**
    * Adds tags to a job.
-   * 
+   *
    * @return The response for the request.
    */
   public QResponse tags(String id, Tags tags) {
     try {
-      QResponse res = callREST("/jobs/" + id + "/tags", 
-          "PUT", null, om.writeValueAsString(tags), QResponse.class);
+      QResponse res = callREST("/jobs/" + id + "/tags", "PUT", null, om.writeValueAsString(tags),
+          QResponse.class);
       return res;
     } catch (JsonProcessingException e) {
       e.printStackTrace();
@@ -187,7 +186,7 @@ public class QiskitRuntimeService {
 
   /**
    * Search and list the tags of jobs.
-   * 
+   *
    * @param tag The tag.
    * @return The tags.
    */
@@ -198,7 +197,7 @@ public class QiskitRuntimeService {
 
   /**
    * Retrieves a session by its id.
-   * 
+   *
    * @param id The session id.
    * @return The session.
    */
@@ -209,7 +208,7 @@ public class QiskitRuntimeService {
 
   /**
    * Retrieves the jobs in a session by its id.
-   * 
+   *
    * @param id The session id.
    * @return The jobs.
    */
@@ -220,7 +219,7 @@ public class QiskitRuntimeService {
 
   /**
    * Retrieves the details of a job its id.
-   * 
+   *
    * @param id The job id.
    * @return The job.
    */
@@ -231,31 +230,30 @@ public class QiskitRuntimeService {
 
   /**
    * Retrieves the primitive results of a job its id.
-   * 
+   *
    * @param id The job id.
    * @return The primitive results.
    */
   public PrimitiveResults jobResults(String id) {
-    PrimitiveResults res = callREST("/jobs/" + id + "/results", 
-        "GET", null, null, PrimitiveResults.class);
+    PrimitiveResults res = callREST("/jobs/" + id + "/results", "GET", null, null,
+        PrimitiveResults.class);
     return res;
   }
 
   /**
    * Cancels a job by its id.
-   * 
+   *
    * @param id The job id.
    * @return The jobs.
    */
   public QResponse cancelJob(String id) {
-    QResponse res = callREST("/jobs/" + id + "/cancel", 
-        "POST", null, "", QResponse.class);
+    QResponse res = callREST("/jobs/" + id + "/cancel", "POST", null, "", QResponse.class);
     return res;
   }
 
   /**
    * Waits for the completion of a job its id.
-   * 
+   *
    * @param id The job id.
    * @return The job.
    */
@@ -279,7 +277,7 @@ public class QiskitRuntimeService {
   }
 
   /**
-   * Gets a token in IBM Quantum for the configured user. 
+   * Gets a token in IBM Quantum for the configured user.
    */
   private String getToken() {
     String t = null;
@@ -293,9 +291,8 @@ public class QiskitRuntimeService {
     return t;
   }
 
-
   /**
-   * Retrieves the token from IBM Quantum. 
+   * Retrieves the token from IBM Quantum.
    */
   private void doToken() {
     try {
@@ -329,34 +326,33 @@ public class QiskitRuntimeService {
 
   /**
    * Calls a REST endpoint.
-   * 
-   * @param <T> The expected type of data for the results.
-   * @param href The URL for the endpoint.
+   *
+   * @param <T>    The expected type of data for the results.
+   * @param href   The URL for the endpoint.
    * @param method The method which will be used (GET, POST...).
    * @param params The parameters if any added to the request.
-   * @param data Any data included in the request.
-   * @param c The type of the expected results.
-   * @return An instance of the class T with the response provided. 
+   * @param data   Any data included in the request.
+   * @param c      The type of the expected results.
+   * @return An instance of the class T with the response provided.
    */
-  private <T> T callREST(String href, String method, String params, 
-      String data, Class<T> c) {
+  private <T> T callREST(String href, String method, String params, String data, Class<T> c) {
     return callREST(href, method, params, data, c, false);
   }
 
   /**
    * Calls a REST endpoint.
-   * 
-   * @param <T> The expected type of data for the results.
-   * @param href The URL for the endpoint.
+   *
+   * @param <T>    The expected type of data for the results.
+   * @param href   The URL for the endpoint.
    * @param method The method which will be used (GET, POST...).
    * @param params The parameters if any added to the request.
-   * @param data Any data included in the request.
-   * @param c The type of the expected results.
-   * @param debug Whether we want to display debug information or not.
-   * @return An instance of the class T with the response provided. 
+   * @param data   Any data included in the request.
+   * @param c      The type of the expected results.
+   * @param debug  Whether we want to display debug information or not.
+   * @return An instance of the class T with the response provided.
    */
-  private <T> T callREST(String href, String method, String params, 
-      String data, Class<T> c, boolean debug) {
+  private <T> T callREST(String href, String method, String params, String data, Class<T> c,
+      boolean debug) {
 
     T o = null;
 
@@ -389,17 +385,17 @@ public class QiskitRuntimeService {
         case HttpURLConnection.HTTP_OK:
         case HttpURLConnection.HTTP_CREATED:
         case HttpURLConnection.HTTP_NO_CONTENT:
-    
+
           if (debug) {
             Map<String, List<String>> headers = uc.getHeaderFields();
             for (String key : headers.keySet()) {
               System.out.println(key + ": " + headers.get(key));
             }
           }
-    
+
           InputStream is = uc.getInputStream();
           String s1 = new String(is.readAllBytes(), StandardCharsets.UTF_8);
-    
+
           if (debug) {
             System.out.println("Output: " + s1);
           }

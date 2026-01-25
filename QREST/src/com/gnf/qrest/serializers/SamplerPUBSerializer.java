@@ -12,7 +12,7 @@ import java.io.IOException;
 public class SamplerPUBSerializer extends JsonSerializer<SamplerPUB> {
 
   @Override
-  public void serialize(SamplerPUB value, JsonGenerator gen, SerializerProvider serializers) 
+  public void serialize(SamplerPUB value, JsonGenerator gen, SerializerProvider serializers)
       throws IOException {
 
     gen.writeStartArray();

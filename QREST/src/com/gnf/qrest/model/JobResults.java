@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Class which stores job results. 
+ * Class which stores job results.
  */
 public class JobResults {
 
@@ -34,13 +34,13 @@ public class JobResults {
        */
       public static class C {
         private List<String> samples;
-        
+
         @JsonProperty("num_bits")
         private int numBits;
 
         /**
          * Gets the samples.
-         * 
+         *
          * @return The samples.
          */
         public List<String> getSamples() {
@@ -49,7 +49,7 @@ public class JobResults {
 
         /**
          * Sets the samples.
-         * 
+         *
          * @param samples The samples to set.
          */
         public void setSamples(List<String> samples) {
@@ -58,7 +58,7 @@ public class JobResults {
 
         /**
          * Gets the numBits.
-         * 
+         *
          * @return The numBits.
          */
         public int getNumBits() {
@@ -67,19 +67,18 @@ public class JobResults {
 
         /**
          * Sets the numBits.
-         * 
+         *
          * @param numBits The numBits to set.
          */
         public void setNumBits(int numBits) {
           this.numBits = numBits;
         }
 
-
       }
 
       /**
        * Gets the c.
-       * 
+       *
        * @return The c.
        */
       public C getC() {
@@ -88,7 +87,7 @@ public class JobResults {
 
       /**
        * Sets the c.
-       * 
+       *
        * @param c The c to set.
        */
       public void setC(C c) {
@@ -97,7 +96,7 @@ public class JobResults {
 
       /**
        * Gets the evs.
-       * 
+       *
        * @return The evs.
        */
       public List<Double> getEvs() {
@@ -106,7 +105,7 @@ public class JobResults {
 
       /**
        * Sets the evs.
-       * 
+       *
        * @param evs The evs to set.
        */
       public void setEvs(List<Double> evs) {
@@ -115,7 +114,7 @@ public class JobResults {
 
       /**
        * Gets the stds.
-       * 
+       *
        * @return The stds.
        */
       public List<Double> getStds() {
@@ -124,7 +123,7 @@ public class JobResults {
 
       /**
        * Sets the stds.
-       * 
+       *
        * @param stds The stds to set.
        */
       public void setStds(List<Double> stds) {
@@ -133,7 +132,7 @@ public class JobResults {
 
       /**
        * Gets the ensembleStandardError.
-       * 
+       *
        * @return The ensembleStandardError.
        */
       public List<Double> getEnsembleStandardError() {
@@ -142,7 +141,7 @@ public class JobResults {
 
       /**
        * Sets the ensembleStandardError.
-       * 
+       *
        * @param ensembleStandardError The ensembleStandardError to set.
        */
       public void setEnsembleStandardError(List<Double> ensembleStandardError) {
@@ -179,7 +178,7 @@ public class JobResults {
 
       /**
        * Gets the shots.
-       * 
+       *
        * @return The shots.
        */
       public int getShots() {
@@ -188,7 +187,7 @@ public class JobResults {
 
       /**
        * Sets the shots.
-       * 
+       *
        * @param shots The shots to set.
        */
       public void setShots(int shots) {
@@ -197,7 +196,7 @@ public class JobResults {
 
       /**
        * Gets the targetPrecision.
-       * 
+       *
        * @return The targetPrecision.
        */
       public double getTargetPrecision() {
@@ -206,7 +205,7 @@ public class JobResults {
 
       /**
        * Sets the targetPrecision.
-       * 
+       *
        * @param targetPrecision The targetPrecision to set.
        */
       public void setTargetPrecision(double targetPrecision) {
@@ -215,7 +214,7 @@ public class JobResults {
 
       /**
        * Gets the numRanzomizations.
-       * 
+       *
        * @return The numRanzomizations.
        */
       public int getNumRanzomizations() {
@@ -224,7 +223,7 @@ public class JobResults {
 
       /**
        * Sets the numRanzomizations.
-       * 
+       *
        * @param numRanzomizations The numRanzomizations to set.
        */
       public void setNumRanzomizations(int numRanzomizations) {
@@ -233,7 +232,7 @@ public class JobResults {
 
       /**
        * Gets the circuitMetadata.
-       * 
+       *
        * @return The circuitMetadata.
        */
       public CircuitMetadata getCircuitMetadata() {
@@ -242,7 +241,7 @@ public class JobResults {
 
       /**
        * Sets the circuitMetadata.
-       * 
+       *
        * @param circuitMetadata The circuitMetadata to set.
        */
       public void setCircuitMetadata(CircuitMetadata circuitMetadata) {
@@ -251,7 +250,7 @@ public class JobResults {
 
       /**
        * Gets the resilience.
-       * 
+       *
        * @return The resilience.
        */
       public Resilience getResilience() {
@@ -260,7 +259,7 @@ public class JobResults {
 
       /**
        * Sets the resilience.
-       * 
+       *
        * @param resilience The resilience to set.
        */
       public void setResilience(Resilience resilience) {
@@ -271,7 +270,7 @@ public class JobResults {
 
     /**
      * Gets the data.
-     * 
+     *
      * @return The data.
      */
     public Map<String, Data> getData() {
@@ -280,7 +279,7 @@ public class JobResults {
 
     /**
      * Sets the data.
-     * 
+     *
      * @param data The data to set.
      */
     public void setData(Map<String, Data> data) {
@@ -289,7 +288,7 @@ public class JobResults {
 
     /**
      * Gets the metadadata.
-     * 
+     *
      * @return The metadadata.
      */
     public Metadata getMetadadata() {
@@ -298,13 +297,12 @@ public class JobResults {
 
     /**
      * Sets the metadadata.
-     * 
+     *
      * @param metadadata The metadadata to set.
      */
     public void setMetadadata(Metadata metadadata) {
       this.metadadata = metadadata;
     }
-
 
   }
 
@@ -332,7 +330,7 @@ public class JobResults {
 
       /**
        * Gets the enable.
-       * 
+       *
        * @return The enable.
        */
       public boolean isEnable() {
@@ -341,7 +339,7 @@ public class JobResults {
 
       /**
        * Sets the enable.
-       * 
+       *
        * @param enable The enable to set.
        */
       public void setEnable(boolean enable) {
@@ -350,7 +348,7 @@ public class JobResults {
 
       /**
        * Gets the sequenceType.
-       * 
+       *
        * @return The sequenceType.
        */
       public String getSequenceType() {
@@ -359,7 +357,7 @@ public class JobResults {
 
       /**
        * Sets the sequenceType.
-       * 
+       *
        * @param sequenceType The sequenceType to set.
        */
       public void setSequenceType(String sequenceType) {
@@ -368,7 +366,7 @@ public class JobResults {
 
       /**
        * Gets the extraSlackDistribution.
-       * 
+       *
        * @return The extraSlackDistribution.
        */
       public String getExtraSlackDistribution() {
@@ -377,7 +375,7 @@ public class JobResults {
 
       /**
        * Sets the extraSlackDistribution.
-       * 
+       *
        * @param extraSlackDistribution The extraSlackDistribution to set.
        */
       public void setExtraSlackDistribution(String extraSlackDistribution) {
@@ -386,7 +384,7 @@ public class JobResults {
 
       /**
        * Gets the schedulingMethod.
-       * 
+       *
        * @return The schedulingMethod.
        */
       public String getSchedulingMethod() {
@@ -395,13 +393,12 @@ public class JobResults {
 
       /**
        * Sets the schedulingMethod.
-       * 
+       *
        * @param schedulingMethod The schedulingMethod to set.
        */
       public void setSchedulingMethod(String schedulingMethod) {
         this.schedulingMethod = schedulingMethod;
       }
-
 
     }
 
@@ -423,7 +420,7 @@ public class JobResults {
 
       /**
        * Gets the enableGates.
-       * 
+       *
        * @return The enableGates.
        */
       public boolean isEnableGates() {
@@ -432,7 +429,7 @@ public class JobResults {
 
       /**
        * Sets the enableGates.
-       * 
+       *
        * @param enableGates The enableGates to set.
        */
       public void setEnableGates(boolean enableGates) {
@@ -441,7 +438,7 @@ public class JobResults {
 
       /**
        * Gets the enableMeasure.
-       * 
+       *
        * @return The enableMeasure.
        */
       public boolean isEnableMeasure() {
@@ -450,7 +447,7 @@ public class JobResults {
 
       /**
        * Sets the enableMeasure.
-       * 
+       *
        * @param enableMeasure The enableMeasure to set.
        */
       public void setEnableMeasure(boolean enableMeasure) {
@@ -459,7 +456,7 @@ public class JobResults {
 
       /**
        * Gets the numRandomizations.
-       * 
+       *
        * @return The numRandomizations.
        */
       public String getNumRandomizations() {
@@ -468,7 +465,7 @@ public class JobResults {
 
       /**
        * Sets the numRandomizations.
-       * 
+       *
        * @param numRandomizations The numRandomizations to set.
        */
       public void setNumRandomizations(String numRandomizations) {
@@ -477,7 +474,7 @@ public class JobResults {
 
       /**
        * Gets the shotsPerRandomizations.
-       * 
+       *
        * @return The shotsPerRandomizations.
        */
       public String getShotsPerRandomizations() {
@@ -486,7 +483,7 @@ public class JobResults {
 
       /**
        * Sets the shotsPerRandomizations.
-       * 
+       *
        * @param shotsPerRandomizations The shotsPerRandomizations to set.
        */
       public void setShotsPerRandomizations(String shotsPerRandomizations) {
@@ -495,7 +492,7 @@ public class JobResults {
 
       /**
        * Gets the interleaveRandomizations.
-       * 
+       *
        * @return The interleaveRandomizations.
        */
       public boolean isInterleaveRandomizations() {
@@ -504,7 +501,7 @@ public class JobResults {
 
       /**
        * Sets the interleaveRandomizations.
-       * 
+       *
        * @param interleaveRandomizations The interleaveRandomizations to set.
        */
       public void setInterleaveRandomizations(boolean interleaveRandomizations) {
@@ -513,7 +510,7 @@ public class JobResults {
 
       /**
        * Gets the strategy.
-       * 
+       *
        * @return The strategy.
        */
       public String getStrategy() {
@@ -522,13 +519,12 @@ public class JobResults {
 
       /**
        * Sets the strategy.
-       * 
+       *
        * @param strategy The strategy to set.
        */
       public void setStrategy(String strategy) {
         this.strategy = strategy;
       }
-
 
     }
 
@@ -538,16 +534,16 @@ public class JobResults {
     public static class Resilience {
       @JsonProperty("measure_mitigation")
       public boolean measureMitigation;
-      
+
       @JsonProperty("zne_mitigation")
       public boolean zneMitigation;
-      
+
       @JsonProperty("pec_mitigation")
       public boolean pecMitigation;
 
       /**
        * Gets the measureMitigation.
-       * 
+       *
        * @return The measureMitigation.
        */
       public boolean isMeasureMitigation() {
@@ -556,7 +552,7 @@ public class JobResults {
 
       /**
        * Sets the measureMitigation.
-       * 
+       *
        * @param measureMitigation The measureMitigation to set.
        */
       public void setMeasureMitigation(boolean measureMitigation) {
@@ -565,7 +561,7 @@ public class JobResults {
 
       /**
        * Gets the zneMitigation.
-       * 
+       *
        * @return The zneMitigation.
        */
       public boolean isZneMitigation() {
@@ -574,7 +570,7 @@ public class JobResults {
 
       /**
        * Sets the zneMitigation.
-       * 
+       *
        * @param zneMitigation The zneMitigation to set.
        */
       public void setZneMitigation(boolean zneMitigation) {
@@ -583,7 +579,7 @@ public class JobResults {
 
       /**
        * Gets the pecMitigation.
-       * 
+       *
        * @return The pecMitigation.
        */
       public boolean isPecMitigation() {
@@ -592,13 +588,12 @@ public class JobResults {
 
       /**
        * Sets the pecMitigation.
-       * 
+       *
        * @param pecMitigation The pecMitigation to set.
        */
       public void setPecMitigation(boolean pecMitigation) {
         this.pecMitigation = pecMitigation;
       }
-      
 
     }
 
@@ -722,6 +717,5 @@ public class JobResults {
   public void setMetadata(Metadata metadata) {
     this.metadata = metadata;
   }
-
 
 }
