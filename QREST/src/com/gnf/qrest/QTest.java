@@ -244,9 +244,9 @@ public class QTest {
   /**
    * Calculate number of shots required.
    *
-   * @param prob
-   * @param options
-   * @return
+   * @param prob The probability.
+   * @param options The number of options.
+   * @return The shots require.
    */
   private int calculateShots(float prob, int options) {
     int n = 0;
@@ -263,7 +263,7 @@ public class QTest {
   }
 
   /**
-   * Test drawing a circuit
+   * Test drawing a circuit.
    */
   private void testDrawCircuit() {
     try (FileOutputStream fos = new FileOutputStream("/home/genaro/cricuit.png")) {
@@ -276,14 +276,14 @@ public class QTest {
   }
 
   /**
-   * Test cancel
+   * Test cancel.
    */
   private void testCancel() {
     service.cancelJob("d53llspsmlfc739f08q0");
   }
 
   /**
-   * Test tags
+   * Test tags.
    */
   private void testTags() {
     Tags tags2 = service.searchTags(null);
@@ -298,7 +298,7 @@ public class QTest {
   }
 
   /**
-   * Test Pauli
+   * Test Pauli.
    */
   private void testPauli() {
     try {
@@ -313,7 +313,7 @@ public class QTest {
   }
 
   /**
-   * Test status
+   * Test status.
    */
   private void testStatus() {
     System.out.println("Job");
@@ -324,7 +324,7 @@ public class QTest {
   }
 
   /**
-   * Test session
+   * Test session.
    */
   private void testSession() {
     System.out.println("Session Dump");
@@ -334,7 +334,7 @@ public class QTest {
   }
 
   /**
-   * Test session jobs
+   * Test session jobs.
    */
   private void testSessionJobs() {
     System.out.println("Session Jobs Dump");
@@ -343,7 +343,7 @@ public class QTest {
   }
 
   /**
-   * Test workloads
+   * Test workloads.
    */
   private void testWorkloads() {
     Workloads workloads = service.workloads();
@@ -352,14 +352,14 @@ public class QTest {
   }
 
   /**
-   * Test job details
+   * Test job details.
    */
   private void testDetails() {
     service.jobDetails("d54hjs7p3tbc73andsog");
   }
 
   /**
-   * Test results sampler
+   * Test results sampler.
    */
   private void testResultsSampler() {
     // Sampler

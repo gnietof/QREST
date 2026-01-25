@@ -1,7 +1,7 @@
 package com.gnf.qrest.model;
 
 /**
- * Models a Program
+ * Models a Program.
  */
 public class Program {
 
@@ -18,7 +18,7 @@ public class Program {
 
   /**
    * Sets the id.
-   * 
+   *
    * @param id the id to set
    */
   public void setId(String id) {

@@ -12,7 +12,7 @@ public class SamplerPUB extends PUB {
   private int shots;
 
   /**
-   * Builder for SamplerPUB.
+   * Constructor for SamplerPUB from builder.
    */
   public SamplerPUB(Builder builder) {
     super(builder);

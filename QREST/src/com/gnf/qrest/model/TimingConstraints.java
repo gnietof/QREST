@@ -3,7 +3,7 @@ package com.gnf.qrest.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Models a TimingConstraints
+ * Models a TimingConstraints.
  */
 public class TimingConstraints {
 
@@ -29,7 +29,7 @@ public class TimingConstraints {
 
   /**
    * Sets the acquireAlignment.
-   * 
+   *
    * @param acquireAlignment the acquireAlignment to set
    */
   public void setAcquireAlignment(int acquireAlignment) {
@@ -47,7 +47,7 @@ public class TimingConstraints {
 
   /**
    * Sets the granularity.
-   * 
+   *
    * @param granularity the granularity to set
    */
   public void setGranularity(int granularity) {
@@ -65,7 +65,7 @@ public class TimingConstraints {
 
   /**
    * Sets the minLength.
-   * 
+   *
    * @param minLength the minLength to set
    */
   public void setMinLength(int minLength) {
@@ -83,7 +83,7 @@ public class TimingConstraints {
 
   /**
    * Sets the pulseAlignment.
-   * 
+   *
    * @param pulseAlignment the pulseAlignment to set
    */
   public void setPulseAlignment(int pulseAlignment) {

@@ -41,7 +41,7 @@ public final class Paulis implements Iterable<Pauli> {
   }
 
   /**
-   * Returns the Paulis as a List<Pauli>.
+   * Returns the Paulis as a lis of Pauli.
    */
   @JsonValue
   public List<Pauli> asList() {

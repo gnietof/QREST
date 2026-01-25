@@ -108,6 +108,12 @@ public class QiskitRuntimeService {
     return res;
   }
 
+  /**
+   * Lists the backends which match the request.
+   *
+   * @param request The request to match.
+   * @return The list of backends.
+   */
   public List<Backend> backends(BackendsRequest request) {
 
     Backends res = callREST("/backends", "GET", null, null, Backends.class);
@@ -127,6 +133,13 @@ public class QiskitRuntimeService {
     return devs;
   }
 
+
+  /**
+   * Creates a job using a primitive.
+   *
+   * @param req The primitive request.
+   * @return The created job.
+   */
   public Job createJob(PrimitiveRequest req) {
 
     try {

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
- * PrimitiveRequest abstract class
+ * PrimitiveRequest abstract class.
  */
 public abstract class PrimitiveRequest {
   @JsonProperty("program_id")
@@ -14,7 +14,7 @@ public abstract class PrimitiveRequest {
 
   /**
    * Constructor from backend, PUB's and program.
-   * 
+   *
    * @param backend The backend.
    * @param pubs The PUBs.
    * @param programId The programId.
@@ -37,7 +37,7 @@ public abstract class PrimitiveRequest {
 
   /**
    * Sets the programId.
-   * 
+   *
    * @param programId the programId to set
    */
   public void setProgramId(String programId) {
@@ -55,7 +55,7 @@ public abstract class PrimitiveRequest {
 
   /**
    * Sets the params.
-   * 
+   *
    * @param params the params to set
    */
   public void setParams(Params params) {
@@ -73,7 +73,7 @@ public abstract class PrimitiveRequest {
 
   /**
    * Sets the backend.
-   * 
+   *
    * @param backend the backend to set
    */
   public void setBackend(String backend) {

@@ -7,24 +7,6 @@ import java.util.Set;
 /**
  * Models a Pauli.
  */
-/**
- *
- */
-/**
- *
- */
-/**
- *
- */
-/**
- *
- */
-/**
- *
- */
-/**
- *
- */
 public class Pauli {
 
   String label;
@@ -38,6 +20,8 @@ public class Pauli {
 
   /**
    * Pauli constructor from label.
+   *
+   * @param label The label.
    */
   public Pauli(String label) {
     this.label = label;
@@ -46,6 +30,9 @@ public class Pauli {
 
   /**
    * Pauli constructor from label and coefficient.
+   *
+   * @param label The label.
+   * @param coeff The coefficient.
    */
   public Pauli(String label, double coeff) {
     this.label = label;
@@ -54,6 +41,10 @@ public class Pauli {
 
   /**
    * Pauli constructor from label,indices and coefficient.
+   *
+   * @param label The label.
+   * @param indices The indices.
+   * @param coeff The coefficient.
    */
   public Pauli(String label, int[] indices, double coeff) {
     int num = check(indices);
@@ -72,6 +63,12 @@ public class Pauli {
     this.coeff = coeff;
   }
 
+  /**
+   * Checks the indices in the Pauli.
+   *
+   * @param indices The indices.
+   * @return The number of indices.
+   */
   private int check(int[] indices) {
     int num = -1;
     // Might use a boolean array but I do not know the length in advance
@@ -95,7 +92,7 @@ public class Pauli {
    * Extends a Pauli to the number of qubits.
    *
    * @param pauli The Pauli to extend.
-   * @param num   The number of qubits.
+   * @param num The number of qubits.
    * @return The Pauli extended to the number of qubits.
    */
   protected static Pauli extend(Pauli pauli, int num) {

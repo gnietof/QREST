@@ -157,13 +157,13 @@ public class PrimitiveResults extends QResponse {
       private Map<String, SamplerRegisters> registers;
 
       /**
-       * Default constructor
+       * Default constructor.
        */
       public SamplerData() {
       }
 
       /**
-       * Models a SamplerRegisters
+       * Models a SamplerRegisters.
        */
       public static class SamplerRegisters {
         @JsonDeserialize(using = BitStringFlatDeserializer.class)
@@ -327,7 +327,7 @@ public class PrimitiveResults extends QResponse {
       }
 
       /**
-       * Models a DynamicalDecoupling
+       * Models a DynamicalDecoupling.
        */
       public static class DynamicalDecoupling {
         private boolean enable;
@@ -415,7 +415,7 @@ public class PrimitiveResults extends QResponse {
       }
 
       /**
-       * Models a Twirling
+       * Models a Twirling.
        */
       public static class Twirling {
         @JsonProperty("enable_gates")
@@ -546,7 +546,7 @@ public class PrimitiveResults extends QResponse {
       }
 
       /**
-       * Models a Resilience
+       * Models a Resilience.
        */
       public static class Resilience {
         @JsonProperty("measure_mitigation")
@@ -690,7 +690,7 @@ public class PrimitiveResults extends QResponse {
   }
 
   /**
-   * Models a Metadata
+   * Models a Metadata.
    */
   public static class Metadata {
     @JsonProperty("dynamical_decoupling")
@@ -700,7 +700,7 @@ public class PrimitiveResults extends QResponse {
     private int version = 2;
 
     /**
-     * Models a DynamicalDecoupling
+     * Models a DynamicalDecoupling.
      */
     public static class DynamicalDecoupling {
       private boolean enable;
@@ -786,7 +786,7 @@ public class PrimitiveResults extends QResponse {
     }
 
     /**
-     * Models a Twirling
+     * Models a Twirling.
      */
     public static class Twirling {
       @JsonProperty("enable_gates")
@@ -912,7 +912,7 @@ public class PrimitiveResults extends QResponse {
     }
 
     /**
-     * Models a Resilience
+     * Models a Resilience.
      */
     public static class Resilience {
       @JsonProperty("measure_mitigation")

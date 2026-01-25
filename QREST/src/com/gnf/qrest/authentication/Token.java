@@ -3,7 +3,7 @@ package com.gnf.qrest.authentication;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Models a Token for authentication with IBM Quantum
+ * Models a Token for authentication with IBM Quantum.
  */
 public class Token {
   @JsonProperty("access_token")

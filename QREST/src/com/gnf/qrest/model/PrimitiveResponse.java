@@ -1,7 +1,7 @@
 package com.gnf.qrest.model;
 
 /**
- * Models a PrimitiveResponse
+ * Models a PrimitiveResponse.
  */
 public class PrimitiveResponse {
   private String id;
@@ -18,7 +18,7 @@ public class PrimitiveResponse {
 
   /**
    * Sets the id.
-   * 
+   *
    * @param id The id to set.
    */
   public void setId(String id) {
@@ -36,7 +36,7 @@ public class PrimitiveResponse {
 
   /**
    * Sets the backend.
-   * 
+   *
    * @param backend The backend to set.
    */
   public void setBackend(String backend) {

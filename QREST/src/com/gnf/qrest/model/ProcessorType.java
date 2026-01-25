@@ -1,7 +1,7 @@
 package com.gnf.qrest.model;
 
 /**
- * Model a ProcessorType
+ * Model a ProcessorType.
  */
 public class ProcessorType {
   private String family;
@@ -19,7 +19,7 @@ public class ProcessorType {
 
   /**
    * Sets the family.
-   * 
+   *
    * @param family The family to set.
    */
   public void setFamily(String family) {
@@ -37,7 +37,7 @@ public class ProcessorType {
 
   /**
    * Sets the revision.
-   * 
+   *
    * @param revision The revision to set.
    */
   public void setRevision(String revision) {
@@ -55,7 +55,7 @@ public class ProcessorType {
 
   /**
    * Sets the segment.
-   * 
+   *
    * @param segment The segment to set.
    */
   public void setSegment(String segment) {

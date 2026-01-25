@@ -5,14 +5,17 @@ import com.gnf.qrest.qiskit.SparsePauliOp;
 import com.gnf.qrest.serializers.EstimatorPUBSerializer;
 import java.util.List;
 
-@JsonSerialize(using = EstimatorPUBSerializer.class)
 /**
  * Models a EstimatorRequest.
  */
+@JsonSerialize(using = EstimatorPUBSerializer.class)
 public class EstimatorPUB extends PUB {
   private List<Paulis> observables;
   private double precision;
 
+  /**
+   * Constructor for EstimatorPUB from builder.
+   */
   public EstimatorPUB(Builder builder) {
     super(builder);
     this.observables = builder.observables;
@@ -27,8 +30,8 @@ public class EstimatorPUB extends PUB {
     private double precision = 0.015625;
 
     /**
-     * Build using precision. 
-     * 
+     * Build using precision.
+     *
      * @param precision The precision.
      */
     public Builder precision(double precision) {
@@ -38,7 +41,7 @@ public class EstimatorPUB extends PUB {
 
     /**
      * Build using observables from list of Paulis.
-     * 
+     *
      * @param observables The observables.
      */
     public Builder observables(List<Paulis> observables) {
@@ -48,7 +51,7 @@ public class EstimatorPUB extends PUB {
 
     /**
      * Build using observables from Pauli.
-     * 
+     *
      * @param observables The observable.
      */
     public Builder observable(Paulis observable) {
@@ -58,7 +61,7 @@ public class EstimatorPUB extends PUB {
 
     /**
      * Build using observables from SparsePauliOp.
-     * 
+     *
      * @param observable The observable.
      */
     public Builder observable(SparsePauliOp observable) {

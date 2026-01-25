@@ -3,7 +3,7 @@ package com.gnf.qrest.qiskit;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Models a Session
+ * Models a Session.
  */
 public class Session {
 
@@ -60,7 +60,7 @@ public class Session {
 
   /**
    * Sets the id.
-   * 
+   *
    * @param id The id to set.
    */
   public void setId(String id) {
@@ -78,7 +78,7 @@ public class Session {
 
   /**
    * Sets the backendName.
-   * 
+   *
    * @param backendName The backendName to set.
    */
   public void setBackendName(String backendName) {
@@ -96,7 +96,7 @@ public class Session {
 
   /**
    * Sets the startedAt.
-   * 
+   *
    * @param startedAt The startedAt to set.
    */
   public void setStartedAt(String startedAt) {
@@ -114,7 +114,7 @@ public class Session {
 
   /**
    * Sets the activatedAt.
-   * 
+   *
    * @param activatedAt The activatedAt to set.
    */
   public void setActivatedAt(String activatedAt) {
@@ -132,7 +132,7 @@ public class Session {
 
   /**
    * Sets the closedAt.
-   * 
+   *
    * @param closedAt The closedAt to set.
    */
   public void setClosedAt(String closedAt) {
@@ -150,7 +150,7 @@ public class Session {
 
   /**
    * Sets the lastJobStarted.
-   * 
+   *
    * @param lastJobStarted The lastJobStarted to set.
    */
   public void setLastJobStarted(String lastJobStarted) {
@@ -168,7 +168,7 @@ public class Session {
 
   /**
    * Sets the lastJobCompleted.
-   * 
+   *
    * @param lastJobCompleted The lastJobCompleted to set.
    */
   public void setLastJobCompleted(String lastJobCompleted) {
@@ -186,7 +186,7 @@ public class Session {
 
   /**
    * Sets the interactiveTTL.
-   * 
+   *
    * @param interactiveTTL The interactiveTTL to set.
    */
   public void setInteractiveTTL(int interactiveTTL) {
@@ -204,7 +204,7 @@ public class Session {
 
   /**
    * Sets the maxTTL.
-   * 
+   *
    * @param maxTTL The maxTTL to set.
    */
   public void setMaxTTL(int maxTTL) {
@@ -222,7 +222,7 @@ public class Session {
 
   /**
    * Sets the activeTTL.
-   * 
+   *
    * @param activeTTL The activeTTL to set.
    */
   public void setActiveTTL(int activeTTL) {
@@ -240,7 +240,7 @@ public class Session {
 
   /**
    * Sets the state.
-   * 
+   *
    * @param state The state to set.
    */
   public void setState(String state) {
@@ -258,7 +258,7 @@ public class Session {
 
   /**
    * Sets the stateReason.
-   * 
+   *
    * @param stateReason The stateReason to set.
    */
   public void setStateReason(String stateReason) {
@@ -276,7 +276,7 @@ public class Session {
 
   /**
    * Sets the acceptingJobs.
-   * 
+   *
    * @param acceptingJobs The acceptingJobs to set.
    */
   public void setAcceptingJobs(boolean acceptingJobs) {
@@ -294,7 +294,7 @@ public class Session {
 
   /**
    * Sets the mode.
-   * 
+   *
    * @param mode The mode to set.
    */
   public void setMode(String mode) {
@@ -312,7 +312,7 @@ public class Session {
 
   /**
    * Sets the userId.
-   * 
+   *
    * @param userId The userId to set.
    */
   public void setUserId(String userId) {
@@ -330,7 +330,7 @@ public class Session {
 
   /**
    * Sets the elapsedTime.
-   * 
+   *
    * @param elapsedTime The elapsedTime to set.
    */
   public void setElapsedTime(int elapsedTime) {
