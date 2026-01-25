@@ -6,6 +6,9 @@ import com.gnf.qrest.serializers.EstimatorPUBSerializer;
 import java.util.List;
 
 @JsonSerialize(using = EstimatorPUBSerializer.class)
+/**
+ * Models a EstimatorRequest.
+ */
 public class EstimatorPUB extends PUB {
   private List<Paulis> observables;
   private double precision;

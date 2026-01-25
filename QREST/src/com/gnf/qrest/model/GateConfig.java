@@ -3,6 +3,9 @@ package com.gnf.qrest.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
+/**
+ * Models a GateConfig.
+ */
 public class GateConfig {
 
   @JsonProperty("coupling_map")

@@ -22,6 +22,9 @@ import java.util.Set;
 /**
  * 
  */
+/**
+ * 
+ */
 public class Pauli {
 
   String label;
@@ -88,6 +91,13 @@ public class Pauli {
     return num;
   }
 
+  
+  /**
+   * Extends a Pauli to the number of qubits.
+   * @param pauli The Pauli to extend.
+   * @param num The number of qubits.
+   * @return The Pauli extended to the number of qubits.
+   */
   protected static Pauli extend(Pauli pauli, int num) {
     int num2 = pauli.getLabel().length();
     if (num < num2) {

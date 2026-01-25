@@ -3,6 +3,9 @@ package com.gnf.qrest.transpilation;
 import com.gnf.qrest.model.Paulis;
 import java.util.List;
 
+/**
+ * Models a LayoutResponse.
+ */
 public class LayoutResponse {
 
   private String qasm;
@@ -10,39 +13,40 @@ public class LayoutResponse {
   private List<Paulis> observables;
 
   /**
-   * Returns the QASM property of this instance.
-   * 
-   * @return The QASM property of this instance.
+   * Gets the qasm.
+   *
+   *  @return The qasm.
    */
   public String getQASM() {
     return qasm;
   }
 
   /**
-   * Sets the qasm property of this instance.
+   * Sets the qasm.
    * 
-   * @param qasm The qasm value to be set.
+   * @param qasm The qasm to set.
    */
   public void setQASM(String qasm) {
     this.qasm = qasm;
   }
 
   /**
-   * Returns the observables property of this instance.
-   * 
-   * @return The observables property of this instance.
+   * Gets the observables.
+   *
+   *  @return The observables.
    */
   public List<Paulis> getObservables() {
     return observables;
   }
 
   /**
-   * Sets the observables property of this instance.
+   * Sets the observables.
    * 
-   * @param observables The observables value to be set.
+   * @param observables The observables to set.
    */
   public void setObservables(List<Paulis> observables) {
     this.observables = observables;
   }
+
 
 }

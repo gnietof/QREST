@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Models a Params.
+ */
 public class Params {
   private List<? extends PUB> pubs;
   private Options options;

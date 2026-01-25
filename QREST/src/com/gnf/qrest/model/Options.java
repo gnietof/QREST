@@ -2,6 +2,9 @@ package com.gnf.qrest.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Models a Options.
+ */
 public class Options {
   @JsonProperty("default_shots")
   private int defaultShots = 16;

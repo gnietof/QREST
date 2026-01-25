@@ -40,9 +40,15 @@ public class PrimitiveResults extends QResponse {
     public static interface ResultData {
     }
 
+    /**
+     * Deserializer for Result.
+     */
     public static class ResultDataDeserializer
         extends JsonDeserializer<PrimitiveResults.Result.ResultData> {
 
+      /**
+       * Default constructor for ResultDataDeserializer.
+       */
       public ResultDataDeserializer() {
       }
 
@@ -81,6 +87,9 @@ public class PrimitiveResults extends QResponse {
       @JsonProperty("ensemble_standard_error")
       List<List<Double>> ensembleStandardError;
 
+      /**
+       * Models a EstimatorData. 
+       */
       public EstimatorData() {
       }
 
@@ -156,9 +165,6 @@ public class PrimitiveResults extends QResponse {
       /**
        * Models a SamplerRegisters
        */
-      /**
-       * 
-       */
       public static class SamplerRegisters {
         @JsonDeserialize(using = BitStringFlatDeserializer.class)
         private List<BitString> samples;
@@ -166,10 +172,21 @@ public class PrimitiveResults extends QResponse {
         @JsonProperty("num_bits")
         private int numBits;
 
+        /**
+         * Returns the bitstrings.
+         * 
+         * @return The bitstrings.
+         */
         public BitString getBitString() {
           return getBitString(-1);
         }
 
+        
+        /**
+         * Returns a bitstring.
+         * 
+         * @return The index of the bitstring.
+         */
         public BitString getBitString(int index) {
           BitString bb = null;
 
@@ -181,23 +198,13 @@ public class PrimitiveResults extends QResponse {
           }
           return bb;
         }
-
-        public List<BitString> getSamples() {
-          return samples;
-        }
-
-        public void setSamples(List<BitString> samples) {
-          this.samples = samples;
-        }
-
-        public int getNumBits() {
-          return numBits;
-        }
-
-        public void setNumBits(int numBits) {
-          this.numBits = numBits;
-        }
-
+ 
+        
+        /**
+         * Returns the number of samples.
+         * 
+         * @return The number of samples.
+         */
         public int size() {
           return samples.size();
         }
@@ -245,6 +252,46 @@ public class PrimitiveResults extends QResponse {
               .collect(Collectors.groupingBy(b -> Integer.decode(b), Collectors.counting()));
           return counts;
         }
+
+
+        /**
+         * Gets the samples.
+         *
+         *  @return The samples.
+         */
+        public List<BitString> getSamples() {
+          return samples;
+        }
+
+
+        /**
+         * Sets the samples.
+         * 
+         * @param samples The samples to set.
+         */
+        public void setSamples(List<BitString> samples) {
+          this.samples = samples;
+        }
+
+
+        /**
+         * Gets the numBits.
+         *
+         *  @return The numBits.
+         */
+        public int getNumBits() {
+          return numBits;
+        }
+
+
+        /**
+         * Sets the numBits.
+         * 
+         * @param numBits The numBits to set.
+         */
+        public void setNumBits(int numBits) {
+          this.numBits = numBits;
+        }
       }
 
       public Map<String, SamplerRegisters> getRegisters() {
@@ -256,6 +303,9 @@ public class PrimitiveResults extends QResponse {
       }
     }
 
+    /**
+     * Models a Metadata.
+     */
     public static class Metadata {
       private int shots;
 
@@ -275,10 +325,16 @@ public class PrimitiveResults extends QResponse {
       @JsonProperty("dynamical_decoupling")
       private DynamicalDecoupling dynamicalDecoupling;
 
+      /**
+       * Models a CircuitMetadata.
+       */
       public static class CircuitMetadata {
 
       }
 
+      /**
+       * Models a DynamicalDecoupling
+       */
       public static class DynamicalDecoupling {
         private boolean enable;
         @JsonProperty("sequence_type")
@@ -290,39 +346,83 @@ public class PrimitiveResults extends QResponse {
         @JsonProperty("scheduling_method")
         private String schedulingMethod;
 
+        /**
+         * Gets the enable.
+         *
+         * @return The enable.
+         */
         public boolean isEnable() {
           return enable;
         }
 
+        /**
+         * Sets the enable.
+         * 
+         * @param enable The enable to set.
+         */
         public void setEnable(boolean enable) {
           this.enable = enable;
         }
 
+        /**
+         * Gets the sequenceType.
+         *
+         * @return The sequenceType.
+         */
         public String getSequenceType() {
           return sequenceType;
         }
 
+        /**
+         * Sets the sequenceType.
+         * 
+         * @param sequenceType The sequenceType to set.
+         */
         public void setSequenceType(String sequenceType) {
           this.sequenceType = sequenceType;
         }
 
+        /**
+         * Gets the extraSlackDistribution.
+         *
+         * @return The extraSlackDistribution.
+         */
         public String getExtraSlackDistribution() {
           return extraSlackDistribution;
         }
 
+        /**
+         * Sets the extraSlackDistribution.
+         * 
+         * @param extraSlackDistribution The extraSlackDistribution to set.
+         */
         public void setExtraSlackDistribution(String extraSlackDistribution) {
           this.extraSlackDistribution = extraSlackDistribution;
         }
 
+        /**
+         * Gets the schedulingMethod.
+         *
+         * @return The schedulingMethod.
+         */
         public String getSchedulingMethod() {
           return schedulingMethod;
         }
 
+        /**
+         * Sets the schedulingMethod.
+         * 
+         * @param schedulingMethod The schedulingMethod to set.
+         */
         public void setSchedulingMethod(String schedulingMethod) {
           this.schedulingMethod = schedulingMethod;
         }
+
       }
 
+      /**
+       * Models a Twirling
+       */
       public static class Twirling {
         @JsonProperty("enable_gates")
         private boolean enableGates;
@@ -341,56 +441,119 @@ public class PrimitiveResults extends QResponse {
 
         private boolean strategy;
 
+        /**
+         * Gets the enableGates.
+         *
+         * @return The enableGates.
+         */
         public boolean isEnableGates() {
           return enableGates;
         }
 
+        /**
+         * Sets the enableGates.
+         * 
+         * @param enableGates The enableGates to set.
+         */
         public void setEnableGates(boolean enableGates) {
           this.enableGates = enableGates;
         }
 
+        /**
+         * Gets the enableMeasure.
+         *
+         * @return The enableMeasure.
+         */
         public boolean isEnableMeasure() {
           return enableMeasure;
         }
 
+        /**
+         * Sets the enableMeasure.
+         * 
+         * @param enableMeasure The enableMeasure to set.
+         */
         public void setEnableMeasure(boolean enableMeasure) {
           this.enableMeasure = enableMeasure;
         }
 
+        /**
+         * Gets the numRandomizations.
+         *
+         * @return The numRandomizations.
+         */
         public String getNumRandomizations() {
           return numRandomizations;
         }
 
+        /**
+         * Sets the numRandomizations.
+         * 
+         * @param numRandomizations The numRandomizations to set.
+         */
         public void setNumRandomizations(String numRandomizations) {
           this.numRandomizations = numRandomizations;
         }
 
+        /**
+         * Gets the shotsPerRandomization.
+         *
+         * @return The shotsPerRandomization.
+         */
         public String getShotsPerRandomization() {
           return shotsPerRandomization;
         }
 
+        /**
+         * Sets the shotsPerRandomization.
+         * 
+         * @param shotsPerRandomization The shotsPerRandomization to set.
+         */
         public void setShotsPerRandomization(String shotsPerRandomization) {
           this.shotsPerRandomization = shotsPerRandomization;
         }
 
+        /**
+         * Gets the interleaveRandomizations.
+         *
+         * @return The interleaveRandomizations.
+         */
         public boolean isInterleaveRandomizations() {
           return interleaveRandomizations;
         }
 
+        /**
+         * Sets the interleaveRandomizations.
+         * 
+         * @param interleaveRandomizations The interleaveRandomizations to set.
+         */
         public void setInterleaveRandomizations(boolean interleaveRandomizations) {
           this.interleaveRandomizations = interleaveRandomizations;
         }
 
+        /**
+         * Gets the strategy.
+         *
+         * @return The strategy.
+         */
         public boolean isStrategy() {
           return strategy;
         }
 
+        /**
+         * Sets the strategy.
+         * 
+         * @param strategy The strategy to set.
+         */
         public void setStrategy(boolean strategy) {
           this.strategy = strategy;
         }
 
       }
 
+      /**
+       * Models a Resilience
+       */
       public static class Resilience {
         @JsonProperty("measure_mitigation")
         private boolean measureMitigation;
@@ -401,26 +564,57 @@ public class PrimitiveResults extends QResponse {
         @JsonProperty("pec_mitigation")
         private boolean pecMitigation;
 
+
+        /**
+         * Gets the measureMitigation.
+         *
+         * @return The measureMitigation.
+         */
         public boolean isMeasureMitigation() {
           return measureMitigation;
         }
 
+        /**
+         * Sets the measureMitigation.
+         * 
+         * @param measureMitigation The measureMitigation to set.
+         */
         public void setMeasureMitigation(boolean measureMitigation) {
           this.measureMitigation = measureMitigation;
         }
 
+        /**
+         * Gets the zneMitigation.
+         *
+         * @return The zneMitigation.
+         */
         public boolean isZneMitigation() {
           return zneMitigation;
         }
 
+        /**
+         * Sets the zneMitigation.
+         * 
+         * @param zneMitigation The zneMitigation to set.
+         */
         public void setZneMitigation(boolean zneMitigation) {
           this.zneMitigation = zneMitigation;
         }
 
+        /**
+         * Gets the pecMitigation.
+         *
+         * @return The pecMitigation.
+         */
         public boolean isPecMitigation() {
           return pecMitigation;
         }
 
+        /**
+         * Sets the pecMitigation.
+         * 
+         * @param pecMitigation The pecMitigation to set.
+         */
         public void setPecMitigation(boolean pecMitigation) {
           this.pecMitigation = pecMitigation;
         }
@@ -503,16 +697,7 @@ public class PrimitiveResults extends QResponse {
   }
 
   /**
-   * 
-   */
-  /**
-   * 
-   */
-  /**
-   * 
-   */
-  /**
-   * 
+   * Models a Metadata
    */
   public static class Metadata {
     @JsonProperty("dynamical_decoupling")
@@ -521,6 +706,9 @@ public class PrimitiveResults extends QResponse {
     private Resilience resilience;
     private int version = 2;
 
+    /**
+     * Models a DynamicalDecoupling
+     */
     public static class DynamicalDecoupling {
       private boolean enable;
       @JsonProperty("sequence_type")
@@ -529,38 +717,71 @@ public class PrimitiveResults extends QResponse {
       private String extraSlackDistribution;
       @JsonProperty("scheduling_method")
       private String schedulingMethod;
-
+      /**
+       * Gets the enable.
+       *
+       *  @return The enable.
+       */
       public boolean isEnable() {
         return enable;
       }
-
+      /**
+       * Sets the enable.
+       * 
+       * @param enable The enable to set.
+       */
       public void setEnable(boolean enable) {
         this.enable = enable;
       }
-
+      /**
+       * Gets the sequenceType.
+       *
+       *  @return The sequenceType.
+       */
       public String getSequenceType() {
         return sequenceType;
       }
-
+      /**
+       * Sets the sequenceType.
+       * 
+       * @param sequenceType The sequenceType to set.
+       */
       public void setSequenceType(String sequenceType) {
         this.sequenceType = sequenceType;
       }
-
+      /**
+       * Gets the extraSlackDistribution.
+       *
+       *  @return The extraSlackDistribution.
+       */
       public String getExtraSlackDistribution() {
         return extraSlackDistribution;
       }
-
+      /**
+       * Sets the extraSlackDistribution.
+       * 
+       * @param extraSlackDistribution The extraSlackDistribution to set.
+       */
       public void setExtraSlackDistribution(String extraSlackDistribution) {
         this.extraSlackDistribution = extraSlackDistribution;
       }
-
+      /**
+       * Gets the schedulingMethod.
+       *
+       *  @return The schedulingMethod.
+       */
       public String getSchedulingMethod() {
         return schedulingMethod;
       }
-
+      /**
+       * Sets the schedulingMethod.
+       * 
+       * @param schedulingMethod The schedulingMethod to set.
+       */
       public void setSchedulingMethod(String schedulingMethod) {
         this.schedulingMethod = schedulingMethod;
       }
+
 
     }
 
@@ -831,6 +1052,15 @@ public class PrimitiveResults extends QResponse {
      */
     public void setTwirling(Twirling twirling) {
       this.twirling = twirling;
+    }
+
+    /**
+     * Gets the twirling.
+     *
+     *  @return The twirling.
+     */
+    public Twirling getTwirling() {
+      return twirling;
     }
 
   }
