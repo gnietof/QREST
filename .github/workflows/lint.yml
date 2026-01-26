@@ -22,3 +22,5 @@ jobs:
           VALIDATE_JAVA_FORMATTER: false
           LINTER_RULES_PATH: .github/linters/ 
           JAVA_COMMAND_ARGS: -c .github/linters/checkstyle.xml
+          LOG_LEVEL: DEBUG
+          ACTIONS_STEP_DEBUG: true
