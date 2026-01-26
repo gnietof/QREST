@@ -11,6 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug - List linters directory contents
+        run: |
+          pwd
+          ls -la .github/linters || echo "Directory .github/linters NOT FOUND"
+          cat .github/linters/google_checks.xml 2>/dev/null || echo "google_checks.xml NOT READABLE or MISSING"
+        
       - name: Checkout code
         uses: actions/checkout@v4
 
