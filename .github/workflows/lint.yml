@@ -29,5 +29,5 @@ jobs:
           LINTER_RULES_PATH: .github/linters/
 
           # Optional: more debug output while troubleshooting
-          # LOG_LEVEL: DEBUG
-          # ACTIONS_STEP_DEBUG: true
+          LOG_LEVEL: DEBUG
+          ACTIONS_STEP_DEBUG: true
