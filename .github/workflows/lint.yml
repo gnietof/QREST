@@ -1,0 +1,33 @@
+name: Lint
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Super-Linter
+        uses: super-linter/super-linter@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: true
+          DEFAULT_BRANCH: main
+
+          # Only lint Java files (you can add more languages later)
+          VALIDATE_JAVA: true
+          VALIDATE_JAVA_FORMATTER: false   # disables google-java-format if you don't want it
+
+          # Point to your custom Checkstyle config folder
+          LINTER_RULES_PATH: .github/linters/
+
+          # Optional: more debug output while troubleshooting
+          # LOG_LEVEL: DEBUG
+          # ACTIONS_STEP_DEBUG: true
