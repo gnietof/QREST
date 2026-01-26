@@ -12,12 +12,6 @@ jobs:
 
     steps:
 
-      - name: Debug - List linters directory contents
-        run: |
-          pwd
-          ls -la .github/linters || echo "Directory .github/linters NOT FOUND"
-          cat .github/linters/google_checks.xml 2>/dev/null || echo "google_checks.xml NOT READABLE or MISSING"
-        
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -25,6 +19,31 @@ jobs:
           fetch-depth: 0                  # Full history — critical here
           fetch-tags: true          
 
+      - name: Debug - List linters directory contents
+        run: |
+          pwd
+          ls -la .github/linters || echo "Directory .github/linters NOT FOUND"
+          cat .github/linters/google_checks.xml 2>/dev/null || echo "google_checks.xml NOT READABLE or MISSING"
+
+      - name: Verify linters folder and config file
+        run: |
+          echo "Current working dir: $(pwd)"
+          echo "Branch: $(git branch --show-current || echo 'Git not ready')"
+          echo "HEAD: $(git rev-parse HEAD || echo 'Git not ready')"
+          
+          ls -la .github 2>/dev/null || echo ".github folder MISSING"
+          ls -la .github/linters 2>/dev/null || echo ".github/linters MISSING"
+          
+          if [ -f .github/linters/google_checks.xml ]; then
+            echo "google_checks.xml EXISTS:"
+            head -n 12 .github/linters/google_checks.xml   # Show beginning of file
+          else
+            echo "google_checks.xml NOT FOUND in workspace!"
+            echo "List of .github contents:"
+            find .github -type f 2>/dev/null || echo "No files in .github"
+            exit 1  # Fail early for visibility
+          fi
+      
       - name: Super-Linter
         uses: super-linter/super-linter@v7
         env:
