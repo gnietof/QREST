@@ -32,7 +32,7 @@ jobs:
           VALIDATE_JAVA_FORMATTER: false   # disables google-java-format if you don't want it
 
           # Point to your custom Checkstyle config folder
-          LINTER_RULES_PATH: .github/linters/
+          LINTER_RULES_PATH: .github/linters
 
           # Optional: more debug output while troubleshooting
           LOG_LEVEL: DEBUG
