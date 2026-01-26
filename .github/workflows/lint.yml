@@ -18,7 +18,5 @@ jobs:
           DEFAULT_BRANCH: main
           
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_ALL_CODEBASE: true
-          VALIDATE_JAVA_FORMATTER: false
-          LINTER_RULES_PATH: .github/linters
-          JAVA_COMMAND_ARGS: -c .github/linters/checkstyle.xml
+          JAVA_CHECKSTYLE_CONFIG_FILE: .github/linters/checkstyle.xml
+          
