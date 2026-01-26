@@ -12,16 +12,6 @@ jobs:
 
     steps:
 
-      - name: Debug repo state
-        run: |
-          pwd
-          git status --short
-          git branch --show-current
-          git rev-parse HEAD
-          ls -la .github || echo ".github folder MISSING!"
-          ls -la .github/linters || echo "linters NOT FOUND"
-          find . -name "*check*.xml" -o -name "*google*.xml" || echo "No checkstyle-like files found"    
-          
       - name: Debug - List linters directory contents
         run: |
           pwd
