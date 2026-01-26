@@ -31,8 +31,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: main
-          fetch-depth: 0
+          ref: ${{ github.ref }}          # Use the exact ref that triggered the workflow
+          fetch-depth: 0                  # Full history — critical here
+          fetch-tags: true          
 
       - name: Super-Linter
         uses: super-linter/super-linter@v7
