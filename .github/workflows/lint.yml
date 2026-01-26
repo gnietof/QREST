@@ -11,6 +11,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Debug repo state
+        run: |
+          pwd
+          git status --short
+          git branch --show-current
+          git rev-parse HEAD
+          ls -la .github || echo ".github folder MISSING!"
+          ls -la .github/linters || echo "linters NOT FOUND"
+          find . -name "*check*.xml" -o -name "*google*.xml" || echo "No checkstyle-like files found"    
+          
       - name: Debug - List linters directory contents
         run: |
           pwd
@@ -19,6 +30,9 @@ jobs:
         
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Super-Linter
         uses: super-linter/super-linter@v7
